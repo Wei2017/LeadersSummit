@@ -1,0 +1,38 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+/* 弹出层遮罩 */
+.mask{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  background-color: rgba(0,0,0,.3);
+}
+.guest_info{
+  width: 478rpx;
+  z-index: 9999;
+  background-color: #fff;
+  border-radius: 5px;
+  margin-top: 334rpx;
+  padding: 0 30rpx;
+}
+.name_pic{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top: -85rpx;
+}
+.name_pic image{
+  width: 170rpx;
+  height: 170rpx;
+  border-radius: 50%;
+  border: 10rpx solid #fff;
+}
+.name_pic text{
+  margin: 14rpx 0 27rpx;
+}

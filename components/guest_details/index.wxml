@@ -1,0 +1,16 @@
+<view class='container'>
+  <view class='mask'></view>
+  <view class='guest_info'>
+    <view class='name_pic'>
+      <image src='http://v.ruthout.com/files/user/avatar/107208_large.jpg?1540893235?844f8b8046efd5f371c4435ecd5b7bbe?1540893235'></image>
+      <text>杜晓伟</text>
+    </view>
+    <view class='major'>
+      擅长：<text class='major_text'></text>
+    </view>
+    <view class='introduce'>
+      简介：<text class='introduce_text'></text>
+    </view>
+    <view class='consultation_btn'>预约咨询</view>
+  </view>
+</view>
