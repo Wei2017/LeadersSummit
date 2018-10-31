@@ -12,20 +12,24 @@
   top: 0;
   background-color: rgba(0,0,0,.3);
 }
+/* 用户简介 */
+.position{
+ z-index: 9999;
+  margin-top: 334rpx; 
+  background-color: #fff;
+  padding: 0 30rpx;
+  border-radius: 5px;  
+  font-size:0;
+}
 .guest_info{
   width: 478rpx;
-  z-index: 9999;
-  background-color: #fff;
-  border-radius: 5px;
-  margin-top: 334rpx;
-  padding: 0 30rpx;
+  position: relative;
+  top: -85rpx;
 }
 .name_pic{
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
-  top: -85rpx;
 }
 .name_pic image{
   width: 170rpx;
@@ -34,5 +38,31 @@
   border: 10rpx solid #fff;
 }
 .name_pic text{
+  font-size: 34rpx;
+  color: #2e2e2e;
   margin: 14rpx 0 27rpx;
+}
+.major{
+  margin-bottom: 18rpx;
+}
+.major text,.introduce text{
+  font-weight: normal;
+  line-height: 45rpx;
+}
+.major,.introduce{
+  font-size: 26rpx;
+  font-weight: 700;
+  color: #2e2e2e;
+}
+
+.consultation_btn{
+  width: 228rpx;
+  height: 74rpx;
+  line-height: 74rpx;
+  text-align: center;
+  margin: 35rpx auto 0;
+  border-radius: 19px;
+  background-color: #ecb700;
+  font-size: 30rpx;
+  color: #fff;
 }
