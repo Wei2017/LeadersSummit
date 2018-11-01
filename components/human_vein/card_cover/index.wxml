@@ -1,0 +1,13 @@
+<view class='container'>
+  <view class='card_cover_info'>
+    <image class='user_pic' src='http://v.ruthout.com/files/user/avatar/107208_large.jpg?1540893235?844f8b8046efd5f371c4435ecd5b7bbe?1540893235'></image>
+    <view class='basic_info'>
+      <text class='user_name'>杜晓伟</text>
+      <text class='company'>儒思北京网络科技有限公司</text>
+      <text class='position'>FE开发工程师</text>
+    </view>
+  </view>
+  <view class='exchange_view'>
+    <image class='exchange_img' src='{{exchangeSrc}}'></image>
+  </view>
+</view>

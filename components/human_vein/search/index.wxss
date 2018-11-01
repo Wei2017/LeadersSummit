@@ -1,0 +1,64 @@
+/* components/search/index.wxss */
+page{
+  background-color: #eaeaea;
+}
+.container {
+  height: 104rpx;
+  padding: 0 24rpx;
+  margin-bottom: 20rpx;
+  font-size: 0;
+  background-color: #fff;
+}
+
+.search_and_name_card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search_box {
+  width: 530rpx;
+  height: 64rpx;
+  background-color: #eaeaea;
+  border: 1px solid #d5d5d5;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.search_btn {
+  padding: 5rpx 19rpx 5rpx 24rpx;
+}
+
+.search_btn image {
+  width: 24rpx;
+  height: 24rpx;
+  cursor: pointer;
+}
+
+.search_box input {
+  font-size: 24rpx;
+  width: 100%;
+}
+
+.my_name_card text{
+  font-size: 28rpx;
+  color: #2819a8;
+  position: relative;
+  padding-right: 20rpx;
+}
+
+.my_name_card text::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 0;
+  height: 0;
+  margin-top: -5rpx;
+  border-left: 10rpx solid #2819a8;
+  border-bottom: 10rpx solid transparent;
+  border-top: 10rpx solid transparent;
+}

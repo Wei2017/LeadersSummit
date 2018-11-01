@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/edit_info/edit_info",
     "pages/logs/logs",
     "pages/index/index"
   ],

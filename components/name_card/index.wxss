@@ -9,14 +9,19 @@
 .name_pic{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   z-index: 9999;
   padding-left: 24rpx;
 }
-.name_pic text{
+.name_pic>text{
   font-size: 34rpx;
   color: #2e2e2e;
   margin-top: 17rpx;
+  padding-left: 24rpx;
+}
+.name_pic .apply_show{
+  font-size: 24rpx;
+  color: #aaa;
 }
 .name_pic image{
   width: 140rpx;
@@ -45,4 +50,30 @@
 .edit_data image{
   width: 24rpx;
   height: 26rpx;
+}
+
+/* 基本信息 */
+.basic_info{
+  display: flex;
+  flex-direction: column;
+  padding-left: 48rpx;
+  margin-top: 57rpx;
+}
+.basic_info>view{
+  margin-bottom: 40rpx;
+}
+.basic_info text{
+  font-size: 28rpx;
+  color: #2e2e2e;
+}
+.basic_info .title{
+  font-size: 28rpx;
+  color: #aaa;
+  display: inline-block;
+  width: 70rpx;
+  margin-right: 46rpx;
+}
+.basic_info .phone_num{
+  font-size: 34rpx;
+  color: #ecb700;
 }

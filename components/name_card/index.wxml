@@ -2,12 +2,29 @@
   <view class='user_name_pic'>
     <view class='name_pic'>
       <image src='http://v.ruthout.com/files/user/avatar/107208_large.jpg?1540893235?844f8b8046efd5f371c4435ecd5b7bbe?1540893235'></image>
-      <text>杜晓伟</text>
+      <text>杜晓伟 <text class='apply_show'>（申请交换后可见）</text></text>
     </view>
     <view class='edit_data'>
       <image src='https://www.zhibenhr.com/Public/sass/img/sx.png'></image>
       <text>编辑资料</text>
     </view>
   </view>
-  <view class='basic_info'></view>
+  <view class='basic_info'>
+    <view class='user_phone'>
+      <text class='title'>手机</text>
+      <text class='phone_num'>13466608250</text>
+    </view>
+    <view class='company'>
+      <text class='title'>公司</text>
+      <text class='company_name'>儒思北京网络科技</text>
+    </view>
+    <view class='position'>
+      <text class='title'>职位</text>
+      <text class='user_position'>FE开发工程师</text>
+    </view>
+    <view class='user_email'>
+      <text class='title'>Email</text>
+      <text class='email_num'>527188405@qq.com</text>
+    </view>
+  </view>
 </view>

@@ -2,6 +2,8 @@
   "navigationBarTitleText": "查看启动日志",
   "usingComponents":{
     "r-guest":"/components/guest_details/index",
-    "r-ncard":"/components/name_card/index"
+    "r-ncard":"/components/name_card/index",
+    "r-search":"/components/human_vein/search/index",
+    "r-cover":"/components/human_vein/card_cover/index"
   }
 }

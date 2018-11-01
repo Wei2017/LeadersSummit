@@ -1,0 +1,49 @@
+.container{
+  width: 702rpx;
+  height: 200rpx;
+  font-size: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: center;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 4px;
+}
+.card_cover_info{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding-left: 25rpx;
+}
+/* 用户头像 */
+.user_pic{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+/* 用户基本信息 */
+.basic_info{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.user_name{
+  font-size: 30rpx;
+  color: #2e2e2e;
+}
+.company{
+  font-size: 22rpx;
+  color: #aaa;
+  margin: 5rpx 0 10rpx;
+}
+.position{
+  font-size: 24rpx;
+  color: #aaa;
+}
+/* 交换状态图片 */
+.exchange_img{
+  width: 172rpx;
+  height: 200rpx;
+}

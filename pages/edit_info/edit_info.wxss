@@ -1,0 +1,93 @@
+.container{
+  font-size: 0;
+}
+.user_pic{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 20rpx;
+}
+.orange{
+  width: 100%;
+  height: 90rpx;
+  background-color: #ecb700;
+}
+.white{
+  width: 100%;
+  height: 90rpx;
+  background-color: #fff;
+}
+.user_pic image{
+  width: 168rpx;
+  height: 168rpx;
+  border-radius: 50%;
+  border: 6rpx solid #fff;
+  position: absolute;
+  top: 0;
+}
+
+/* 用户信息 */
+.user_info{
+  display: flex;
+  flex-direction: column;
+  padding: 0 24rpx 110rpx;
+}
+.info_item{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 43rpx 0 24rpx;
+  border-bottom: 1px solid #d5d5d5;
+  height: 105rpx;
+  line-height: 105rpx;
+}
+.info_title{
+  font-size: 28rpx;
+  color: #aaa;
+}
+.info_title text{
+  color: rgb(253,4,22);
+}
+.input_view{
+  font-size: 0;
+}
+.input_view input{
+  font-size: 28rpx;
+  text-align: right;
+vertical-align: middle;
+}
+.inputPlaceholder{
+  font-size: 28rpx;
+}
+.picker{
+  font-size: 28rpx;
+  position: relative;
+  padding-right: 28rpx;
+}
+.picker::after{
+   content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 0;
+  height: 0;
+  margin-top: -3rpx;
+  border-top: 10rpx solid #2e2e2e;
+  border-left: 10rpx solid transparent;
+  border-right: 10rpx solid transparent;
+}
+.save_info{
+  width: 100%;
+  height: 98rpx;
+  line-height: 98rpx;
+  background-color: #ecb700;
+  font-size: 34rpx;
+  color: #fff;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  z-index: 9999;
+}
