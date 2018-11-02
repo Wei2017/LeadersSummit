@@ -1,0 +1,15 @@
+<view class='container'>
+  <r-search />
+  <r-myhvein state="{{state}}" />
+
+  <block wx:if="{{state == ''}}">
+    <view class='fixed_btn'>
+      <view class='wait_my'>
+        <text>待我审核</text>
+      </view>
+      <view class='wait_you'>
+        <text class='active'>对方审核</text>
+      </view>
+    </view>
+  </block>
+</view>

@@ -1,0 +1,37 @@
+.container{
+  padding-bottom: 100rpx;
+}
+.fixed_btn{
+  position: fixed;
+  bottom: 0;
+  height: 98rpx;
+  line-height: 98rpx;
+  display: flex;
+  flex-direction: row;
+}
+.fixed_btn>view{
+  width: 375rpx;
+  text-align: center;
+}
+.fixed_btn>view text{
+  font-size: 34rpx;
+  position: relative;
+}
+.wait_my{
+  color: #ecb700;
+  background-color: #fff;
+}
+.wait_you{
+  color: #fff;
+  background-color: #ecb700;
+}
+.wait_my text.active::after,.wait_you text.active::after{
+  content: '';
+  width: 18rpx;
+  height: 18rpx;
+  border-radius: 50%;
+  background-color: #fe3c30;
+  position: absolute;
+  top: 0;
+  right: -9rpx;
+}

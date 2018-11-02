@@ -1,3 +1,7 @@
-
-<r-search />
-<r-cover />
+<!-- <r-zxhead />
+<r-consult />
+<r-qrcode /> -->
+ <r-search />
+<!--<r-cover picSrc userName company position exchangeState /> -->
+<!-- <r-ncard /> -->
+<r-myhvein />

@@ -1,0 +1,24 @@
+<view class='container'>
+  <view class='user_input'>
+    <!-- 咨询类型选择 -->
+    <view class='info_item'>
+      <view class='info_title'>咨询类型</view>
+      <view class='input_view'>
+        <picker bindchange="bindConsultChange" value="{{consultIndex}}" range="{{consult}}">
+          <view class="picker">{{consult[consultIndex]}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class='info_item'>
+      <view class='info_title'>联系方式</view>
+      <view class='input_view'>
+        <input type='text' placeholder='请输入您的联系方式' value='13466608250' placeholder-class='inputPlaceholder' />
+      </view>
+    </view>
+    <view class='problem_desc'>
+      <textarea class='problem_text' placeholder='请描述您的问题诉求，我们将尽快为您联系对方！' placeholder-class='inputPlaceholder'></textarea>
+      <text>温馨提示：本平台仅提供预约入口，不承诺后续相关咨询服务</text>
+    </view>
+  </view>
+  <view class='save_btn'>保存</view>
+</view>

@@ -1,35 +1,12 @@
-.user_pic{
+.container{
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  position: relative;
-  margin-bottom: 20rpx;
 }
-.orange{
-  width: 100%;
-  height: 90rpx;
-  background-color: #ecb700;
-}
-.white{
-  width: 100%;
-  height: 90rpx;
-  background-color: #fff;
-}
-.user_pic image{
-  width: 168rpx;
-  height: 168rpx;
-  border-radius: 50%;
-  border: 6rpx solid #fff;
-  position: absolute;
-  top: 0;
-}
-
-/* 用户信息 */
-.user_info{
+.user_input{
   display: flex;
   flex-direction: column;
-  padding: 0 24rpx 110rpx;
+  padding: 0 24rpx 86rpx;
 }
 .info_item{
   display: flex;
@@ -73,15 +50,33 @@ vertical-align: middle;
   border-left: 10rpx solid transparent;
   border-right: 10rpx solid transparent;
 }
-.save_info{
-  width: 100%;
+.problem_desc{
+  margin-top: 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.problem_text{
+  width: 679rpx;
+  height: 228rpx;
+  background-color: #eaeaea;
+  border: 1px solid #d5d5d5;
+  border-radius: 4px;
+  padding: 20rpx 0 0 23rpx;
+  font-size: 28rpx;
+}
+.problem_desc>text{
+  font-size: 22rpx;
+  color: #2e2e2e;
+  margin-top: 20rpx;
+}
+.save_btn{
+  width: 572rpx;
   height: 98rpx;
   line-height: 98rpx;
-  background-color: #ecb700;
-  font-size: 34rpx;
+  border-radius: 50rpx;
   color: #fff;
+  font-size: 34rpx;
   text-align: center;
-  position: fixed;
-  bottom: 0;
-  z-index: 9999;
+  background-color: #ecb700;
 }

@@ -1,0 +1,6 @@
+<view class='container'>
+  <view class='qrcode'>
+    <image src='{{qrcode}}'></image>
+  </view>
+  <view class='kf_tel'>客服联系：010-5716 4723</view>
+</view>

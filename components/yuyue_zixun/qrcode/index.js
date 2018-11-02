@@ -1,22 +1,17 @@
-// components/name_card/index.js
+// components/yuyue_zixun/qrcode/index.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    userPic:String,
-    userName:String,
-    userPhone:Number,
-    userEmail:String,
-    company:String,
-    position:String
+
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-
+    qrcode:'images/qrcode.png'
   },
 
   /**

@@ -2,7 +2,7 @@
   <view class='search_and_name_card'>
     <view class='search_box'>
       <view class='search_btn'>
-        <image src='http://www.ruthout.com/Public/ruthWeb/img/shous.png'></image>
+        <image src='images/sousuo@2x.png'></image>
       </view>
       <input type='text' placeholder='按姓名或公司搜索' />
     </view>

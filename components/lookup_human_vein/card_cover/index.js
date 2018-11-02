@@ -16,7 +16,10 @@ Component({
    */
   data: {
     exchangeSrc:'images/exchangeSrc.png',
-    exchangeIngSrc:'images/exchangeIngSrc.png'
+    exchangeIngSrc:'images/exchangeIngSrc.png',
+    change:'images/jiaohuan.png',
+    jh_text:'交换',
+    jh_ing:'交换中'
   },
 
   /**

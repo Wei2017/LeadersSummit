@@ -1,7 +1,4 @@
 /* components/search/index.wxss */
-page{
-  background-color: #eaeaea;
-}
 .container {
   height: 104rpx;
   padding: 0 24rpx;

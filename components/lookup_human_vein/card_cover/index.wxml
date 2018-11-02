@@ -8,6 +8,10 @@
     </view>
   </view>
   <view class='exchange_view'>
-    <image class='exchange_img' src='{{exchangeSrc}}'></image>
+    <image class='exchange_bj' src='{{exchangeState?exchangeIngSrc:exchangeSrc}}'></image>
+    <view class='position_center'>
+      <image class='jiaohuan' src='{{change}}'></image>
+      <text>{{exchangeState?jh_ing:jh_text}}</text>
+    </view>
   </view>
 </view>

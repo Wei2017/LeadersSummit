@@ -2,8 +2,12 @@
   "navigationBarTitleText": "查看启动日志",
   "usingComponents":{
     "r-guest":"/components/guest_details/index",
-    "r-ncard":"/components/name_card/index",
-    "r-search":"/components/human_vein/search/index",
-    "r-cover":"/components/human_vein/card_cover/index"
+    "r-ncard":"/components/lookup_human_vein/name_card/index",
+    "r-search":"/components/lookup_human_vein/search/index",
+    "r-cover":"/components/lookup_human_vein/card_cover/index",
+    "r-zxhead": "/components/yuyue_zixun/head/index",
+    "r-consult":"/components/yuyue_zixun/consult/index",
+    "r-qrcode":"/components/yuyue_zixun/qrcode/index",
+    "r-myhvein":"/components/my/human_vein/index"
   }
 }

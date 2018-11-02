@@ -1,7 +1,8 @@
 {
   "pages":[
-    "pages/edit_info/edit_info",
+    "pages/my_ren_mai/my_ren_mai",
     "pages/logs/logs",
+    "pages/edit_info/edit_info",
     "pages/index/index"
   ],
   "window":{

@@ -1,0 +1,17 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.qrcode{
+  margin-bottom: 20rpx;
+  margin-top: 79rpx;
+}
+.qrcode>image{
+  width: 216rpx;
+  height: 216rpx;
+}
+.kf_tel{
+  font-size: 24rpx;
+  color: #2e2e2e;
+}

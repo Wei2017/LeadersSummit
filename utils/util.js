@@ -1,19 +1,11 @@
-const formatTime = date => {
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  const second = date.getSeconds()
-
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+// 设置顶部导航条背景颜色
+const setnavBarBjColor = ()=>{
+  wx.setNavigationBarColor({
+    frontColor: '#ffffff',
+    backgroundColor: '#ecb700'
+  })
 }
-
-const formatNumber = n => {
-  n = n.toString()
-  return n[1] ? n : '0' + n
-}
-
 module.exports = {
-  formatTime: formatTime
+  setnavBarBjColor: setnavBarBjColor
 }
+
