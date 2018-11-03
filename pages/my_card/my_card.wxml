@@ -1,0 +1,22 @@
+<view class='container'>
+  <r-ncard userPic userName userPhone userEmail company position state="{{cardState}}" />
+
+  <block wx:if="{{cardState != '3'}}">
+    <view class='btn_view'>
+      <text wx:if="{{cardState == '1'}}">去交换</text>
+      <text wx:elif="{{cardState == '2'}}">申请交换名片</text>
+
+      <view class='my_examine' wx:elif="{{cardState == '4'}}">
+        <text class='refuse'>拒绝交换</text>
+        <text class='agree'>同意交换</text>
+      </view>
+      <view class='wait' wx:elif="{{cardState == '5'}}">
+        <text>等待对方审核</text>
+      </view>
+      <text wx:elif="{{cardState == '6'}}">重新申请交换</text>
+    </view>
+  </block>
+  <block wx:else>
+    <view class='recommend'>为您推荐</view>
+  </block>
+</view>

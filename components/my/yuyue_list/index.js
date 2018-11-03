@@ -1,16 +1,10 @@
-// components/name_card/index.js
+// components/my/yuyue_list/index.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    userPic:String,
-    userName:String,
-    userPhone:Number,
-    userEmail:String,
-    company:String,
-    position:String,
-    state:String
+
   },
 
   /**
@@ -24,6 +18,6 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    
+
   }
 })

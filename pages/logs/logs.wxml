@@ -1,7 +1,10 @@
 <!-- <r-zxhead />
 <r-consult />
 <r-qrcode /> -->
- <r-search />
+ <!-- <r-search /> -->
 <!--<r-cover picSrc userName company position exchangeState /> -->
 <!-- <r-ncard /> -->
-<r-myhvein />
+<!-- <r-myhvein /> -->
+<!-- <r-bigshot /> -->
+<!-- <r-myyuyue /> -->
+<r-zxhead />

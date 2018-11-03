@@ -1,0 +1,25 @@
+<view class='container'>
+<r-zxhead />
+
+<view class='consult_info'>
+  <view class='consult_item'>
+    <text class='title'>咨询时间:</text>
+    <text>2018-11-19 18:03</text>
+  </view>
+  <view class='consult_item'>
+    <text class='title'>咨询类型:</text>
+    <text>个人咨询</text>
+  </view>
+  <view class='consult_item'>
+    <text class='title'>联系方式:</text>
+    <text>13466608250</text>
+  </view>
+  <view class='problem_desc'>
+    <text class='title'>问题描述：</text>
+    <text class='desc_info'>这是我的问题描述这是我的问题描述这是我的问题
+描述这是我的问题描述这是我的问题描述这是我的问
+题描述这是我的问题描述</text>
+  </view>
+</view>
+<r-qrcode />
+</view>

@@ -1,0 +1,6 @@
+{
+  "usingComponents":{
+    "r-search": "/components/lookup_human_vein/search/index",
+    "r-cover": "/components/lookup_human_vein/card_cover/index"
+  }
+}

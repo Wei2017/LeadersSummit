@@ -1,4 +1,5 @@
-//app.js
+import {HTTP} from 'utils/http.js';
+const http = new HTTP();
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -9,12 +10,26 @@ App({
     // 登录
     wx.login({
       success: res => {
+        // console.log(res);
+        wx.setStorageSync('code', res.code);
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        //授权获取openid、session_key等
+        http.request({
+          url:'Smallwx/auth',
+          data:{
+            code:res.code
+          },
+          success:res=>{
+            console.log(res);
+          }
+        })
+        
       }
     })
     // 获取用户信息
     wx.getSetting({
       success: res => {
+        // console.log(res);
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({

@@ -1,13 +1,23 @@
 <view class='container'>
   <view class='user_name_pic'>
     <view class='name_pic'>
-      <image src='http://v.ruthout.com/files/user/avatar/107208_large.jpg?1540893235?844f8b8046efd5f371c4435ecd5b7bbe?1540893235'></image>
-      <text>杜晓伟 <text class='apply_show'>（申请交换后可见）</text></text>
+      <image src='/images/pic.jpg'></image>
+      <text>杜晓伟                              <!--未交换       审核中         拒绝-->
+        <text class='apply_show' wx:if="{{state == '2'||state == '5'||state == '6'}}">（交换成功后可见）</text>
+      </text>
     </view>
-    <view class='edit_data'>
-      <image src='https://www.zhibenhr.com/Public/sass/img/sx.png'></image>
-      <text>编辑资料</text>
-    </view>
+    <!-- 我的名片 显示编辑资料 -->
+    <block wx:if="{{state == '1'}}">
+      <view class='edit_data'>
+        <view bindtap='testPay'>
+          <image src='images/edit_data.png'></image>
+          <text>编辑资料</text>
+        </view>
+
+      </view>
+    </block>
+    <!-- 背景颜色占位 别无它用 -->
+    <view wx:else class='edit_data'></view>
   </view>
   <view class='basic_info'>
     <view class='user_phone'>

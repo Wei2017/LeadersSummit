@@ -10,15 +10,19 @@ class HTTP {
       method: params.method,
       data:params.data,
       header:{
-        'Content-type': 'application/json'
+        'Accept': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded'
       },
       success:res=>{
-        console.log(res);
-        params.success && params.success(res)
+        params.success && params.success(res.data)
       },
       fail:error=>{
         console.log(error)
       }
     })
   }
+}
+
+export{
+  HTTP
 }

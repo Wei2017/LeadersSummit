@@ -1,0 +1,6 @@
+<view class='container'>
+<r-search />
+<r-cover />
+<r-cover />
+<r-cover />
+</view>

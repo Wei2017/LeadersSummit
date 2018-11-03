@@ -1,0 +1,46 @@
+.btn_view{
+  width: 100%;
+  height: 98rpx;
+  line-height: 98rpx;
+  background-color: #ecb700;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+}
+.btn_view>text{
+  font-size: 34rpx;
+  color: #fff;
+}
+.my_examine{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.my_examine text{
+  width: 50%;
+  font-size: 34rpx;
+  
+}
+.my_examine .refuse{
+  background-color: #eaeaea;
+  color: #ecb700;
+}
+.my_examine .agree{
+  background-color: #ecb700;
+  color: #fff;
+}
+/* 等待对方审核 */
+.wait{
+  background-color: #eaeaea;
+}
+.wait text{
+  font-size: 34rpx;
+  color: #aaa;
+}
+
+/* 为您推荐 */
+.recommend{
+  font-size: 30rpx;
+  color: #2e2e2e;
+}

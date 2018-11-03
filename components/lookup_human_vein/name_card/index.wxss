@@ -40,7 +40,6 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  align-items: center;
 }
 .edit_data text{
   font-size: 24rpx;
@@ -50,6 +49,7 @@
 .edit_data image{
   width: 24rpx;
   height: 26rpx;
+  margin-right: 10rpx;
 }
 
 /* 基本信息 */

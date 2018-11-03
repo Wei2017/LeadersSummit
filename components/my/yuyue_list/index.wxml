@@ -1,0 +1,10 @@
+<view class='container'>
+  <view class='my_yuyue_item'>
+    <image src='/images/pic.jpg'></image>
+    <view class='yuyue_info'>
+      <text class='name'>杜晓伟</text>
+      <text class='shanchang'>擅长：招聘与培训、绩效管理</text>
+      <text class='date'>2018-11-19</text>
+    </view>
+  </view>
+</view>

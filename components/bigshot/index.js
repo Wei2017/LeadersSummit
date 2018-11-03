@@ -1,16 +1,14 @@
-// components/name_card/index.js
+// components/bigshot/index.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    userPic:String,
-    userName:String,
-    userPhone:Number,
-    userEmail:String,
-    company:String,
-    position:String,
-    state:String
+    state:Boolean, //true 预约中 否则未预约  默认为false
+    pic:String,
+    name:String,
+    major:String,
+    company:String
   },
 
   /**
@@ -24,6 +22,6 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    
+
   }
 })

@@ -1,0 +1,29 @@
+.consult_info{
+  display: flex;
+  flex-direction: column;
+  padding-left: 47rpx;
+  margin-top: 30rpx;
+}
+.consult_item{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 39rpx;
+}
+
+.title{
+  font-weight: 600;
+  margin-right: 18rpx;
+}
+.title,.desc_info,.consult_item text:last-child{
+  font-size: 28rpx;
+  color: #2e2e2e;
+}
+.problem_desc{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.problem_desc .title{
+  margin-bottom: 19rpx;
+}

@@ -1,0 +1,39 @@
+.container {
+  padding: 0 24rpx;
+  background-color: #fff;
+}
+
+.my_yuyue_item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20rpx 25rpx 19rpx;
+  border-bottom: 1px solid #d5d5d5;
+}
+
+.my_yuyue_item image {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+}
+.yuyue_info{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-width: 473rpx;
+  margin-left: 20rpx;
+}
+.name{
+  font-size: 34rpx;
+  color: #2e2e2e;
+}
+.shanchang{
+  font-size: 28rpx;
+  color: #2e2e2e;
+  margin-bottom: 28rpx;
+}
+.date{
+  font-size: 22rpx;
+  color: #aaa;
+  text-align: right;
+}

@@ -1,0 +1,80 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.name_pic{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.bj{
+  width: 750rpx;
+  height: 210rpx;
+}
+.pic{
+  width: 164rpx;
+  height: 164rpx;
+  border-radius: 50%;
+  border: 6rpx solid #fff;
+  z-index: 9999;
+  position: absolute;
+  bottom: 0;
+}
+.name{
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  margin-top: 14rpx;
+}
+.name text{
+  font-size: 38rpx;
+  color: #2e2e2e;
+  font-weight: 600;
+}
+.edit{
+  width: 24rpx;
+  height: 26rpx;
+  margin-left: 9rpx;
+}
+
+.section{
+  width: 100%;
+  display: flex;
+  flex-direction:column;
+  margin-top: 40rpx;
+}
+.list_item{
+  display: flex;
+  flex-direction:row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #d5d5d5;
+  padding: 40rpx 24rpx 39rpx;
+  margin: 0 24rpx;
+}
+.item_text image{
+  width: 44rpx;
+}
+.menpiao{
+  height: 34rpx;
+}
+.renmai{
+  height: 42rpx;
+}
+.yuyue{
+  height: 40rpx;
+}
+.lyb{
+  height: 36rpx;
+}
+.item_text text{
+  font-size: 28rpx;
+  color: #2e2e2e;
+  margin-left: 40rpx;
+}
+.right_icon{
+  width: 14rpx;
+  height: 26rpx;
+}

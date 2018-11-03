@@ -5,6 +5,7 @@ const setnavBarBjColor = ()=>{
     backgroundColor: '#ecb700'
   })
 }
+
 module.exports = {
   setnavBarBjColor: setnavBarBjColor
 }
