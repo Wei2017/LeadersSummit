@@ -4,7 +4,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    bigId:String
   },
 
   /**
@@ -12,7 +12,8 @@ Component({
    */
   data: {
     consult:['个人咨询','企业咨询'],
-    consultIndex:0
+    consultIndex:0,
+    consultChecked:''
   },
 
   /**
@@ -23,8 +24,15 @@ Component({
     bindConsultChange: function (e) {
       console.log('咨询类型为：', this.data.consult[e.detail.value])
       this.setData({
+        consultChecked: this.data.consult[e.detail.value],
         consultIndex: e.detail.value
       })
     },
+
+
+    //保存预约信息
+    saveMakeInfo:function(e){
+      console.log(this.data.bigId);
+    }
   }
 })

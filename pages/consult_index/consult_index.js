@@ -1,20 +1,24 @@
-import {BigshotModal} from '../../models/big-shot.js';
-const bigShotModal = new BigshotModal();
+import {ConsultModal} from '../../models/consult.js';
+const consultModal = new ConsultModal();
+const util = require('../../utils/util.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    bigShotList:[],
-    // user_id:''
+    bid:'',
+    user_id:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    util.setnavBarBjColor();
+    this.setData({
+      bid: options.bid
+    })
   },
 
   /**
@@ -28,14 +32,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let user_id = wx.getStorageSync('user_id');
-    bigShotModal.getBigShotList({ user_id:user_id }, res => {
-      if (res.code == 1) {
-        this.setData({
-          bigShotList: res.big_shot_list
-        })
-      }
-    })
+
   },
 
   /**

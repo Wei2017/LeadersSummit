@@ -1,0 +1,4 @@
+<view class='container'>
+  <r-zxhead />
+  <r-consult bigId="{{bid}}" />
+</view>

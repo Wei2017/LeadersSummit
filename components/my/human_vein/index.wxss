@@ -1,6 +1,4 @@
-page{
-  background-color: #eaeaea;
-}
+
 .container{
   width: 702rpx;
   height: 200rpx;

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "咨询预约",
+  "usingComponents":{
+    "r-zxhead": "/components/yuyue_zixun/head/index",
+    "r-consult": "/components/yuyue_zixun/consult/index"
+  }
+}

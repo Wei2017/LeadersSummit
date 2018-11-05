@@ -1,3 +1,5 @@
+import {HTTP} from '../../utils/http.js';
+const http = new HTTP;
 const app = getApp();
 Page({
   data: {
@@ -24,12 +26,26 @@ Page({
   },
   bindGetUserInfo: function (e) {
     if (e.detail.userInfo) {
+      let iv = e.detail.iv,
+          encryptedData = e.detail.encryptedData;
       //用户按了允许授权按钮
       var that = this;
-      
-      //授权成功后，跳转进入小程序首页
-      wx.switchTab({
-        url: '/pages/index/index'
+      //请求接口获取user_id存入缓存
+      http.request({
+        url: 'Smallwx/checkRegisterInfo',
+        data: {
+          iv: iv,
+          openid: app.globalData.data.openid,
+          session_key: app.globalData.data.session_key,
+          encryptedData: encryptedData
+        },
+        success: res => {
+          wx.setStorageSync('user_id', res.user_id);
+          //授权成功后，跳转进入小程序首页
+          wx.navigateBack({
+            delta: 1
+          })
+        }
       })
     } else {
       //用户按了拒绝按钮

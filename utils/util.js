@@ -6,7 +6,17 @@ const setnavBarBjColor = ()=>{
   })
 }
 
+//showTotal功能提示框
+const showTotal = title=>{
+  wx.showToast({
+    title: title,
+    mask: true,
+    icon: 'none'
+  })
+}
+
 module.exports = {
-  setnavBarBjColor: setnavBarBjColor
+  setnavBarBjColor: setnavBarBjColor,
+  showTotal: showTotal
 }
 

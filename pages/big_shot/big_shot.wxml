@@ -1,3 +1,5 @@
 <view class='container'>
-  <r-bigshot />
+<block wx:for="{{bigShotList}}" wx:key="key">
+  <r-bigshot bigShot="{{item}}"/>
+</block>
 </view>
