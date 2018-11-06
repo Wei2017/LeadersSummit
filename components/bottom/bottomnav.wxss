@@ -6,6 +6,7 @@
   padding: 0rpx 68rpx 0rpx 64rpx;
   box-sizing: border-box;
   position: relative;
+  z-index: 9999;
 }
 .navli{
   width: 75rpx;

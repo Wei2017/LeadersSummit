@@ -1,5 +1,5 @@
-import {HTTP} from '../../utils/http.js';
-const http = new HTTP();
+import {CardDetails} from '../../models/card.js';
+const cardDetails = new CardDetails();
 const util = require('../../utils/util.js');
 
 Page({
@@ -21,6 +21,10 @@ Page({
     wx.setNavigationBarTitle({
       title: '当前页面'
     });
+
+    cardDetails.getCardDetails(options.bid,options.uid,res=>{
+      console.log(res);
+    })
   },
 
   /**

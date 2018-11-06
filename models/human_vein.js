@@ -24,7 +24,8 @@ class HumanVein extends HTTP {
         sCallback(res)
       }
     })
-  }
+  };
+
 }
 
 export {

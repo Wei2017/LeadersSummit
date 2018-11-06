@@ -23,6 +23,35 @@ Component({
       wx.navigateTo({
         url: "/pages/signup/signup"
       })
+    },
+    gohome() {
+      if(this.data.num!=0){
+        wx.redirectTo({
+          url: "/pages/home/home"
+        })
+      }
+    },
+    gopeople() {
+      if (this.data.num != 1) {
+        wx.redirectTo({
+          url: "/pages/renmai_list/renmai_list"
+        })
+      }
+    },
+    godaka() {
+      if (this.data.num != 2) {
+        wx.redirectTo({
+          url: "/pages/big_shot/big_shot"
+        })
+      }
+    },
+    gomine() {
+      if (this.data.num != 3) {
+        wx.redirectTo({
+          url: "/pages/my/my"
+        })
+      }
     }
+
   }
 })

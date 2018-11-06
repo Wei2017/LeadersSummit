@@ -25,7 +25,7 @@ Page({
     companyNumChecked: '',//用户选中的公司人数的值
 
     userName:'',
-    userPhone:'13466608250',
+    userPhone:'',
     userCompany:'',
     userTel:'',
     userEmail:'',
@@ -45,16 +45,46 @@ Page({
     //获取用户信息
     userInfoModal.getUserInfo(unionid,res=>{
       let data = res.data.user_info[0];
+      let region = data.city;
+          region = region.split(',');
+      
+
+      //循环判断绑定公司人数 数据展示信息
+      let companyNumL = that.data.companyNum;
+      for (let i = 0; i < companyNumL.length;i++){
+        if (companyNumL[i] == data.company_employee_count){
+          that.setData({
+            companyNumIndex:i,
+            companyNumChecked: companyNumL[i]
+          });
+          break;
+        }
+      }
+
+      //循环判断绑定行业 数据展示信息
+      let industryL = that.data.industry;
+      for(let i =0;i<industryL.length;i++){
+        if (industryL[i] == data.industry) {
+          that.setData({
+            industryIndex: i,
+            industryChecked:data.industry
+          });
+          break;
+        }
+      }
       that.setData({
         userName: data.truename,
-        userPhone: data.mobile,
+        userPhone: data.mobile_renmai ? data.mobile_renmai : data.mobile,
         userCompany: data.company,
         userTel: data.company_mobile,
         userEmail: data.email,
         userAddress: data.address,
-        user_pic: data.largeAvatar
+        user_pic: data.largeAvatar,
+        region: region,
+        sexChecked: data.gender == "male" ? '男' : data.gender =="female"?"女":'保密',
+        sexIndex: data.gender == "male" ? '1' : data.gender == "female" ? "2" : '3',
+        companyNumChecked:data.company_employee_count,
       })
-      console.log(res,res.data.user_info[0]);
     })
 
   },
@@ -110,27 +140,23 @@ Page({
   // 保存用户信息
   saveInfo:function(){
     let that = this;
-    if(that.data.userName == ''){
+    if (that.data.userName == '' || that.data.userName == null){
       util.showTotal('姓名不能为空!')
     }else if(!that._checkPhone(that.data.userPhone)){
       util.showTotal('请输入正确的手机号码!')
-    }else if (that.data.userPhone == ''){
+    } else if (that.data.userPhone == '' || that.data.userPhone == null){
       util.showTotal('手机号不能为空!')
-    }else if(that.data.userCompany == ''){
+    } else if (that.data.userCompany == '' || that.data.userCompany == null){
       util.showTotal('公司不能为空!')
     } else if (that.data.positionChecked == '' || that.data.positionChecked =='请选择'){
       util.showTotal('请选择职位!')
-    }else if(that.data.userTel == ''){
+    } else if (that.data.userTel == '' || that.data.userTel == null){
       util.showTotal('电话不能为空!')
-    }else if(that.data.userEmail == ''){
+    } else if (that.data.userEmail == '' || that.data.userEmail == null){
       util.showTotal('邮箱不能为空!')
-    } else if (that.data.industryChecked == '' || that.data.industryChecked =='请选择' ){
-      util.showTotal('请选择行业!')
-    } else if (that.data.companyNumChecked == '' || that.data.companyNumChecked == '请选择'){
-      util.showTotal('请选择公司人数!')
-    }else {
+    } else {
       let strRegion = that.data.region;
-          strRegion = strRegion.join('');
+          strRegion = strRegion.join(',');
 
       let data = {
         uid:that.data.uid,
@@ -139,13 +165,16 @@ Page({
         mobile: that.data.userPhone,
         company: that.data.userCompany,
         company_mobile: that.data.userTel,
+        email:that.data.userEmail,
         department:'',
-        job:'',
+        job: that.data.positionChecked,
         city: strRegion,
         address: that.data.userAddress,
-        industry:'',
-        company_employee_count: that.data.companyNumChecked
+        industry: that.data.industryChecked,
+        company_employee_count: that.data.companyNumChecked,
+        user_pic: that.data.user_pic
       }
+      console.log(data)
       //调取接口
       userInfoModal.saveUserInfo(data,res=>{
         console.log(res);

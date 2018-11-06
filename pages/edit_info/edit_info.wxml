@@ -54,7 +54,7 @@
         <text>*</text>
       </view>
       <view class='input_view'>
-        <input type='text' bindinput='getTel' placeholder='请输入公司名称' value='{{userTel}}' placeholder-class='inputPlaceholder' />
+        <input type='text' bindinput='getTel' placeholder='请输入公司电话' value='{{userTel}}' placeholder-class='inputPlaceholder' />
       </view>
     </view>
     <view class='info_item'>
@@ -62,7 +62,7 @@
         <text>*</text>
       </view>
       <view class='input_view'>
-        <input type='text' bindinput='getEmail' placeholder='请输入公司名称' value='{{userEmail}}' placeholder-class='inputPlaceholder' />
+        <input type='text' bindinput='getEmail' placeholder='请输入邮箱' value='{{userEmail}}' placeholder-class='inputPlaceholder' />
       </view>
     </view>
     <!-- 地区选择 -->
@@ -82,9 +82,7 @@
     </view>
     <!-- 行业选择 -->
     <view class='info_item'>
-      <view class='info_title'>行业
-        <text>*</text>
-      </view>
+      <view class='info_title'>行业</view>
       <view class='input_view'>
         <picker bindchange="bindIndustryChange" value="{{industryIndex}}" range="{{industry}}">
           <view class="picker">{{industry[industryIndex]}}</view>
@@ -93,9 +91,7 @@
     </view>
     <!-- 公司人数 -->
     <view class='info_item'>
-      <view class='info_title'>公司人数
-        <text>*</text>
-      </view>
+      <view class='info_title'>公司人数</view>
       <view class='input_view'>
         <picker bindchange="bindCompanyNumChange" value="{{companyNumIndex}}" range="{{companyNum}}">
           <view class="picker">{{companyNum[companyNumIndex]}}</view>

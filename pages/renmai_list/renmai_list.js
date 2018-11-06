@@ -10,7 +10,9 @@ Page({
    */
   data: {
     remaiList:[],
-    isWanShan: '' //0未完善 跳转编辑资料页面 1已完善触发交换事件
+    isWanShan: '',//0未完善 跳转编辑资料页面 1已完善触发交换事件
+    user_id:'',
+    unionid:''
   },
 
   /**
@@ -18,6 +20,10 @@ Page({
    */
   onLoad: function(options) {
     let that = this;
+    that.setData({
+      user_id: wx.getStorageSync('user_id'),
+      unionid: wx.getStorageSync('unionid')
+    })
     let user_id = wx.getStorageSync('user_id');
     let unionid = wx.getStorageSync('unionid');
 
@@ -51,6 +57,14 @@ Page({
     } else {
       //发起交换名片请求
     }
+  },
+  // 跳转详情
+  toDetails:function(e){
+    let that = this;
+    let bid = e.detail.bid;
+    wx.navigateTo({
+      url: '/pages/my_card/my_card?bid='+bid+'&uid'+that.data.user_id,
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
