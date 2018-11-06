@@ -5,11 +5,6 @@ Component({
    */
   properties: {
     bigShot:Object
-    // state:String, //1 预约中 否则未预约  默认为false
-    // pic:String,
-    // name:String,
-    // major:String,
-    // company:String
   },
 
   /**
@@ -26,10 +21,12 @@ Component({
     appBigShot:function(e){
       let state = this.data.bigShot.make,  //预约状态 0为未预约 1为已预约
           big_id = this.data.bigShot.id;//大咖id
+        let that = this;
       //判断用户是否授权
       wx.getSetting({
         success: function (res) {
-          if (!res.authSetting['scope.userInfo']) {
+          console.log(res, '111', that.properties.bigShot);
+          if (!res.authSetting['scope.userInfo'] || wx.getStorageSync('user_id') =='') {
             wx.navigateTo({
               url: '/pages/author/author',
             })

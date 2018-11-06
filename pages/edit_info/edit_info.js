@@ -38,10 +38,13 @@ Page({
     //设置头部导航条样式
     util.setnavBarBjColor();
 
+    //获取用户unionid
+    let unionid = wx.getStorageSync('unionid');
     //获取用户信息
-    // userInfoModal.getUserInfo(res=>{
-    //   console.log(res);
-    // })
+    userInfoModal.getUserInfo(unionid,res=>{
+      console.log(res);
+    })
+
   },
 
   /**

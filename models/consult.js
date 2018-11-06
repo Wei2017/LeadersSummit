@@ -3,17 +3,21 @@ import {
 } from '../utils/http.js';
 
 class ConsultModal extends HTTP {
-  makeConsult(par,sCallback) {
+  makeConsult(data,sCallback) {
     this.request({
       url:'Smallwx/makeBigShot',
-      data:{
-        user_id: par.uid,
-        big_id:par.bid,
-        content:par.content,
-        mobile:par.phone,
-        type:par.type
-      },
+      data:data,
       success:res=>{
+        sCallback(res);
+      }
+    })
+  };
+
+  getBigShotInfo(bid,sCallback){
+    this.request({
+      url: '',
+      data: bid,
+      success: res => {
         sCallback(res);
       }
     })

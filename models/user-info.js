@@ -1,10 +1,15 @@
 import {HTTP} from '../utils/http.js';
 
 class UserInfoModal extends HTTP{
-  getUserInfo(sCallback){
+  getUserInfo(unionid,sCallback){
     this.request({
-      url:'',
-
+      url: 'Smallwx/getEnrollInfo',
+      data: {
+        unionid: unionid
+      },
+      success: res => {
+        sCallback(res);
+      }
     })
   };
   //保存用户信息

@@ -21,15 +21,7 @@ App({
           },
           success:res=>{
             this.globalData.data = res.data;
-            http.request({
-              url:'Smallwx/getEnrollInfo',
-              data:{
-                unionid: res.data.unionid
-              },
-              success:res=>{
-                console.log(res);
-              }
-            })
+            wx.setStorageSync('unionid', res.data.unionid)
           }
         })
         

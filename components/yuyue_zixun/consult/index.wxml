@@ -20,5 +20,5 @@
       <text>温馨提示：本平台仅提供预约入口，不承诺后续相关咨询服务</text>
     </view>
   </view>
-  <view class='save_btn' bindtap='saveMakeInfo'>保存</view>
+  <view class='save_btn' bindtap='submitMakeInfo'>提交</view>
 </view>

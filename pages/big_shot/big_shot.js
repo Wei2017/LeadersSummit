@@ -29,6 +29,7 @@ Page({
    */
   onShow: function () {
     let user_id = wx.getStorageSync('user_id');
+    console.log(user_id);
     bigShotModal.getBigShotList({ user_id:user_id }, res => {
       if (res.code == 1) {
         this.setData({

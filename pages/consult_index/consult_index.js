@@ -8,7 +8,10 @@ Page({
    */
   data: {
     bid:'',
-    user_id:''
+    user_id:'',
+    consultType:'',//咨询类型
+    consultPhone:'',//联系方式
+    consultCon:'' //咨询内容
   },
 
   /**
@@ -19,6 +22,9 @@ Page({
     this.setData({
       bid: options.bid
     })
+    // consultModal.getBigShotInfo({big_id: options.bid},res=>{
+    //   console.log(res)
+    // })
   },
 
   /**
