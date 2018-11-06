@@ -1,13 +1,13 @@
 <view class='container'>
-  <view class='card_cover_info'>
-    <image class='user_pic' src='/images/pic.jpg'></image>
+  <view class='card_cover_info' bindtap='toCardDetail'>
+    <image class='user_pic' src='{{cardList.largeAvatar}}'></image>
     <view class='basic_info'>
-      <text class='user_name'>杜晓伟</text>
-      <text class='company'>儒思北京网络科技有限公司</text>
-      <text class='position'>FE开发工程师</text>
+      <text class='user_name'>{{cardList.truename}}</text>
+      <text class='company'>{{cardList.company}}</text>
+      <text class='position'>{{cardList.job}}</text>
     </view>
   </view>
-  <view class='exchange_view'>
+  <view class='exchange_view' bindtap='exchangeFun'>
     <image class='exchange_bj' src='{{exchangeState?exchangeIngSrc:exchangeSrc}}'></image>
     <view class='position_center'>
       <image class='jiaohuan' src='{{change}}'></image>

@@ -15,8 +15,8 @@ Page({
           wx.getUserInfo({
             success: function (res) {
               //用户已经授权过
-              wx.switchTab({
-                url: '/pages/index/index'
+              wx.navigateTo({
+                url: '/pages/home/home',
               })
             }
           });

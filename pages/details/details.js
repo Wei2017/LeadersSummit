@@ -1,28 +1,37 @@
-import {ConsultModal} from '../../models/consult.js';
-const consultModal = new ConsultModal();
-const util = require('../../utils/util.js');
+// pages/details/details.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    bid:''
+    tabArr: {
+      curHdIndex: 0,
+      curBdIndex: 0
+    }
   },
-
+  tab: function (e) {
+    var dataId = e.currentTarget.id;
+    console.log(dataId)
+    var obj = {};
+    obj.curHdIndex = dataId;
+    obj.curBdIndex = dataId;
+    console.log(obj)
+    this.setData({
+      tabArr: obj
+    })
+  }, 
+  gobao: function (e) {
+    console.log(e);
+    wx.navigateTo({
+      url: "/pages/signup/signup"
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    util.setnavBarBjColor();
-    this.setData({
-      bid: options.bid
-    })
 
-    //获取大咖信息
-    // consultModal.getBigShotInfo({big_id: options.bid},res=>{
-    //   console.log(res)
-    // })
   },
 
   /**

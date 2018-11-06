@@ -1,0 +1,210 @@
+// pages/signup/signup.js
+import { HTTP } from '../../utils/http.js';
+const http = new HTTP();
+const app = getApp();
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    position: ['请选择','HRM', 'CEO', 'COO', 'CTO', 'CFO'],
+    positionIndex: 0,
+    positionChecked: '', //用户选中的职位的值
+    title:"",//标题
+    price:"",//价格
+    meeting_id:"",
+    trade_no:"",//流水号
+    coupon:"",//优惠码
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    var that = this;
+    http.request({
+      url: "Smallwx/getEnrollInfo",
+      data: {
+        unionid: ""
+      },
+      success: res => {
+        console.log(res)
+        if (res.status == 1){
+          that.setData({
+            title: res.data.info[0].meeting_name,
+            price: res.data.info[0].price,
+            meeting_id: res.data.info[0]. meeting_id,
+            trade_no: res.data.sn,
+            avatarUrl:"",
+            nickName:""
+          })
+        }
+        
+      }
+    })
+  },
+  // 职位选择
+  bindPositionChange: function (e) {
+    console.log('职位', this.data.position[e.detail.value])
+    this.setData({
+      positionIndex: e.detail.value
+    })
+  },
+  // 报名提交
+  formSubmit:function(e){
+    console.log(e.detail)
+    console.log(app.globalData.userInerInfo)
+    const datas = e.detail.value;
+    datas.formId = e.detail.formId;
+    // datas.nickname = app.globalData.userInerInfo.nickname; //昵称
+    // datas.user_pic = app.globalData.userInerInfo.avatarUrl; //头像
+    console.log(datas)
+    if (e.detail.value.truename == ""){
+      wx.showToast({
+        title: '姓名不能为空',
+        icon: 'loading',
+        duration: 1500
+      })
+    } else if (e.detail.value.company == ""){
+      wx.showToast({
+        title: '公司不能为空',
+        icon: 'loading',
+        duration: 1500
+      })
+    } else if (e.detail.value.job == "") {
+      wx.showToast({
+        title: '职位不能为空',
+        icon: 'loading',
+        duration: 1500
+      })
+    } else if (e.detail.value.company_mobile == "") {
+      wx.showToast({
+        title: '电话不能为空',
+        icon: 'loading',
+        duration: 1500
+      })
+    } else if (e.detail.value.mobile == "") {
+      wx.showToast({
+        title: '手机不能为空',
+        icon: 'loading',
+        duration: 1500
+      })
+    } else if (e.detail.value.email == "") {
+      wx.showToast({
+        title: '邮箱不能为空',
+        icon: 'loading',
+        duration: 1500
+      })
+    }else{
+      http.request({
+        url: "Smallwx/enrollMeeting",
+        data: datas,
+        success: res => {
+          console.log(res)
+          if(res.code == 1){
+            wx.showToast({
+              title: '提交成功',
+              duration: 1500
+            })
+          }
+          
+        }
+      })
+    }
+   
+
+  },
+  // 优惠卷兑换
+  changepaper: function (e) {
+    var that = this;
+    if (that.data.coupon !=""){
+      http.request({
+        url: "Smallwx/checkCouponValid",
+        data: {
+          meeting_id: that.data.meeting_id,
+          coupon: that.data.coupon
+        },
+        success: res => {
+          console.log(res)
+          if (res.data.valid ==0){
+            wx.showToast({
+              title: '优惠卷不可用',
+              icon: 'loading',
+              duration: 1500
+            })
+          }else{
+            wx.showToast({
+              title: '兑换成功',
+              duration: 1500
+            })
+            that.setData({
+              price: res.data.use_coupon_price
+            })
+          }
+        }
+      })
+    }else{
+      wx.showToast({
+        title: '兑换码不得为空!',
+        icon: 'loading',
+        duration: 1500
+      })
+    }
+   
+  },
+  // 优惠卷
+  watchPlace:function(e){
+    this.setData({
+      coupon: e.detail.value
+    })
+  },
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
+})

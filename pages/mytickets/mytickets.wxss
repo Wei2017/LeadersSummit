@@ -1,0 +1,24 @@
+/* pages/mytickets/mytickets.wxss */
+page{
+  background: #000;
+}
+.bod{
+  width: 578rpx;
+  height: 976rpx;
+  background-color: #eaeaea;
+	border-radius: 8rpx;
+  margin: 0 auto;
+  margin-top: 60rpx;
+  margin-bottom:60rpx; 
+}
+.bodimg{
+  width: 100%;
+  height: 100%;
+}
+.tips{
+  width: 100%;
+  height: 23rpx;
+  font-size:22rpx;
+  color: #fff;
+  text-align: center; 
+}

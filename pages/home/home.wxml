@@ -1,0 +1,6 @@
+<!--pages/home/home.wxml-->
+<image src=''></image>
+<button class='btn' bindtap="bindViewTab">详情</button>
+<view class='bottom'>
+  <r-bottomnav num='{{num}}'/>
+</view>

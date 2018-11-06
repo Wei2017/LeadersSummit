@@ -1,21 +1,27 @@
 {
-  "pages":[
+  "pages": [
+    "pages/renmai_list/renmai_list",
     "pages/big_shot/big_shot",
     "pages/consult_index/consult_index",
     "pages/edit_info/edit_info",
     "pages/my_card/my_card",
-    "pages/author/author",    
-    "pages/renmai_list/renmai_list",
+    "pages/author/author",
     "pages/my/my",
     "pages/consult_details/consult_details",
     "pages/logs/logs",
     "pages/my_ren_mai/my_ren_mai",
+    "pages/home/home",
+    "pages/mytickets/mytickets",
+    "pages/details/details",
+    "pages/signup/signup",
+    "pages/message/message",
+    "pages/messagepaper/messagepaper",
     "pages/index/index"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   }
 }

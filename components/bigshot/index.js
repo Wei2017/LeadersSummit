@@ -25,7 +25,6 @@ Component({
       //判断用户是否授权
       wx.getSetting({
         success: function (res) {
-          console.log(res, '111', that.properties.bigShot);
           if (!res.authSetting['scope.userInfo'] || wx.getStorageSync('user_id') =='') {
             wx.navigateTo({
               url: '/pages/author/author',

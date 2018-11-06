@@ -8,7 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    uid:'119152',//用户id
+    uid:wx.getStorageSync('user_id'),//用户id
+    user_pic:'',
     region: ['广东省', '广州市', '海珠区'], //省市区三级联动初始地区
     sex: ['请选择','男', '女','保密'], //性别选择
     sexIndex: 0,
@@ -35,6 +36,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    let that = this;
     //设置头部导航条样式
     util.setnavBarBjColor();
 
@@ -42,7 +44,17 @@ Page({
     let unionid = wx.getStorageSync('unionid');
     //获取用户信息
     userInfoModal.getUserInfo(unionid,res=>{
-      console.log(res);
+      let data = res.data.user_info[0];
+      that.setData({
+        userName: data.truename,
+        userPhone: data.mobile,
+        userCompany: data.company,
+        userTel: data.company_mobile,
+        userEmail: data.email,
+        userAddress: data.address,
+        user_pic: data.largeAvatar
+      })
+      console.log(res,res.data.user_info[0]);
     })
 
   },

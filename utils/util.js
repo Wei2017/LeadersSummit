@@ -1,3 +1,5 @@
+import {HTTP} from './http.js';
+const http = new HTTP();
 // 设置顶部导航条背景颜色
 const setnavBarBjColor = ()=>{
   wx.setNavigationBarColor({
@@ -14,6 +16,7 @@ const showTotal = title=>{
     icon: 'none'
   })
 }
+
 
 module.exports = {
   setnavBarBjColor: setnavBarBjColor,

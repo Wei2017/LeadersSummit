@@ -1,0 +1,33 @@
+/* pages/message/message.wxss */
+.list{
+  padding: 60rpx 48rpx;
+  border-bottom: 1rpx solid #d5d5d5;
+}
+.list_cont{
+  color: #2e2e2e;
+  font-size: 28rpx;
+  line-height: 38rpx;
+  margin-bottom: 15rpx;
+}
+.list_time{
+  color: #aaaaaa;
+  font-size: 22rpx;
+  line-height: 38rpx;
+}
+.list_hui{
+  color: #2e2e2e;
+  font-size: 28rpx;
+  line-height: 38rpx;
+  margin-top: 40rpx;
+}
+.list_hui_one{
+ color: #ecb700;
+}
+
+.btn{
+  position: fixed;
+  right: 0;
+  bottom: 226rpx;
+  width: 120rpx;
+  height: 80rpx;
+}

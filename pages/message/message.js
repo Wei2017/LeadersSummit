@@ -1,30 +1,38 @@
-import {ConsultModal} from '../../models/consult.js';
-const consultModal = new ConsultModal();
-const util = require('../../utils/util.js');
+// pages/home/home.js
+import { HTTP } from '../../utils/http.js';
+const http = new HTTP();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    bid:''
+    list:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    util.setnavBarBjColor();
-    this.setData({
-      bid: options.bid
+    var that = this;
+    http.request({
+       url: "Smallwx/getCommentList", 
+       data: {
+         user_id:"119152"
+      },
+      success: res => {
+        console.log(res)
+        that.setData({
+          list: res.comment_list
+        })
+      }
     })
-
-    //获取大咖信息
-    // consultModal.getBigShotInfo({big_id: options.bid},res=>{
-    //   console.log(res)
-    // })
   },
-
+  bindViewTab: function () {
+    wx.navigateTo({
+      url: "/pages/messagepaper/messagepaper"
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

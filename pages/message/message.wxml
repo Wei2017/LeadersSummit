@@ -1,0 +1,17 @@
+<!--pages/message/message.wxml-->
+<block wx:for="{{list}}" wx:key="key">
+<view class='list'>
+  <view class='list_cont'>
+{{item.body}}
+  </view>
+   <view class='list_time'>
+{{item.createDate}}
+  </view>
+   <view class='list_hui' wx:if="{{item.reply == 1}}">
+  <text class='list_hui_one'>客服回复：</text>{{item.replycont}}
+  </view>
+</view>
+</block>
+
+
+<image class='btn' bindtap='bindViewTab' src='../../images/my/liuyan@2x.png'></image>

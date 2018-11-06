@@ -1,0 +1,9 @@
+<!--pages/messagepaper/messagepaper.wxml-->
+<view class='bod'>
+  <textarea id='feedbackcontent' bindinput='watchPassWord' class='cont' placeholder='欢迎留言，工作人员会尽快回复'></textarea>
+  <text class='plass'><text class='num'>{{num}}</text>/300</text>
+</view>
+<button class='btn' bindtap='sub'>提交</button>
+<view class='tishi' wx:if="{{contlength == 0}}">留言不能为空</view>
+
+

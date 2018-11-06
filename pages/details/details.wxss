@@ -1,0 +1,98 @@
+/* pages/details/details.wxss */
+.entered{
+  position: fixed;
+  bottom: 60rpx;
+  left: 48rpx;
+  width: 654rpx;
+  height: 98rpx;
+  line-height: 98rpx;
+  background-color: #ecb700;
+	border-radius: 49rpx;
+  font-size: 34rpx;
+  color: #ffffff;
+}
+
+.img{
+  width: 100%;
+  height: auto;
+}
+.view{
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 160rpx;
+  right: 0;
+  padding:0 94rpx;
+}
+.tits{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.tit{
+  font-size: 30rpx;
+  padding: 0 10rpx;
+  color: #000;
+  line-height: 48rpx;
+}
+.active{
+ color: #ecb700;
+ border-bottom: 6rpx solid #ecb700;
+}
+.view .actives,.back .actives{
+  display: block;
+}
+.img{
+  display: none;
+}
+.namelist{
+  display: none;
+  font-size: 28rpx;
+  padding-top:74rpx; 
+  overflow: hidden;
+  height: calc(100% - 160rpx);
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.li{
+  width: 220rpx;
+  height: 374rpx;
+  text-align: center;
+  margin-bottom: 60rpx;
+  float: left;
+}
+.li:nth-of-type(2n){
+  float: right;
+}
+.liimg{
+  width: 191rpx;
+  height: 191rpx;
+  border-radius:50%; 
+  border: 1rpx solid #ecb700;
+}
+.libtn{
+  width: 142rpx;
+  height: 44rpx;
+  background-color: #ecb700;
+	border-radius: 22rpx;
+  font-size: 24rpx;
+  color: #fff;
+  line-height: 44rpx;
+  margin-top:-24rpx; 
+}
+.liname{
+  line-height: 86rpx;
+  font-size: 28rpx;
+}
+.lijob{
+  height: 38rpx;
+  line-height: 38rpx;
+  font-size: 22rpx;
+  text-align: center;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}

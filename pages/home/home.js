@@ -1,30 +1,24 @@
-import {ConsultModal} from '../../models/consult.js';
-const consultModal = new ConsultModal();
-const util = require('../../utils/util.js');
+// pages/home/home.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    bid:''
+    num:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    util.setnavBarBjColor();
-    this.setData({
-      bid: options.bid
-    })
-
-    //获取大咖信息
-    // consultModal.getBigShotInfo({big_id: options.bid},res=>{
-    //   console.log(res)
-    // })
+   
   },
-
+  bindViewTab: function () {
+    wx.navigateTo({
+      url: "/pages/details/details"
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

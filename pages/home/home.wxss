@@ -1,0 +1,20 @@
+/* pages/home/home.wxss */
+.btn{
+  position: fixed;
+  right: 0;
+  bottom: 226rpx;
+  width: 120rpx;
+  height: 80rpx;
+  font-size: 30rpx;
+  color: #fff;
+  border: 0;
+  background-color: #ecb700;
+	border-radius: 40rpx 0px 0px 40rpx;
+}
+
+.bottom{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}

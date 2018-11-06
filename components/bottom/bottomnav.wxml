@@ -1,0 +1,30 @@
+<!--components/bottom/bottomnav.wxml-->
+<view class='nav'>
+<view class='navli'>
+  <view  >
+    <image wx:if='{{num==0}}' class='navli_img_one' src='../../images/my/fenghui01@2x.png'></image>
+    <image wx:else class='navli_img_one' src='../../images/my/fenghui@2x.png'></image>
+    <text class=' {{num=="0"? "navli_name_color" : "navli_name"}}'>峰会</text>
+  </view>
+</view>
+  <view class='navli'>
+  <image wx:if='{{num==1}}' class='navli_img_two' src='../../images/my/renmai01@2x.png'></image>
+  <image wx:else class='navli_img_one' src='../../images/my/renmai@2x.png'></image>
+  <text class='{{num=="1"? "navli_name_color" : "navli_name"}}'>人脉</text>
+</view>
+<view class='navli'>
+  <image wx:if='{{num==3}}' class='navli_img_four' src='../../images/my/wode01@2x.png'></image>
+  <image wx:else class='navli_img_four' src='../../images/my/wode@2x.png'></image>
+  <text class='{{num=="3"? "navli_name_color" : "navli_name"}}'>我的</text>
+</view>
+<view class='navli lastli'>
+  <image wx:if='{{num==2}}' class='navli_img_three' src='../../images/my/yuedaka01@2x.png'></image>
+  <image wx:else class='navli_img_three' src='../../images/my/yuedaka@2x.png'></image>
+  <text class='{{num=="2"? "navli_name_color" : "navli_name"}}'>约大咖</text>
+</view>
+<view class='sign' bindtap='gosign'>
+  <image  class='sign_img' src='../../images/my/baoming@2x.png'></image>
+</view>
+
+</view>
+<image class='banyuan' src='../../images/my/dibubj@3x.png' ></image>

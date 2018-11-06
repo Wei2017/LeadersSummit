@@ -1,6 +1,6 @@
 <view class='container'>
 <r-search />
-<r-cover />
-<r-cover />
-<r-cover />
+<block wx:for="{{remaiList}}" wx:key="key">
+<r-cover bindperfect="judgeJump" cardList="{{item}}" isWsCard="{{isWanShan}}"/>
+</block>
 </view>
