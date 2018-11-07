@@ -25,7 +25,8 @@ Component({
   methods: {
     exchangeFun(e){
       let isWsInfo = this.data.isWsCard;
-      this.triggerEvent('perfect', {})
+      let pid = this.data.cardList.id;
+      this.triggerEvent('perfect', { pid: pid})
     },
     toCardDetail(){
       let bid = this.data.cardList.id;

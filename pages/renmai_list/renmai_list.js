@@ -3,6 +3,7 @@ import {
 } from '../../models/human_vein.js';
 const humanVein = new HumanVein();
 
+
 Page({
 
   /**
@@ -55,7 +56,11 @@ Page({
         url: '/pages/edit_info/edit_info',
       })
     } else {
+      let pid = e.detail.pid;
       //发起交换名片请求
+      humanVein.exchangeCards(user_id,pid,res=>{
+        console.log(res);
+      })
     }
   },
   // 跳转详情

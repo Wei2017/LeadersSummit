@@ -7,22 +7,26 @@ Page({
    * 页面的初始数据
    */
   data: {
-    bid:''
+    bid:'',
+    bigShot:null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this;
     util.setnavBarBjColor();
     this.setData({
       bid: options.bid
     })
 
     //获取大咖信息
-    // consultModal.getBigShotInfo({big_id: options.bid},res=>{
-    //   console.log(res)
-    // })
+    consultModal.getBigShotInfo(options.bid,res=>{
+      that.setData({
+        bigShot: res.big_shot_detail
+      })
+    })
   },
 
   /**

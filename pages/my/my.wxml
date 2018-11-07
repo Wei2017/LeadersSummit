@@ -1,40 +1,43 @@
 <view class='container'>
   <view class='name_pic'>
     <image class='bj' src='/images/my/bj.png'></image>
-    <image class='pic' src='/images/pic.jpg'></image>
+    <image class='pic' src='{{pic}}'></image>
   </view>
   <view class='name'>
-    <text>杜晓伟</text>
-    <image class='edit' src='/images/my/edit.png'></image>
+    <text>{{nickName}}</text>
+    <image class='edit' src='/images/my/edit.png' bindtap='editInfo'></image>
   </view>
   <view class='section'>
-    <view class='list_item'>
+    <view class='list_item' bindtap='toTicket'>
       <view class='item_text'>
         <image class='menpiao' src='/images/my/menpiao.png'></image>
         <text>峰会门票</text>
       </view>
       <image class='right_icon' src='/images/my/right.png'></image>
     </view>
-    <view class='list_item'>
+    <view class='list_item' bindtap='toRenmai'>
       <view class='item_text'>
         <image class='renmai' src='/images/my/renmai.png'></image>
         <text>我的人脉</text>
       </view>
       <image class='right_icon' src='/images/my/right.png'></image>
     </view>
-    <view class='list_item'>
+    <view class='list_item' bindtap='toYuyue'>
       <view class='item_text'>
         <image class='yuyue' src='/images/my/yuyue.png'></image>
         <text>我的预约</text>
       </view>
       <image class='right_icon' src='/images/my/right.png'></image>
     </view>
-    <view class='list_item'>
+    <view class='list_item' bindtap='toMessage'>
       <view class='item_text'>
         <image class='lyb' src='/images/my/liuyanban@2x.png'></image>
         <text>留言板</text>
       </view>
       <image class='right_icon' src='/images/my/right.png'></image>
     </view>
+  </view>
+  <view class='fixed_menu'>
+    <r-menu num="3"/>
   </view>
 </view>

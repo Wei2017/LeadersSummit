@@ -1,10 +1,13 @@
 <view class='container'>
-  <view class='my_yuyue_item'>
-    <image src='/images/pic.jpg'></image>
+  <view class='my_yuyue_item' bindtap='toDetails'>
+    <view class='pic'>
+      <image src='{{makeShotList.avatar}}'></image>
+      <text bindtap='myYuyueState' class='appointment_state {{makeShotList.make_state =="1"?"ing":"not"}}'>{{makeShotList.make_state=="1"?'预约中':'已结束'}}</text>
+    </view>
     <view class='yuyue_info'>
-      <text class='name'>杜晓伟</text>
-      <text class='shanchang'>擅长：招聘与培训、绩效管理</text>
-      <text class='date'>2018-11-19</text>
+      <text class='name'>{{makeShotList.big_name}}</text>
+      <text class='shanchang'>{{makeShotList.field}}</text>
+      <text class='date'>{{makeShotList.createTime}}</text>
     </view>
   </view>
 </view>

@@ -1,7 +1,6 @@
 import {UserInfoModal} from '../../models/user-info.js'
 const userInfoModal = new UserInfoModal();
 const util = require('../../utils/util.js');
-const App = getApp();
 Page({
 
   /**

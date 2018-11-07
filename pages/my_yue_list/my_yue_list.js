@@ -1,22 +1,32 @@
-import {BigshotModal} from '../../models/big-shot.js';
-const bigShotModal = new BigshotModal();
+import {MyMakeModel} from '../../models/my-make.js';
+const myMakeModel = new MyMakeModel();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    bigShotList:[],
-    modelDetails:null,
-    model_hidden:false,
-    user_id: wx.getStorageSync('user_id')
+    myMakeList:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let that = this;
+    let uid = wx.getStorageSync('user_id');
+    //获取我的预约列表
+    myMakeModel.getMyMakeList(uid,res=>{
+      that.setData({
+        myMakeList:res.make_list
+      })
+    })
+  },
+  //跳转通用预约咨询页
+  toCurrencyConsult:function(e){
+    wx.navigateTo({
+      url: '/pages/consult_platform/consult_platform',
+    })
   },
 
   /**
@@ -30,15 +40,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let user_id = wx.getStorageSync('user_id');
-    console.log(user_id);
-    bigShotModal.getBigShotList({ user_id:user_id }, res => {
-      if (res.code == 1) {
-        this.setData({
-          bigShotList: res.big_shot_list
-        })
-      }
-    })
+
   },
 
   /**
@@ -74,17 +76,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-
-  showModel:function(e){
-    let that = this;
-    let bid = e.detail.bid;
-    bigShotModal.getBshotOrGuestDetails(that.data.user_id,bid,res=>{
-      console.log(res);
-      that.setData({
-        model_hidden:true,
-        modelDetails:res.big_shot_detail
-      })
-    })
   }
 })

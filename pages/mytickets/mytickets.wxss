@@ -10,6 +10,7 @@ page{
   margin: 0 auto;
   margin-top: 60rpx;
   margin-bottom:60rpx; 
+  position: relative;
 }
 .bodimg{
   width: 100%;
@@ -21,4 +22,18 @@ page{
   font-size:22rpx;
   color: #fff;
   text-align: center; 
+}
+.attrimg{
+  position: absolute;
+  top: 48%;
+  left: 249rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius:50%; 
+}
+.nickname{
+  position: absolute;
+  top: 60%;
+  left: 270rpx;
+  font-size: 24rpx;
 }

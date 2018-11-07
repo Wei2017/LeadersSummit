@@ -4,11 +4,8 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    guestId:String,
-    guestSrc:String,
-    guestName:String,
-    major:String,
-    introduce:String
+    modelDetails:Object,
+    modelHidden:Boolean
   },
 
   /**
@@ -22,6 +19,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    hideModel(){
+      this.setData({
+        modelHidden:false
+      })
+    }
   }
 })

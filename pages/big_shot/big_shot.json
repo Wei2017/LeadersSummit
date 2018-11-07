@@ -1,6 +1,8 @@
 {
   "navigationBarTitleText":"约大咖",
   "usingComponents":{
-    "r-bigshot": "/components/bigshot/index"
+    "r-bigshot": "/components/bigshot/index",
+    "r-guest": "/components/guest_details/index",
+    "r-menu": "/components/bottom/bottomnav"
   }
 }

@@ -47,15 +47,15 @@ Component({
     },
 
 
-    //保存预约信息
+    //提交预约信息
     submitMakeInfo: function(e) {
       if (this.data.consultPhone == '') {
         util.showTotal('请输入手机号码!');
       } else if (!this._checkPhone(this.data.consultPhone)) {
         util.showTotal('请输入正确的手机号码!');
-      } else if (this.data.consultCon == ''){
+      } else if (this.data.consultCon == '') {
         util.showTotal('请输入问题描述!');
-      }else {
+      } else {
         let that = this,
           data = {
             user_id: wx.getStorageSync('user_id'),
@@ -63,16 +63,26 @@ Component({
             content: that.data.consultCon,
             mobile: that.data.consultPhone,
             type: that.data.consultChecked == '个人咨询' ? '1' : '2'
-          }
+          };
+        //判断是预约大咖还是平台 如果有传大咖id则make_type 传 1否则 make_type 传 2
+        data.make_type = data.big_id ? '1' : '2'
+        console.log(data);
         consultModal.makeConsult(data, res => {
-          if(res.code == 1){
+          if (res.code == 1) {
             wx.showToast({
               title: '提交成功，请等待',
-              duration:3000,
-              success:res=>{
-                wx.reLaunch({
-                  url: '/pages/big_shot/big_shot'
-                })
+              duration: 3000,
+              success: res => {
+                if (data.big_id) {
+                  wx.reLaunch({
+                    url: '/pages/big_shot/big_shot'
+                  })
+                } else {
+                  wx.reLaunch({
+                    url: '/pages/my_yue_list/my_yue_list'
+                  })
+                }
+
               }
             })
           }

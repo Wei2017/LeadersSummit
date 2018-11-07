@@ -1,9 +1,9 @@
 <view class='container'>
   <view class='user_pic'>
     <view class='orange'></view>
-    <image src='/images/pic.jpg'></image>
+    <image src='{{bigShot.avatar}}'></image>
     <view class='white'></view>
-    <text class='user_name'>杜晓伟</text>
-    <text class='shanchang'>擅长：招聘与培训、绩效管理</text>
+    <text class='user_name'>{{bigShot.name?bigShot.name:bigShot.big_name}}</text>
+    <text class='shanchang'>{{bigShot.field}}</text>
   </view>
 </view>

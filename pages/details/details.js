@@ -20,12 +20,18 @@ Page({
     this.setData({
       tabArr: obj
     })
-  }, 
+  },
   gobao: function (e) {
     console.log(e);
-    wx.navigateTo({
-      url: "/pages/signup/signup"
-    })
+    if (wx.getStorageSync('user_id') && wx.getStorageSync('user_id') != "") {
+      wx.navigateTo({
+        url: "/pages/signup/signup"
+      })
+    } else {
+      wx.navigateTo({
+        url: "/pages/author/author"
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载

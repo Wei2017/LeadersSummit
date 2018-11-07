@@ -1,3 +1,5 @@
+import {ConsultModal} from '../../models/consult.js';
+const consultModel = new ConsultModal;
 const util = require('../../utils/util.js');
 Page({
 
@@ -5,17 +7,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-    consultTime:'', //咨询时间
-    consultType:'', //咨询类型
-    contactInfo:'', //联系方式
-    describe:''     //问题描述
+    makeDetails:null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //设置头部标题栏背景颜色
     util.setnavBarBjColor()
+    
+    let that = this;
+    let make_id = options.make_id;
+    consultModel.getConsultDetails(make_id,res=>{
+      that.setData({
+        makeDetails: res.make_detail
+      })
+    })
   },
 
   /**

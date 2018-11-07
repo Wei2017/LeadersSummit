@@ -1,61 +1,76 @@
-.container{
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
+
 /* 弹出层遮罩 */
-.mask{
+
+.mask {
   width: 100%;
   height: 100%;
   position: fixed;
   top: 0;
-  background-color: rgba(0,0,0,.3);
+  background-color: rgba(0, 0, 0, 0.3);
 }
+
 /* 用户简介 */
-.position{
- z-index: 9999;
-  margin-top: 334rpx; 
+
+.position {
+  z-index: 9999;
+  margin-top: 334rpx;
   background-color: #fff;
   padding: 0 30rpx;
-  border-radius: 5px;  
-  font-size:0;
+  border-radius: 5px;
+  font-size: 0;
 }
-.guest_info{
+
+.guest_info {
   width: 478rpx;
   position: relative;
   top: -85rpx;
 }
-.name_pic{
+
+.name_pic {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.name_pic image{
+
+.name_pic image {
   width: 170rpx;
   height: 170rpx;
   border-radius: 50%;
   border: 10rpx solid #fff;
 }
-.name_pic text{
+
+.name_pic text {
   font-size: 34rpx;
   color: #2e2e2e;
   margin: 14rpx 0 27rpx;
 }
-.major{
+
+.major {
   margin-bottom: 18rpx;
 }
-.major text,.introduce text{
+
+.major text, .introduce text {
   font-weight: normal;
   line-height: 45rpx;
 }
-.major,.introduce{
+
+.major, .introduce {
   font-size: 26rpx;
   font-weight: 700;
   color: #2e2e2e;
 }
 
-.consultation_btn{
+.consultation_btn {
   width: 228rpx;
   height: 74rpx;
   line-height: 74rpx;

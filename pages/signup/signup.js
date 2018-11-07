@@ -2,20 +2,22 @@
 import { HTTP } from '../../utils/http.js';
 const http = new HTTP();
 const app = getApp();
+const phonegi = /^1[0-9]{10}$/;
+const isemail = /^[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?$/g;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    position: ['请选择','HRM', 'CEO', 'COO', 'CTO', 'CFO'],
+    position: ['请选择', 'HRM', 'CEO', 'COO', 'CTO', 'CFO'],
     positionIndex: 0,
     positionChecked: '', //用户选中的职位的值
-    title:"",//标题
-    price:"",//价格
-    meeting_id:"",
-    trade_no:"",//流水号
-    coupon:"",//优惠码
+    title: "",//标题
+    price: "",//价格
+    meeting_id: "",
+    trade_no: "",//流水号
+    coupon: "",//优惠码
   },
 
   /**
@@ -26,21 +28,18 @@ Page({
     http.request({
       url: "Smallwx/getEnrollInfo",
       data: {
-        unionid: ""
+        unionid: wx.getStorageSync('unionid')
       },
       success: res => {
         console.log(res)
-        if (res.status == 1){
+        if (res.status == 1) {
           that.setData({
             title: res.data.info[0].meeting_name,
             price: res.data.info[0].price,
-            meeting_id: res.data.info[0]. meeting_id,
-            trade_no: res.data.sn,
-            avatarUrl:"",
-            nickName:""
+            meeting_id: res.data.info[0].meeting_id,
+            trade_no: res.data.sn
           })
         }
-        
       }
     })
   },
@@ -52,27 +51,28 @@ Page({
     })
   },
   // 报名提交
-  formSubmit:function(e){
+  formSubmit: function (e) {
     console.log(e.detail)
-    console.log(app.globalData.userInerInfo)
     const datas = e.detail.value;
-    datas.formId = e.detail.formId;
-    // datas.nickname = app.globalData.userInerInfo.nickname; //昵称
-    // datas.user_pic = app.globalData.userInerInfo.avatarUrl; //头像
-    console.log(datas)
-    if (e.detail.value.truename == ""){
+    datas.form_id = e.detail.formId;
+    datas.nickname = app.globalData.userInfo.nickName; //昵称
+    datas.user_pic = app.globalData.userInfo.avatarUrl; //头像
+    datas.openid = app.globalData.data.openid;
+    datas.unionid = wx.getStorageSync('unionid');
+    console.log(datas);
+    if (e.detail.value.truename == "") {
       wx.showToast({
         title: '姓名不能为空',
         icon: 'loading',
         duration: 1500
       })
-    } else if (e.detail.value.company == ""){
+    } else if (e.detail.value.company == "") {
       wx.showToast({
         title: '公司不能为空',
         icon: 'loading',
         duration: 1500
       })
-    } else if (e.detail.value.job == "") {
+    } else if (e.detail.value.job == "" || e.detail.value.job == "请选择") {
       wx.showToast({
         title: '职位不能为空',
         icon: 'loading',
@@ -90,35 +90,70 @@ Page({
         icon: 'loading',
         duration: 1500
       })
+    } else if (!phonegi.test(e.detail.value.mobile)) {
+      wx.showToast({
+        title: '手机格式有误',
+        icon: 'loading',
+        duration: 1500
+      })
     } else if (e.detail.value.email == "") {
       wx.showToast({
         title: '邮箱不能为空',
         icon: 'loading',
         duration: 1500
       })
-    }else{
+    } else if (!isemail.test(e.detail.value.email)) {
+      wx.showToast({
+        title: '邮箱格式有误',
+        icon: 'loading',
+        duration: 1500
+      })
+    } else {
+      var that = this;
       http.request({
-        url: "Smallwx/enrollMeeting",
-        data: datas,
+        url: "Smallwx/unifiedOrder3",
+        data: {
+          openid: app.globalData.data.openid,
+          out_trade_no: that.data.trade_no,
+          coupon: that.data.coupon,
+          meeting_id: that.data.meeting_id
+
+        },
         success: res => {
           console.log(res)
-          if(res.code == 1){
-            wx.showToast({
-              title: '提交成功',
-              duration: 1500
-            })
-          }
-          
+          wx.requestPayment({
+            'timeStamp': res.timeStamp,
+            'nonceStr': res.nonceStr,
+            'package': res.package,
+            'signType': res.signType,
+            'paySign': res.paySign,
+            success: function (res1) {
+              console.log(res1)
+              http.request({
+                url: "Smallwx/enrollMeeting",
+                data: datas,
+                success: res => {
+                  console.log(res)
+                  if (res.code == 1) {
+                    wx.navigateTo({
+                      url: '/pages/mytickets/mytickets'
+                    })
+                  }
+                }
+              })
+            }
+          })
         }
       })
+
     }
-   
+
 
   },
   // 优惠卷兑换
   changepaper: function (e) {
     var that = this;
-    if (that.data.coupon !=""){
+    if (that.data.coupon != "") {
       http.request({
         url: "Smallwx/checkCouponValid",
         data: {
@@ -127,13 +162,13 @@ Page({
         },
         success: res => {
           console.log(res)
-          if (res.data.valid ==0){
+          if (res.data.valid == 0 || res.data.valid == 2) {
             wx.showToast({
               title: '优惠卷不可用',
               icon: 'loading',
               duration: 1500
             })
-          }else{
+          } if (res.data.valid == 1) {
             wx.showToast({
               title: '兑换成功',
               duration: 1500
@@ -141,20 +176,26 @@ Page({
             that.setData({
               price: res.data.use_coupon_price
             })
+          } if (res.data.valid == 3) {
+            wx.showToast({
+              title: '优惠卷已用完',
+              icon: 'loading',
+              duration: 1500
+            })
           }
         }
       })
-    }else{
+    } else {
       wx.showToast({
         title: '兑换码不得为空!',
         icon: 'loading',
         duration: 1500
       })
     }
-   
+
   },
   // 优惠卷
-  watchPlace:function(e){
+  watchPlace: function (e) {
     this.setData({
       coupon: e.detail.value
     })

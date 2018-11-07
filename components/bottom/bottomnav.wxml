@@ -20,8 +20,9 @@
   <image wx:else class='navli_img_three' src='../../images/my/yuedaka@2x.png'></image>
   <text class='{{num=="2"? "navli_name_color" : "navli_name"}}'>约大咖</text>
 </view>
-<view class='sign' bindtap='gosign'>
-  <image  class='sign_img' src='../../images/my/baoming@2x.png'></image>
+<view class='sign'>
+  <image wx:if='{{num==3}}'  bindtap='gosign'  class='sign_img' src='../../images/my/baoming@2x.png'></image>
+  <image wx:else class='sign_img' bindtap='gomenpiao' src='../../images/my/yibao@2x.png'></image>
 </view>
 
 </view>

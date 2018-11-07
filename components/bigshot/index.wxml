@@ -4,7 +4,7 @@
       <image class='{{bigShot.make =="1"?"ingImg":""}}' src='{{bigShot.avatar}}'></image>
       <text bindtap='appBigShot' class='appointment_state {{bigShot.make =="1"?"ing":"not"}}'>{{bigShot.make=="1"?'预约中':'预约'}}</text>
     </view>
-    <view class='introduce'>
+    <view class='introduce' bindtap='showDetails'>
       <text class='name'>{{bigShot.name}}</text>
       <text class='shanchang'>{{bigShot.field}}</text>
       <text class='company'>{{bigShot.title}}</text>

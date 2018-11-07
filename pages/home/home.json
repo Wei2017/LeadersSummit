@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "儒思实战峰会",
   "usingComponents": {
     "r-bottomnav": "/components/bottom/bottomnav"
   }

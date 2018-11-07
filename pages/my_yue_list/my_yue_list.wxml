@@ -1,0 +1,9 @@
+<view class='container'>
+  <block wx:for="{{myMakeList}}" wx:key="">
+    <r-myyuyue makeShotList="{{item}}" />
+  </block>
+  <view class='fixed_right' bindtap='toCurrencyConsult'>
+    <text>咨询</text>
+    <image src='/images/my/zixun@2x.png'></image>
+  </view>
+</view>

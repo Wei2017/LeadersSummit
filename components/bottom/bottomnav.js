@@ -4,7 +4,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    num:String,
+    num: String,
     sign: String
   },
 
@@ -19,13 +19,19 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    gosign(){
-      wx.navigateTo({
-        url: "/pages/signup/signup"
-      })
+    gosign() {
+      if (wx.getStorageSync('user_id') && wx.getStorageSync('user_id') != "") {
+        wx.navigateTo({
+          url: "/pages/signup/signup"
+        })
+      } else {
+        wx.navigateTo({
+          url: "/pages/author/author"
+        })
+      }
     },
     gohome() {
-      if(this.data.num!=0){
+      if (this.data.num != 0) {
         wx.redirectTo({
           url: "/pages/home/home"
         })
@@ -51,6 +57,11 @@ Component({
           url: "/pages/my/my"
         })
       }
+    },
+    gomenpiao() {
+      wx.navigateTo({
+        url: "/pages/mytickets/mytickets"
+      })
     }
 
   }

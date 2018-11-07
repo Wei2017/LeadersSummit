@@ -11,29 +11,63 @@
   border-bottom: 1px solid #d5d5d5;
 }
 
-.my_yuyue_item image {
-  width: 160rpx;
-  height: 160rpx;
-  border-radius: 50%;
-}
-.yuyue_info{
+.yuyue_info {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   min-width: 473rpx;
   margin-left: 20rpx;
+  position: relative;
 }
-.name{
+
+.name {
   font-size: 34rpx;
   color: #2e2e2e;
 }
-.shanchang{
+
+.shanchang {
   font-size: 28rpx;
   color: #2e2e2e;
   margin-bottom: 28rpx;
 }
-.date{
+
+.date {
   font-size: 22rpx;
   color: #aaa;
-  text-align: right;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.pic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.pic image {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+}
+
+.appointment_state {
+  width: 124rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+  border-radius: 22rpx;
+  font-size: 30rpx;
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+}
+
+.appointment_state.not {
+  background-color: #ecb700;
+}
+
+.appointment_state.ing {
+  background-color: #aaa;
 }

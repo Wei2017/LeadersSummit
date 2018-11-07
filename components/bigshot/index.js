@@ -38,6 +38,11 @@ Component({
           }
         }
       })
+    },
+
+    showDetails(){
+      let big_id = this.data.bigShot.id;
+      this.triggerEvent('showModel',{bid:big_id});
     }
   }
 })

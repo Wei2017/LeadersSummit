@@ -3,6 +3,7 @@ import {
 } from '../utils/http.js';
 
 class HumanVein extends HTTP {
+  //获取人脉列表
   getHumanVeinList(data, sCallback) {
     this.request({
       url: 'ApiUser/getRenMaiList',
@@ -25,6 +26,21 @@ class HumanVein extends HTTP {
       }
     })
   };
+
+  //发送交换名片请求
+  exchangeCards(uid,pid,sCallback){
+    this.request({
+      url:'ApiUser/applyRenMai',
+      data:{
+        uid:uid,
+        pid:pid
+      },
+      success:res=>{
+        sCallback(res)
+      }
+    })
+  }
+  
 
 }
 
