@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "我的名片",
   "usingComponents":{
-    "r-ncard": "/components/lookup_human_vein/name_card/index"
+    "r-ncard": "/components/lookup_human_vein/name_card/index",
+    "r-cover":"/components/lookup_human_vein/card_cover/index"
   }
 }

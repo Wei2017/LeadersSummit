@@ -1,5 +1,5 @@
 <view class='container'>
-  <r-ncard userPic userName userPhone userEmail company position state="{{cardState}}" />
+  <r-ncard userInfo="{{cardInfo}}" state="{{cardState}}" />
 
   <block wx:if="{{cardState != '3'}}">
     <view class='btn_view'>
@@ -17,6 +17,11 @@
     </view>
   </block>
   <block wx:else>
-    <view class='recommend'>为您推荐</view>
+    <view class='recommend'>
+      <view class='title'>为您推荐</view>
+      <block wx:for="{{remaiList}}" wx:key="key">
+        <r-cover binddetail="toDetails" bindperfect="judgeJump" cardList="{{item}}" isWsCard="{{isWanShan}}" />
+      </block>
+    </view>
   </block>
 </view>

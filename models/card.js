@@ -14,7 +14,18 @@ class CardDetails extends HTTP{
         sCallback(res)
       }
     })
-  }
+  };
+
+  //获取为您推荐人脉列表
+  getHumanVeinList(data, sCallback) {
+    this.request({
+      url: 'ApiUser/getRenMaiList',
+      data: data,
+      success: res => {
+        sCallback(res);
+      }
+    })
+  };
 }
 
 export{

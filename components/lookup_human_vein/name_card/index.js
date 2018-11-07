@@ -4,12 +4,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    userPic:String,
-    userName:String,
-    userPhone:Number,
-    userEmail:String,
-    company:String,
-    position:String,
+    userInfo:Object,
     state:String
   },
 

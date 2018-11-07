@@ -26,7 +26,8 @@ Component({
     exchangeFun(e){
       let isWsInfo = this.data.isWsCard;
       let pid = this.data.cardList.id;
-      this.triggerEvent('perfect', { pid: pid})
+      let state = this.data.cardList.state;//是否交换名片 0未申请交换 1申请中
+      this.triggerEvent('perfect', { pid: pid, state: state})
     },
     toCardDetail(){
       let bid = this.data.cardList.id;

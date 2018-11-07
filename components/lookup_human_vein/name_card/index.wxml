@@ -1,8 +1,8 @@
 <view class='container'>
   <view class='user_name_pic'>
     <view class='name_pic'>
-      <image src='/images/pic.jpg'></image>
-      <text>杜晓伟                              <!--未交换       审核中         拒绝-->
+      <image src='{{userInfo.largeAvatar}}'></image>
+      <text>{{userInfo.truename}}                   <!--未交换       审核中         拒绝-->
         <text class='apply_show' wx:if="{{state == '2'||state == '5'||state == '6'}}">（交换成功后可见）</text>
       </text>
     </view>
@@ -22,19 +22,19 @@
   <view class='basic_info'>
     <view class='user_phone'>
       <text class='title'>手机</text>
-      <text class='phone_num'>13466608250</text>
+      <text class='phone_num'>{{userInfo.mobile}}</text>
     </view>
     <view class='company'>
       <text class='title'>公司</text>
-      <text class='company_name'>儒思北京网络科技</text>
+      <text class='company_name'>{{userInfo.company}}</text>
     </view>
     <view class='position'>
       <text class='title'>职位</text>
-      <text class='user_position'>FE开发工程师</text>
+      <text class='user_position'>{{userInfo.job}}</text>
     </view>
     <view class='user_email'>
       <text class='title'>Email</text>
-      <text class='email_num'>527188405@qq.com</text>
+      <text class='email_num'>{{userInfo.email}}</text>
     </view>
   </view>
 </view>

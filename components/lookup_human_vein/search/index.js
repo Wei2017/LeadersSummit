@@ -1,10 +1,10 @@
-// components/search/index.js
+const App = getApp()
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    searchCon:String
+    searchCon: String
   },
 
   /**
@@ -18,6 +18,8 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    toMyCard() {
+      this.triggerEvent('toCard', {})
+    }
   }
 })

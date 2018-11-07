@@ -6,7 +6,7 @@
       </view>
       <input type='text' placeholder='按姓名或公司搜索' />
     </view>
-    <view class='my_name_card'>
+    <view class='my_name_card' bindtap='toMyCard'>
       <text>我的名片</text>
     </view>
   </view>

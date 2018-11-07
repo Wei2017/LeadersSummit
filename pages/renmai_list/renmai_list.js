@@ -2,6 +2,7 @@ import {
   HumanVein
 } from '../../models/human_vein.js';
 const humanVein = new HumanVein();
+const App = getApp();
 
 
 Page({
@@ -10,10 +11,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    remaiList:[],
-    isWanShan: '',//0未完善 跳转编辑资料页面 1已完善触发交换事件
-    user_id:'',
-    unionid:''
+    remaiList: [],
+    isWanShan: '', //0未完善 跳转编辑资料页面 1已完善触发交换事件
+    user_id: '',
+    unionid: ''
   },
 
   /**
@@ -57,19 +58,52 @@ Page({
       })
     } else {
       let pid = e.detail.pid;
-      //发起交换名片请求
-      humanVein.exchangeCards(user_id,pid,res=>{
-        console.log(res);
-      })
+      let state = e.detail.state;
+      //如果未申请过交换名片请求 则发送交换请求
+      if (!state) {
+        //发起交换名片请求
+        humanVein.exchangeCards(user_id, pid, res => {
+          let data = {
+            uid: wx.getStorageSync('user_id')
+          }
+          humanVein.getHumanVeinList(data, res => {
+            console.log(res.data)
+            that.setData({
+              remaiList: res.data
+            })
+          })
+        })
+      }
+
     }
   },
   // 跳转详情
-  toDetails:function(e){
+  toDetails: function(e) {
     let that = this;
     let bid = e.detail.bid;
     wx.navigateTo({
-      url: '/pages/my_card/my_card?bid='+bid+'&uid'+that.data.user_id,
+      url: '/pages/my_card/my_card?bid=' + bid + '&uid=' + that.data.user_id,
     })
+  },
+  //跳转我的名片
+  toCard: function(e) {
+    let that = this;
+    let wsState = that.data.isWanShan; //0,1
+    let user_id = wx.getStorageSync('user_id')
+    // 如果用户未授权则跳转授权页面
+    if (!user_id) {
+      wx.navigateTo({
+        url: '/pages/author/author',
+      })
+    } else if (wsState == '0') { //如果用户未完善名片信息
+      wx.navigateTo({
+        url: '/pages/edit_info/edit_info',
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/my_card/my_card',
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -85,9 +119,7 @@ Page({
     let that = this;
     //获取人脉列表
     let data = {
-      uid: '',
-      pid: '',
-      state: ''
+      uid: wx.getStorageSync('user_id')
     }
     humanVein.getHumanVeinList(data, res => {
       console.log(res.data)
