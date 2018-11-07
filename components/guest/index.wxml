@@ -1,0 +1,9 @@
+<view class='container'>
+  <view class='li'>
+    <image src='../../images/pic.jpg' class='liimg'></image>
+    <button class='libtn'>咨询</button>
+    <view class='liname'>{{guestObj.name}}</view>
+    <view class='lijob'>{{guestObj.job}}</view>
+    <view class='lijob'>SPA大中华区总裁</view>
+  </view>
+</view>

@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "儒思实战峰会"
+  "navigationBarTitleText": "儒思实战峰会",
+  "usingComponents":{
+    "r-guests":"/components/guest/index"
+  }
 }

@@ -1,0 +1,39 @@
+.li{
+  width: 220rpx;
+  height: 374rpx;
+  text-align: center;
+  margin-bottom: 60rpx;
+  float: left;
+}
+.li:nth-of-type(2n){
+  float: right;
+}
+.liimg{
+  width: 191rpx;
+  height: 191rpx;
+  border-radius:50%; 
+  border: 1rpx solid #ecb700;
+}
+.libtn{
+  width: 142rpx;
+  height: 44rpx;
+  background-color: #ecb700;
+	border-radius: 22rpx;
+  font-size: 24rpx;
+  color: #fff;
+  line-height: 44rpx;
+  margin-top:-24rpx; 
+}
+.liname{
+  line-height: 86rpx;
+  font-size: 28rpx;
+}
+.lijob{
+  height: 38rpx;
+  line-height: 38rpx;
+  font-size: 22rpx;
+  text-align: center;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
