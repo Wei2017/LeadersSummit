@@ -1,5 +1,5 @@
 <view class='container'>
-  <r-search />
+  <r-search bindtoCard="toCard" />
   <r-myhvein state="{{state}}" />
 
   <block wx:if="{{state == ''}}">

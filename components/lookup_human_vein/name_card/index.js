@@ -19,6 +19,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    
+    editInfo(){
+      wx.navigateTo({
+        url: '/pages/edit_info/edit_info',
+      })
+    }
   }
 })

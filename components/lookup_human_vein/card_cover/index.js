@@ -26,12 +26,13 @@ Component({
     exchangeFun(e){
       let isWsInfo = this.data.isWsCard;
       let pid = this.data.cardList.id;
-      let state = this.data.cardList.state;//是否交换名片 0未申请交换 1申请中
+      let state = this.data.cardList.state;//是否交换名片 0可交换 1申请中
       this.triggerEvent('perfect', { pid: pid, state: state})
     },
     toCardDetail(){
       let bid = this.data.cardList.id;
-      this.triggerEvent('detail',{bid:bid})
+      let state = this.data.cardList.state;//是否交换名片 0可交换 1申请中
+      this.triggerEvent('detail', { bid: bid, state: state})
     }
   }
 })

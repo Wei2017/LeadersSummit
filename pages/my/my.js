@@ -8,7 +8,8 @@ Page({
    */
   data: {
     pic:'',
-    nickName:''
+    nickName:'',
+    isWs:''
   },
 
   /**
@@ -32,14 +33,16 @@ Page({
             console.log(res);
             that.setData({
               pic: res.userInfo.avatarUrl,
-              nickName: res.userInfo.nickName
+              nickName: res.userInfo.nickName,
+              isWs: wsNum
             })
           }
         })
       }else{
         that.setData({
           pic: data.largeAvatar,
-          nickName: data.truename
+          nickName: data.truename,
+          isWs: wsNum
         })
       }
     })
@@ -59,7 +62,7 @@ Page({
   //跳转我的人脉页面
   toRenmai:function(){
     wx.navigateTo({
-      url: '/pages/my_ren_mai/my_ren_mai',
+      url: '/pages/my_ren_mai/my_ren_mai?isWs=' + this.data.isWs,
     })
   },
   //跳转我的预约页面

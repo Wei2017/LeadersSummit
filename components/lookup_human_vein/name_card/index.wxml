@@ -9,7 +9,7 @@
     <!-- 我的名片 显示编辑资料 -->
     <block wx:if="{{state == '1'}}">
       <view class='edit_data'>
-        <view bindtap='testPay'>
+        <view bindtap='editInfo'>
           <image src='images/edit_data.png'></image>
           <text>编辑资料</text>
         </view>
@@ -22,7 +22,7 @@
   <view class='basic_info'>
     <view class='user_phone'>
       <text class='title'>手机</text>
-      <text class='phone_num'>{{userInfo.mobile}}</text>
+      <text class='phone_num'>{{userInfo.mobile_renmai?userInfo.mobile_renmai:userInfo.mobile}}</text>
     </view>
     <view class='company'>
       <text class='title'>公司</text>
@@ -34,7 +34,7 @@
     </view>
     <view class='user_email'>
       <text class='title'>Email</text>
-      <text class='email_num'>{{userInfo.email}}</text>
+      <text class='email_num'>{{userInfo.email_renmai?userInfo.email_renmai:userInfo.email}}</text>
     </view>
   </view>
 </view>

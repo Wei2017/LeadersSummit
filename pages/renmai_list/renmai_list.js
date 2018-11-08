@@ -22,12 +22,13 @@ Page({
    */
   onLoad: function(options) {
     let that = this;
-    that.setData({
-      user_id: wx.getStorageSync('user_id'),
-      unionid: wx.getStorageSync('unionid')
-    })
     let user_id = wx.getStorageSync('user_id');
     let unionid = wx.getStorageSync('unionid');
+    that.setData({
+      user_id: user_id,
+      unionid: unionid
+    })
+    
 
     //获取完善资料状态
     humanVein.getCardState(unionid, res => {
@@ -35,13 +36,8 @@ Page({
         isWanShan: res.data.user_info[0].business_card
       })
     })
-
-    // humanVein.getHumanVeinList({
-    //   uid:user_id
-    // },res=>{
-
-    // })
   },
+
   //判断跳转
   judgeJump: function(e) {
     let that = this;
@@ -64,25 +60,25 @@ Page({
         //发起交换名片请求
         humanVein.exchangeCards(user_id, pid, res => {
           let data = {
-            uid: wx.getStorageSync('user_id')
+            uid: user_id
           }
           humanVein.getHumanVeinList(data, res => {
-            console.log(res.data)
             that.setData({
               remaiList: res.data
             })
           })
         })
       }
-
     }
   },
   // 跳转详情
   toDetails: function(e) {
     let that = this;
     let bid = e.detail.bid;
+    let state = e.detail.state == '1'?'5':'2';
     wx.navigateTo({
-      url: '/pages/my_card/my_card?bid=' + bid + '&uid=' + that.data.user_id,
+      url: `/pages/my_card/my_card?bid=${bid}&uid=${that.data.user_id}&state=${state}&isWs=${that.data.isWanShan}`
+      
     })
   },
   //跳转我的名片
@@ -101,7 +97,7 @@ Page({
       })
     } else {
       wx.navigateTo({
-        url: '/pages/my_card/my_card',
+        url: '/pages/my_card/my_card?state=1',
       })
     }
   },

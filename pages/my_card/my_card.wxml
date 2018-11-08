@@ -3,8 +3,8 @@
 
   <block wx:if="{{cardState != '3'}}">
     <view class='btn_view'>
-      <text wx:if="{{cardState == '1'}}">去交换</text>
-      <text wx:elif="{{cardState == '2'}}">申请交换名片</text>
+      <text wx:if="{{cardState == '1'}}" bindtap='toExchange'>去交换</text>
+      <text wx:elif="{{cardState == '2'}}" bindtap='applyExchange'>申请交换名片</text>
 
       <view class='my_examine' wx:elif="{{cardState == '4'}}">
         <text class='refuse'>拒绝交换</text>
