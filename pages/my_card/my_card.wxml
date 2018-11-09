@@ -20,7 +20,9 @@
     <view class='recommend'>
       <view class='title'>为您推荐</view>
       <block wx:for="{{remaiList}}" wx:key="key">
+        <block wx:if="{{item.id != user_id}}">
         <r-cover binddetail="toDetails" bindperfect="judgeJump" cardList="{{item}}" isWsCard="{{isWanShan}}" />
+        </block>
       </block>
     </view>
   </block>

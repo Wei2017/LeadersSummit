@@ -1,3 +1,6 @@
+page{
+  background-color: #eaeaea;
+}
 .container{
   padding-bottom: 100rpx;
 }

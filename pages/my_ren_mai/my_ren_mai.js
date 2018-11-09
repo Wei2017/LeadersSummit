@@ -6,24 +6,29 @@ Page({
    * 页面的初始数据
    */
   data: {
-    state:'',
-    isWs:''//完善名片状态
+    state: '1', //1我的人脉 2待我审核 3对方审核
+    isWs:'',//完善名片状态
+    renmaiList:[],
+    user_id: wx.getStorageSync('user_id')
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
+    let that = this;
+    that.setData({
       isWs: options.isWs
     })
-    let user_id = wx.getStorageSync('user_id');
+
     let data = {
-      uid:user_id,
-      state:'3'
+      uid: that.data.user_id,
+      state: '3'  //我同意的人脉列表
     };
-    humanVein.getHumanVeinList(data,res=>{
-      console.log(res);
+    humanVein.getHumanVeinList(data, res => {
+      that.setData({
+        renmaiList: res.data
+      })
     })
   },
   toCard:function(e){
@@ -45,6 +50,27 @@ Page({
       })
     }
   },
+  //点击待我审核
+  waitMy:function(e){
+    let that = this;
+    wx.navigateTo({
+      url: '/pages/wait_my/wait_my?user_id='+that.data.user_id,
+    })
+  },
+  //点击对方审核
+  waitYou:function(e){
+    let that = this;
+    wx.navigateTo({
+      url: '/pages/wait_you/wait_you?user_id=' + that.data.user_id,
+    })
+  },
+  //跳转人脉详情
+  toDetail:function(e){
+    let id = e.detail.id;
+    wx.navigateTo({
+      url: '/pages/my_card/my_card?bid=' + id +'&state=3', //传入名片id  state为3 已交换显示为您推荐列表
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -57,7 +83,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let that = this;
+    
   },
 
   /**

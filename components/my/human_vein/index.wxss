@@ -1,23 +1,25 @@
 
 .container{
   width: 702rpx;
-  height: 200rpx;
   font-size: 0;
   display: flex;
   flex-direction: row;
   justify-content:space-between;
   align-items: center;
-  margin: 0 auto;
   border-radius: 4px;
-  margin-bottom: 20rpx;
+  margin: 20rpx auto;
   background-color: #fff;
   padding-right: 24rpx;
 }
 .card_cover_info{
+  width: 70%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  padding-left: 25rpx;
+  padding:40rpx 0 40rpx 25rpx;
+}
+.card_cover_info.two{
+  /* width:70%; */
 }
 /* 用户头像 */
 .user_pic{
@@ -45,6 +47,7 @@
   font-size: 24rpx;
   color: #aaa;
 }
+
 .agree{
   width: 142rpx;
   height: 60rpx;
@@ -55,6 +58,7 @@
   background-color: #ecb700;
   border-radius: 2px;
 }
+
 .audit{
   font-size: 30rpx;
   color: #bdbdbd;

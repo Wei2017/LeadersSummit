@@ -1,16 +1,17 @@
 <view class='container'>
-  <view class='card_cover_info'>
-    <image class='user_pic' src='/images/pic.jpg'></image>
+  <view class='card_cover_info' bindtap='toDetails'>
+    <image class='user_pic' src='{{renmaiList.largeAvatar}}'></image>
     <view class='basic_info'>
-      <text class='user_name'>杜晓伟</text>
-      <text class='company'>儒思北京网络科技有限公司</text>
-      <text class='position'>FE开发工程师</text>
+      <text class='user_name'>{{renmaiList.truename}}</text>
+      <text class='company'>{{renmaiList.company}}</text>
+      <text class='position'>{{renmaiList.job}}</text>
     </view>
   </view>
-  <block wx:if="{{state == '1'}}">
-    <view class='agree'>同意</view>
+  <block wx:if="{{state == '2'}}">
+    <view class='agree' bindtap='agreeExchange'>同意</view>
   </block>
-  <block wx:elif="{{state == '2'}}">
-    <view class='audit'>等待同意</view>
+  <block wx:elif="{{state == '3'}}">
+    <view class='audit' wx:if="{{renmaiList.state == '1'}}">等待同意</view>
+    <view class='audit' wx:elif="{{renmaiList.state == '2'}}">已拒绝</view>
   </block>
 </view>

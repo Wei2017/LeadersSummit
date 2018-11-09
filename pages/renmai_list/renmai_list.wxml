@@ -1,6 +1,9 @@
 <view class='container'>
   <r-search bindtoCard="toCard" />
   <block wx:for="{{remaiList}}" wx:key="key">
-    <r-cover binddetail="toDetails" bindperfect="judgeJump" cardList="{{item}}" isWsCard="{{isWanShan}}" />
+  <!-- 不显示已交换成功的名片信息 -->
+    <block wx:if="{{item.state !='3'}}">
+      <r-cover binddetail="toDetails" bindperfect="judgeJump" cardList="{{item}}" isWsCard="{{isWanShan}}" />
+    </block>
   </block>
 </view>

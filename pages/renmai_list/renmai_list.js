@@ -73,12 +73,12 @@ Page({
   },
   // 跳转详情
   toDetails: function(e) {
+    console.log(e);
     let that = this;
     let bid = e.detail.bid;
-    let state = e.detail.state == '1'?'5':'2';
+    let state = e.detail.state == '1' ? '5' : e.detail.state == '2' ? '6' : '2'
     wx.navigateTo({
       url: `/pages/my_card/my_card?bid=${bid}&uid=${that.data.user_id}&state=${state}&isWs=${that.data.isWanShan}`
-      
     })
   },
   //跳转我的名片

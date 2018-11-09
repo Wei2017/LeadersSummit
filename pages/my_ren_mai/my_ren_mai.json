@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "我的人脉",
   "usingComponents":{
     "r-search": "/components/lookup_human_vein/search/index",
     "r-myhvein": "/components/my/human_vein/index"

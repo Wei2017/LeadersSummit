@@ -13,9 +13,9 @@ Page({
     cardState: '3', //1-6
     cardInfo: null,
     remaiList: [], //为您推荐列表
-    user_id:'',
-    pid:'',
-    isWs:''
+    user_id: '',
+    pid: '',
+    isWs: ''
   },
 
   /**
@@ -33,7 +33,7 @@ Page({
     that.setData({
       cardState: cardState,
       isWs: isWs,
-      user_id:uid,
+      user_id: uid,
       pid: pid
     })
     //设置头部背景颜色和字体颜色
@@ -43,20 +43,20 @@ Page({
       title: '当前页面'
     });
 
-    if (cardState != '1'){
+    if (cardState != '1') {
       cardDetails.getCardDetails(pid, uid, res => {
         that.setData({
           cardInfo: res.data
         })
       });
-    }else{
-      cardDetails.getCardState(unionid,res=>{
+    } else {
+      cardDetails.getCardState(unionid, res => {
         that.setData({
           cardInfo: res.data.user_info[0]
         })
       })
     }
-    
+
 
     //获取人脉列表
     let data = {
@@ -70,7 +70,7 @@ Page({
 
         //如果推荐中存在正在访问的名片 则不推荐
         for (let i = 0; i < data.length; i++) {
-          if (data[i].uid != options.bid){
+          if (data[i].uid != options.bid) {
             newArr.push(data[i])
           }
         }
@@ -81,13 +81,13 @@ Page({
     }
   },
   //点击去交换 返回上一层人脉列表页
-  toExchange:function(){
+  toExchange: function() {
     wx.navigateBack({
-      delta:1
+      delta: 1
     })
   },
   //申请交换名片
-  applyExchange:function(){
+  applyExchange: function() {
     let that = this;
     let wsState = that.data.isWs; //0,1
     let user_id = that.data.user_id;
@@ -102,14 +102,54 @@ Page({
       })
     } else {
       let pid = that.data.pid;
-        //发起交换名片请求
+      //发起交换名片请求
       cardDetails.exchangeCards(user_id, pid, res => {
         console.log(res);
         that.setData({
-          cardState:'5'
+          cardState: '5'
         })
       })
     }
+  },
+
+
+  //判断跳转
+  judgeJump: function(e) {
+    let that = this;
+    let wsState = that.data.isWs; //0,1
+    let user_id = wx.getStorageSync('user_id')
+
+    let pid = e.detail.pid;
+    let state = e.detail.state;
+    console.log(user_id,pid,state);
+    //如果未申请过交换名片请求 则发送交换请求
+    if (!state) {
+      //发起交换名片请求
+      cardDetails.exchangeCards(user_id, pid, res => {
+        let data = {
+          uid: user_id
+        }
+        cardDetails.getHumanVeinList(data, res => {
+          that.setData({
+            remaiList: res.data
+          })
+        })
+      })
+    }
+
+  },
+
+
+
+  //推荐列表跳转详情
+  toDetails: function(e) {
+    console.log(e);
+    let that = this;
+    let bid = e.detail.bid;
+    let state = e.detail.state == '1' ? '5' : e.detail.state == '2' ? '6' : '2'
+    wx.navigateTo({
+      url: `/pages/my_card/my_card?bid=${bid}&uid=${that.data.user_id}&state=${state}&isWs=${that.data.isWs}`
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

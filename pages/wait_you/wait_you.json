@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "对方审核",
+  "usingComponents": {
+    "r-myhvein": "/components/my/human_vein/index"
+  }
+}

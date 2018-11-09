@@ -1,0 +1,5 @@
+<view class='container'>
+  <block wx:for="{{renmaiList}}" wx:key="">
+    <r-myhvein binddetail="toDetail" bindagree="agreeExchange" renmaiList="{{item}}" state="2" />
+  </block>
+</view>
