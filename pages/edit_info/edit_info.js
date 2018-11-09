@@ -44,8 +44,14 @@ Page({
     //获取用户信息
     userInfoModal.getUserInfo(unionid,res=>{
       let data = res.data.user_info[0];
+      console.log(data);
       let region = data.city;
-          region = region.split(',');
+      if (region != '--'){
+        region = region.split(',');
+      }else {
+        region = that.data.region
+      }
+      
       
 
       //循环判断绑定公司人数 数据展示信息
