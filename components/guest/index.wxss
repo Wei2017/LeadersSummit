@@ -24,16 +24,28 @@
   line-height: 44rpx;
   margin-top:-24rpx; 
 }
+.libtns{
+  width: 142rpx;
+  height: 44rpx;
+  background-color: #eaeaea;
+	border-radius: 22rpx;
+  font-size: 24rpx;
+  color: #aaa;
+  line-height: 44rpx;
+  margin-top:-24rpx; 
+}
 .liname{
   line-height: 86rpx;
   font-size: 28rpx;
 }
 .lijob{
-  height: 38rpx;
+  height: 76rpx;
   line-height: 38rpx;
   font-size: 22rpx;
   text-align: center;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:2;
   overflow: hidden;
   text-overflow:ellipsis;
-  white-space:nowrap;
 }

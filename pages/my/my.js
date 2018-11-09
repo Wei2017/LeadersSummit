@@ -21,11 +21,10 @@ Page({
     //设置头部导航栏背景颜色
     util.setnavBarBjColor();
 
-
     userInfoModal.getUserInfo(unionid,res=>{
-     
       let data = res.data.user_info[0];
       let wsNum = data.business_card; //是否完善名片 1完善 0未完善
+
       if(wsNum == '0'){
         //获取用户昵称和头像
         wx.getUserInfo({

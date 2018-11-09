@@ -31,7 +31,8 @@ Page({
         unionid: wx.getStorageSync('unionid')
       },
       success: res => {
-        console.log(res)
+        let data = res.data.user_info[0];
+        wx.setStorageSync('pic', data.largeAvatar)
         if (res.status == 1) {
           that.setData({
             title: res.data.info[0].meeting_name,
@@ -55,6 +56,7 @@ Page({
     console.log(e.detail)
     const datas = e.detail.value;
     datas.form_id = e.detail.formId;
+    datas.coupon = this.data.coupon;
     datas.nickname = app.globalData.userInfo.nickName; //昵称
     datas.user_pic = app.globalData.userInfo.avatarUrl; //头像
     datas.openid = app.globalData.data.openid;
@@ -135,9 +137,10 @@ Page({
                 success: res => {
                   console.log(res)
                   if (res.code == 1) {
-                    wx.navigateTo({
+                    wx.redirectTo({
                       url: '/pages/mytickets/mytickets'
-                    })
+                    });
+                    wx.setStorageSync('sign', "1");
                   }
                 }
               })

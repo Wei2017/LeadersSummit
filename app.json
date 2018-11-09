@@ -1,20 +1,19 @@
 {
   "pages": [
     "pages/renmai_list/renmai_list",
+    "pages/my_ren_mai/my_ren_mai",
+    "pages/home/home",
     "pages/my/my",
     "pages/big_shot/big_shot",
     "pages/my_yue_list/my_yue_list",
     "pages/consult_platform/consult_platform",
     "pages/consult_index/consult_index",
     "pages/my_card/my_card",
-    "pages/my_ren_mai/my_ren_mai",
     "pages/edit_info/edit_info",
     "pages/author/author",
     "pages/consult_details/consult_details",
     "pages/logs/logs",
-    "pages/home/home",
     "pages/mytickets/mytickets",
-    "pages/details/details",
     "pages/signup/signup",
     "pages/message/message",
     "pages/messagepaper/messagepaper",
@@ -25,5 +24,34 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor":"#ecb700",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "峰会",
+        "iconPath":"images/index.png",
+        "selectedIconPath":"images/index_checked.png"
+      },
+      {
+        "pagePath": "pages/renmai_list/renmai_list",
+        "text": "人脉",
+        "iconPath": "images/mai.png",
+        "selectedIconPath": "images/mai_checked.png"
+      },
+      {
+        "pagePath": "pages/big_shot/big_shot",
+        "text": "约大咖",
+        "iconPath": "images/shot.png",
+        "selectedIconPath": "images/shot_checked.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "images/my.png",
+        "selectedIconPath": "images/my_checked.png"
+      }
+    ]
   }
 }

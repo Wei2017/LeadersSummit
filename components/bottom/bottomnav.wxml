@@ -1,4 +1,4 @@
-<!--components/bottom/bottomnav.wxml-->
+<!-- 
 <view class='nav'>
   <view class='navli' bindtap='gohome'>
       <image wx:if='{{num==0}}' class='navli_img_one' src='../../images/my/fenghui01@2x.png'></image>
@@ -21,9 +21,9 @@
   <text class='{{num=="2"? "navli_name_color" : "navli_name"}}'>约大咖</text>
 </view>
 <view class='sign'>
-  <image wx:if='{{num==3}}'  bindtap='gosign'  class='sign_img' src='../../images/my/baoming@2x.png'></image>
+  <image wx:if='{{sign==0}}'  bindtap='gosign'  class='sign_img' src='../../images/my/baoming@2x.png'></image>
   <image wx:else class='sign_img' bindtap='gomenpiao' src='../../images/my/yibao@2x.png'></image>
 </view>
 
 </view>
-<image class='banyuan' src='../../images/my/dibubj@3x.png' ></image>
+<image class='banyuan' src='../../images/my/dibubj@3x.png' ></image> -->

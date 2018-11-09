@@ -3,7 +3,4 @@
     <r-bigshot bigShot="{{item}}" bindshowModel="showModel" />
   </block>
   <r-guest modelDetails="{{modelDetails}}" modelHidden="{{model_hidden}}" />
-  <view class='fixed_menu'>
-    <r-menu num="2" />
-  </view>
 </view>

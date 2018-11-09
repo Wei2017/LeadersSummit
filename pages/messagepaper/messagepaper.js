@@ -37,28 +37,38 @@ Page({
   sub: function (event) {
     var that = this;
     console.log(that.data.cont)
-    if (that.data.cont != ""){
-      http.request({
-        url: "Smallwx/addComment",
-        data: {
-          user_id: "119152",
-          answerBody: that.data.cont
-        },
-        success: res => {
-          console.log(res)
-          if(res.code == 1){
-            wx.redirectTo({
-              url: "/pages/message/message"
-            })
+    if (wx.getStorageSync('user_id') && wx.getStorageSync('user_id')!=""){
+      if (that.data.cont != "") {
+        http.request({
+          url: "Smallwx/addComment",
+          data: {
+            user_id: wx.getStorageSync('user_id'),
+            answerBody: that.data.cont
+          },
+          success: res => {
+            console.log(res)
+            if (res.code == 1) {
+              wx.redirectTo({
+                url: "/pages/message/message"
+              })
+            }
+
           }
-          
-        }
-      })
+        })
+      } else {
+        wx.showToast({
+          title: '留言不能为空',
+          icon: 'loading',
+          duration: 1500
+        })
+      }
     }else{
-      this.setData({
-        contlength:0
+      wx.navigateTo({
+        url: "/pages/author/author"
       })
     }
+
+    
     
   },
   /**

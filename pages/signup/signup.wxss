@@ -55,6 +55,7 @@ vertical-align: middle;
   font-size: 28rpx;
   color: #fff;
   vertical-align: middle;
+  text-align: right;
   box-sizing: border-box; 
 }
 .dhbtn{
@@ -103,6 +104,7 @@ text-align: right;
   color: #fff;
   vertical-align: middle;
   box-sizing: border-box; 
+  text-align: right;
 }
 .picker{
   width: 575rpx;
@@ -138,4 +140,10 @@ border-right: 10rpx solid transparent;
 
 .hidden{
   display: none;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
 }

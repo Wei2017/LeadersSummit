@@ -5,7 +5,6 @@ page{
 .bod{
   width: 578rpx;
   height: 976rpx;
-  background-color: #eaeaea;
 	border-radius: 8rpx;
   margin: 0 auto;
   margin-top: 60rpx;

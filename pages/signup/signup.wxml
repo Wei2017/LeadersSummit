@@ -1,5 +1,5 @@
 <!--pages/signup/signup.wxml-->
-<form bindsubmit="formSubmit" report-submit='true'>
+
 <view class='tit'>{{title}}</view>
 <view class='ipt'>
 <view class='ipts'>
@@ -8,6 +8,7 @@
 </view>
 <button class='dhbtn' bindtap='changepaper'>兑换</button>
 </view>
+<form bindsubmit="formSubmit" report-submit='true'>
 <view class='ipt'>
   <view class='formlist'>
     <view class='formname'>

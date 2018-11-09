@@ -1,20 +1,48 @@
 // components/bottom/bottomnav.js
+import { HTTP } from '../../utils/http.js';
+const http = new HTTP();
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
     num: String,
-    sign: String
+    // sign: String
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-
+    sign: ""
   },
-
+  pageLifetimes: {
+    // 组件所在页面的生命周期函数
+    show: function () { 
+      var that = this;
+      http.request({
+        url: "Smallwx/getEnrollInfo",
+        data: {
+          unionid: wx.getStorageSync('unionid')
+        },
+        success: res => {
+          console.log(res)
+          if (res.data.user_enroll_info.length == 0) {
+            wx.setStorageSync('sign', "0");
+          } else {
+            wx.setStorageSync('sign', "1");
+          }
+          that.setData({
+            sign: wx.getStorageSync('sign')
+          })
+          console.log(wx.getStorageSync('sign'))
+        }
+      })
+      
+    },
+    hide: function () { },
+    resize: function () { },
+  },
   /**
    * 组件的方法列表
    */

@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "儒思实战峰会",
-  "usingComponents": {
-    "r-bottomnav": "/components/bottom/bottomnav"
+  "usingComponents":{
+    "r-guests":"/components/guest/index",
+    "r-guest":"/components/guest_details/index"
   }
 }

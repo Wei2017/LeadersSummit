@@ -37,7 +37,4 @@
       <image class='right_icon' src='/images/my/right.png'></image>
     </view>
   </view>
-  <view class='fixed_menu'>
-    <r-menu num="3"/>
-  </view>
 </view>

@@ -1,7 +1,9 @@
 <!--pages/mytickets/mytickets.wxml-->
 <view class='bod'>
-  <image src='../../images/menpiao.png' class='bodimg'></image>
+  <!-- <image src='../../images/menpiao.png' class='bodimg'></image>
   <image class='attrimg' src='{{img}}'></image>
-  <text class='nickname'>{{nickname}}</text>
+  <text class='nickname'>{{nickname}}</text> -->
+  <canvas canvas-id="myCanvas" hidden="{{canvasHidden}}" style="width:{{imgWidth}}px;height:{{imgHeight}}px"></canvas>
+
 </view>
 <view class='tips'>您的名片已生成，可去“我的人脉”右上角查看</view>

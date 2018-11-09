@@ -1,6 +1,24 @@
-<!--pages/home/home.wxml-->
-<image src=''></image>
-<button class='btn' bindtap="bindViewTab">详情</button>
-<view class='bottom'>
-  <r-bottomnav num='{{num}}'/>
+<!--pages/details/details.wxml-->
+<view class='entered' wx:if="{{sign==0}}"  bindtap='gobao'>报名</view>
+<view class='entered'  wx:else bindtap='gomenpiao'>查看门票</view>
+<view class='back'>
+<image src='{{small_outline}}' mode='widthFix' class='img {{tabArr.curBdIndex=="0"? "actives" : ""}}'></image>
+<image src='{{small_schedule}}' mode='widthFix' class='img {{tabArr.curBdIndex=="1"? "actives" : ""}}'></image>
+<image src='' class='img {{tabArr.curBdIndex=="2"? "actives" : ""}}'></image>
 </view>
+
+<view class='view'>
+  <view class='tits'>
+    <text class='tit {{tabArr.curHdIndex=="0"? "active" : ""}}' bindtap="tab" id="0">会议概要</text>
+    <text class='tit {{tabArr.curHdIndex=="1"? "active" : ""}}' bindtap="tab" id="1">会议日程</text>
+    <text class='tit {{tabArr.curHdIndex=="2"? "active" : ""}}' bindtap="tab" id="2">演讲嘉宾</text>
+  </view>
+  <scroll-view scroll-y="true" class='namelist {{tabArr.curBdIndex=="2"? "actives" : ""}}'>
+  <block wx:for="{{guestList}}" wx:key="key">
+    <r-guests guestObj="{{item}}" bindshowModel="showModel"/>
+  </block>
+  </scroll-view>
+
+</view>
+
+<r-guest modelDetails="{{modelDetails}}" modelHidden="{{model_hidden}}" />

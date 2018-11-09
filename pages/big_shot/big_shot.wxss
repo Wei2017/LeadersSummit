@@ -4,8 +4,3 @@ page{
 .container{
   padding-top: 20rpx;
 }
-.fixed_menu{
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-}

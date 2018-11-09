@@ -78,8 +78,3 @@
   width: 14rpx;
   height: 26rpx;
 }
-.fixed_menu{
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-}

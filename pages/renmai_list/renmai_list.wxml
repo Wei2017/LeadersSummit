@@ -3,7 +3,4 @@
   <block wx:for="{{remaiList}}" wx:key="key">
     <r-cover binddetail="toDetails" bindperfect="judgeJump" cardList="{{item}}" isWsCard="{{isWanShan}}" />
   </block>
-  <view class='fixed_menu'>
-    <r-menu num="1" />
-  </view>
 </view>

@@ -36,13 +36,18 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"id": -1,
 					"name": "咨询预约",
 					"pathName": "pages/consult_index/consult_index",
 					"query": "bid=1"
+				},
+				{
+					"id": -1,
+					"name": "test",
+					"pathName": "pages/mytickets/mytickets"
 				}
 			]
 		}

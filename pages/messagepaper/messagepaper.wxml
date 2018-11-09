@@ -4,6 +4,5 @@
   <text class='plass'><text class='num'>{{num}}</text>/300</text>
 </view>
 <button class='btn' bindtap='sub'>提交</button>
-<view class='tishi' wx:if="{{contlength == 0}}">留言不能为空</view>
 
 
