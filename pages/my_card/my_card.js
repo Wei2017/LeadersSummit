@@ -86,10 +86,10 @@ Page({
       })
     })
   },
-  //点击去交换 返回上一层人脉列表页
+  //点击去交换 跳转人脉列表页
   toExchange: function() {
-    wx.navigateBack({
-      delta: 1
+    wx.switchTab({
+      url:'/pages/renmai_list/renmai_list'
     })
   },
   //申请交换名片

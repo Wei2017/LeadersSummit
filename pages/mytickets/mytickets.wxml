@@ -1,9 +1,14 @@
-<!--pages/mytickets/mytickets.wxml-->
-<view class='bod'>
-  <!-- <image src='../../images/menpiao.png' class='bodimg'></image>
-  <image class='attrimg' src='{{img}}'></image>
-  <text class='nickname'>{{nickname}}</text> -->
-  <canvas canvas-id="myCanvas" hidden="{{canvasHidden}}" style="width:{{imgWidth}}px;height:{{imgHeight}}px"></canvas>
-
+<view class='share_continer'>
+    <view class='imagePathBox' hidden="{{maskHidden == false}}">
+      <image src="{{imagePath}}" bindtap='previewImage' class='shengcheng' mode='widthFix'></image>
+      <view class='save_box'>
+        <view class='save_text'>您的名片已生成，可去“我的人脉”右上角查看</view>
+        <!-- <button class='baocun' bindtap='baocun'>保存图片</button> -->
+      </view>
+    </view>
+   <view hidden="{{maskHidden == false}}" class="mask"></view> 
+  <view class="canvas-box">
+      <canvas  style="width:375px;height:1150rpx;position:fixed;top:9999px" canvas-id="mycanvas" id='mycanvas'/>
+  </view>  
 </view>
 <view class='tips'>您的名片已生成，可去“我的人脉”右上角查看</view>

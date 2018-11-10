@@ -65,14 +65,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    // let unionid = wx.getStorageSync('unionid');
+    // bigShotModal.getSignUpState(unionid,res=>{
+    //   console.log(res);
+    // })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
@@ -94,9 +97,16 @@ Page({
         })
       }
     })
-    that.setData({
-      sign: wx.getStorageSync('sign')
+    let id = wx.getStorageSync('unionid');
+    bigShotModal.getSignUpState(id,res=>{
+      console.log(res);
+      let sign = res.data.user_enroll_info[0] ? '1' : '0';
+      wx.setStorageSync('sign', sign);
+      that.setData({
+        sign: sign
+      })
     })
+    
   },
 
   /**

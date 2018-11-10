@@ -24,7 +24,21 @@ class BigshotModal extends HTTP{
         sCallback(res)
       }
     })
-  }
+  };
+
+  //获取报名状态
+  getSignUpState(unionid, sCallback) {
+    this.request({
+      url: 'Smallwx/getEnrollInfo',
+      data: {
+        unionid: unionid
+      },
+      success: res => {
+        sCallback(res)
+      }
+    })
+  };
+  
 }
 
 export{

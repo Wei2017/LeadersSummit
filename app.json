@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/mytickets/mytickets",
     "pages/my/my",
     "pages/renmai_list/renmai_list",
     "pages/my_ren_mai/my_ren_mai",
@@ -13,7 +14,6 @@
     "pages/author/author",
     "pages/consult_details/consult_details",
     "pages/logs/logs",
-    "pages/mytickets/mytickets",
     "pages/signup/signup",
     "pages/message/message",
     "pages/messagepaper/messagepaper",

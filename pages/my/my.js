@@ -1,4 +1,6 @@
-import {UserInfoModal } from '../../models/user-info.js'
+import {
+  UserInfoModal
+} from '../../models/user-info.js'
 const userInfoModal = new UserInfoModal();
 const util = require('../../utils/util.js');
 Page({
@@ -7,29 +9,29 @@ Page({
    * 页面的初始数据
    */
   data: {
-    pic:'',
-    nickName:'',
-    isWs:''
+    pic: '',
+    nickName: '',
+    isWs: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     let that = this;
     let unionid = wx.getStorageSync('unionid');
     //设置头部导航栏背景颜色
     util.setnavBarBjColor();
 
-    userInfoModal.getUserInfo(unionid,res=>{
+    userInfoModal.getUserInfo(unionid, res => {
       let data = res.data.user_info[0];
       console.log(data);
       let wsNum = data.business_card; //是否完善名片 1完善 0未完善
 
-      if(wsNum == '0'){
+      if (wsNum == '0') {
         //获取用户昵称和头像
         wx.getUserInfo({
-          success: function (res) {
+          success: function(res) {
             console.log(res);
             that.setData({
               pic: res.userInfo.avatarUrl,
@@ -38,7 +40,7 @@ Page({
             })
           }
         })
-      }else{
+      } else {
         that.setData({
           pic: data.largeAvatar,
           nickName: data.truename,
@@ -46,90 +48,104 @@ Page({
         })
       }
     })
-    
+
   },
-  editInfo:function(){
-    let user_id = wx.getStorageSync('user_id');
-    if (!user_id) {
-      wx.navigateTo({
-        url: '/pages/author/author',
-      })
-    } else{
+  editInfo: function() {
+    if (this._authorize()) {
       wx.navigateTo({
         url: '/pages/edit_info/edit_info',
       })
     }
   },
   //跳转峰会门票页面
-  toTicket:function(){
-    wx.navigateTo({
-      url: '/pages/mytickets/mytickets',
-    })
+  toTicket: function() {
+    if (this._authorize()) {
+      wx.navigateTo({
+        url: '/pages/mytickets/mytickets',
+      })
+    }
   },
   //跳转我的人脉页面
-  toRenmai:function(){
-    wx.navigateTo({
-      url: '/pages/my_ren_mai/my_ren_mai?isWs=' + this.data.isWs,
-    })
+  toRenmai: function() {
+    if (this._authorize()) {
+      wx.navigateTo({
+        url: '/pages/my_ren_mai/my_ren_mai?isWs=' + this.data.isWs,
+      })
+    }
   },
   //跳转我的预约页面
-  toYuyue:function(){
-    wx.navigateTo({
-      url: '/pages/my_yue_list/my_yue_list',
-    })
+  toYuyue: function() {
+    if (this._authorize()) {
+      wx.navigateTo({
+        url: '/pages/my_yue_list/my_yue_list',
+      })
+    }
   },
   //跳转留言板页面
-  toMessage:function(){
-    wx.navigateTo({
-      url: '/pages/message/message',
-    })
+  toMessage: function() {
+    if (this._authorize()) {
+      wx.navigateTo({
+        url: '/pages/message/message',
+      })
+    }
+  },
+  //私有方法 判断是否授权
+  _authorize: function () {
+    let user_id = wx.getStorageSync('user_id');
+    if (!user_id) {
+      wx.navigateTo({
+        url: '/pages/author/author',
+      })
+    } else {
+      return true;
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })
