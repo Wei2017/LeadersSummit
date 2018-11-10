@@ -39,6 +39,22 @@ class HumanVein extends HTTP {
         sCallback(res)
       }
     })
+  };
+
+
+  //处理人脉关系接口 2拒绝 3同意
+  dealRenMai(uid,pid,state,sCallback){
+    this.request({
+      url:'ApiUser/dealRenMai',
+      data:{
+        uid:uid,
+        pid:pid,
+        state:state
+      },
+      success:res=>{
+        sCallback(res);
+      }
+    })
   }
   
 

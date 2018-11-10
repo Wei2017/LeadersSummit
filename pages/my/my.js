@@ -23,6 +23,7 @@ Page({
 
     userInfoModal.getUserInfo(unionid,res=>{
       let data = res.data.user_info[0];
+      console.log(data);
       let wsNum = data.business_card; //是否完善名片 1完善 0未完善
 
       if(wsNum == '0'){
@@ -48,9 +49,16 @@ Page({
     
   },
   editInfo:function(){
-    wx.navigateTo({
-      url: '/pages/edit_info/edit_info',
-    })
+    let user_id = wx.getStorageSync('user_id');
+    if (!user_id) {
+      wx.navigateTo({
+        url: '/pages/author/author',
+      })
+    } else{
+      wx.navigateTo({
+        url: '/pages/edit_info/edit_info',
+      })
+    }
   },
   //跳转峰会门票页面
   toTicket:function(){

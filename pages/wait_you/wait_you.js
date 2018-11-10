@@ -18,20 +18,21 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
+    console.log(options)
     that.setData({
       user_id: options.user_id
     });
-    let data = {
-      uid: options.user_id,//我发出的申请  传uid
-      state: '2,1'//状态传2,1  拒绝和等待同意
-    };
+    // let data = {
+    //   uid: options.user_id,//我发出的申请  传uid
+    //   state: '2,1'//状态传2,1  拒绝和等待同意
+    // };
 
 
-    humanVein.getHumanVeinList(data, res => {
-      that.setData({
-        renmaiList: res.data
-      })
-    })
+    // humanVein.getHumanVeinList(data, res => {
+    //   that.setData({
+    //     renmaiList: res.data
+    //   })
+    // })
     
   },
   //跳转点击的人脉详情
@@ -60,7 +61,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let that = this;
+    let data = {
+      uid: wx.getStorageSync('user_id'),//我发出的申请  传uid
+      state: '2,1'//状态传2,1  拒绝和等待同意
+    };
+    humanVein.getHumanVeinList(data, res => {
+      that.setData({
+        renmaiList: res.data
+      })
+    })
   },
 
   /**

@@ -9,7 +9,7 @@ Page({
     state: '1', //1我的人脉 2待我审核 3对方审核
     isWs:'',//完善名片状态
     renmaiList:[],
-    user_id: wx.getStorageSync('user_id')
+    user_id: ''
   },
 
   /**
@@ -18,17 +18,8 @@ Page({
   onLoad: function (options) {
     let that = this;
     that.setData({
-      isWs: options.isWs
-    })
-
-    let data = {
-      uid: that.data.user_id,
-      state: '3'  //我同意的人脉列表
-    };
-    humanVein.getHumanVeinList(data, res => {
-      that.setData({
-        renmaiList: res.data
-      })
+      isWs: options.isWs,
+      user_id: wx.getStorageSync('user_id')
     })
   },
   toCard:function(e){
@@ -84,7 +75,15 @@ Page({
    */
   onShow: function () {
     let that = this;
-    
+    let data = {
+      uid: wx.getStorageSync('user_id'),
+      state: '3'  //我同意的人脉列表
+    };
+    humanVein.getHumanVeinList(data, res => {
+      that.setData({
+        renmaiList: res.data
+      })
+    })
   },
 
   /**

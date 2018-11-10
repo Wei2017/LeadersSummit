@@ -13,6 +13,7 @@ page{
 .btn_view>text{
   font-size: 34rpx;
   color: #fff;
+  display: block;
 }
 .my_examine{
   display: flex;

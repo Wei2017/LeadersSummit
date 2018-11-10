@@ -31,8 +31,7 @@ Page({
         unionid: wx.getStorageSync('unionid')
       },
       success: res => {
-        let data = res.data.user_info[0];
-        wx.setStorageSync('pic', data.largeAvatar)
+        console.log(res)
         if (res.status == 1) {
           that.setData({
             title: res.data.info[0].meeting_name,
@@ -113,39 +112,38 @@ Page({
     } else {
       var that = this;
       http.request({
-        url: "Smallwx/unifiedOrder3",
-        data: {
-          openid: app.globalData.data.openid,
-          out_trade_no: that.data.trade_no,
-          coupon: that.data.coupon,
-          meeting_id: that.data.meeting_id
-
-        },
+        url: "Smallwx/enrollMeeting",
+        data: datas,
         success: res => {
           console.log(res)
-          wx.requestPayment({
-            'timeStamp': res.timeStamp,
-            'nonceStr': res.nonceStr,
-            'package': res.package,
-            'signType': res.signType,
-            'paySign': res.paySign,
-            success: function (res1) {
-              console.log(res1)
-              http.request({
-                url: "Smallwx/enrollMeeting",
-                data: datas,
-                success: res => {
-                  console.log(res)
-                  if (res.code == 1) {
+          if (res.code == 1) {
+            http.request({
+              url: "Smallwx/unifiedOrder3",
+              data: {
+                openid: app.globalData.data.openid,
+                out_trade_no: that.data.trade_no,
+                coupon: that.data.coupon,
+                meeting_id: that.data.meeting_id
+
+              },
+              success: res => {
+                console.log(res)
+                wx.requestPayment({
+                  'timeStamp': res.timeStamp,
+                  'nonceStr': res.nonceStr,
+                  'package': res.package,
+                  'signType': res.signType,
+                  'paySign': res.paySign,
+                  success: function (res1) {
+                    console.log(res1)
                     wx.redirectTo({
                       url: '/pages/mytickets/mytickets'
                     });
-                    wx.setStorageSync('sign', "1");
                   }
-                }
-              })
-            }
-          })
+                })
+              }
+            })
+          }
         }
       })
 

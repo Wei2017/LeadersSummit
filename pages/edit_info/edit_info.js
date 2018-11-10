@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    uid:wx.getStorageSync('user_id'),//用户id
+    uid:'',//用户id
     user_pic:'',
     region: ['广东省', '广州市', '海珠区'], //省市区三级联动初始地区
     sex: ['请选择','男', '女','保密'], //性别选择
@@ -78,6 +78,7 @@ Page({
         }
       }
       that.setData({
+        uid: wx.getStorageSync('user_id'),
         userName: data.truename,
         userPhone: data.mobile_renmai ? data.mobile_renmai : data.mobile,
         userCompany: data.company,

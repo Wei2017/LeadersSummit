@@ -2,8 +2,8 @@
   <view class='user_name_pic'>
     <view class='name_pic'>
       <image src='{{userInfo.largeAvatar}}'></image>
-      <text>{{userInfo.truename}}                   <!--未交换       审核中         拒绝-->
-        <text class='apply_show' wx:if="{{state == '2'||state == '5'||state == '6'}}">（交换成功后可见）</text>
+      <text>{{userInfo.truename}}              <!--未交换         待审核        审核中         拒绝-->
+        <text class='apply_show' wx:if="{{state == '2'||state == '4' ||state == '5'||state == '6'}}">（交换成功后可见）</text>
       </text>
     </view>
     <!-- 我的名片 显示编辑资料 -->

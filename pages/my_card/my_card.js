@@ -58,27 +58,33 @@ Page({
     }
 
 
-    //获取人脉列表
-    let data = {
-      uid: wx.getStorageSync('user_id')
-    }
+    
     //已交换成功 显示推荐列表
     if (cardState == '3') {
-      cardDetails.getHumanVeinList(data, res => {
-        let data = res.data;
-        let newArr = [];
-
-        //如果推荐中存在正在访问的名片 则不推荐
-        for (let i = 0; i < data.length; i++) {
-          if (data[i].uid != options.bid) {
-            newArr.push(data[i])
-          }
-        }
-        that.setData({
-          remaiList: newArr
-        })
-      })
+      //获取人脉列表
+      let data = {
+        uid: wx.getStorageSync('user_id')
+      }
+      that._getRecommendList(data, pid)
     }
+  },
+  //获取推荐列表
+  _getRecommendList:function(uid,bid){
+    let that = this;
+    cardDetails.getHumanVeinList(uid, res => {
+      let data = res.data;
+      let newArr = [];
+
+      //如果推荐中存在正在访问的名片 则不推荐
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].uid != bid) {
+          newArr.push(data[i])
+        }
+      }
+      that.setData({
+        remaiList: newArr
+      })
+    })
   },
   //点击去交换 返回上一层人脉列表页
   toExchange: function() {
@@ -110,6 +116,56 @@ Page({
         })
       })
     }
+  },
+  //重新发起交换申请
+  reExchange:function(e){
+    let that = this;
+    let user_id = that.data.user_id;
+    let pid = that.data.pid;
+    cardDetails.exchangeCards(user_id, pid, res => {
+      console.log(res,'126',user_id,pid);
+      that.setData({
+        cardState: '5'
+      })
+    })
+  },
+
+  //拒绝交换
+  refuseExchange:function(){
+    let pid = this.data.pid; //申请人id
+    let uid = this.data.user_id; //处理人id
+    cardDetails.dealRenMai(pid, uid,'2',res=>{
+      if(res.status == 1){ //处理成功后返回上一页面
+        //返回上一页面
+        wx.navigateBack({
+          delta: 1
+        })
+      }
+    })
+  },
+
+  //同意交换
+  agreeExchange:function(){
+    let that = this,
+        pid = this.data.pid, //申请人id
+        uid = this.data.user_id; //处理人id
+    //调取处理人脉接口
+    cardDetails.dealRenMai(pid, uid, '3', res => {
+      if (res.status == 1) { //处理成功后显示名片信息并渲染为您推荐列表
+        cardDetails.getCardDetails(pid, uid, res => {
+          that.setData({
+            cardInfo: res.data,
+            cardState:'3'
+          })
+          //获取人脉列表
+          let data = {
+            uid: uid
+          };
+          //渲染为您推荐列表
+          that._getRecommendList(data, pid)
+        });
+      }
+    })
   },
 
 

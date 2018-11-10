@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/home/home",
     "pages/my/my",
     "pages/renmai_list/renmai_list",
     "pages/my_ren_mai/my_ren_mai",
-    "pages/home/home",
     "pages/big_shot/big_shot",
     "pages/my_yue_list/my_yue_list",
     "pages/consult_platform/consult_platform",
