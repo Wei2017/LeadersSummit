@@ -22,7 +22,8 @@ Component({
     toDetails(){
       let id = this.data.renmaiList.id;
       let state = this.data.renmaiList.state;
-      this.triggerEvent('detail',{id:id,state:state})
+      let name = this.data.renmaiList.truename;
+      this.triggerEvent('detail',{id:id,state:state,name:name})
     },
     agreeExchange(){
       let id = this.data.renmaiList.id;

@@ -25,8 +25,9 @@ Page({
   //跳转点击的人脉详情
   toDetail: function(e) {
     let id = e.detail.id;
+    let name = e.detail.name;
     wx.navigateTo({
-      url: '/pages/my_card/my_card?bid=' + id + '&state=4', //传入名片id  state为4 未审核通过显示同意和拒绝按钮
+      url: `/pages/my_card/my_card?bid=${id}&state=4&name=${name}`, //传入名片id  state为4 未审核通过显示同意和拒绝按钮
     })
   },
 

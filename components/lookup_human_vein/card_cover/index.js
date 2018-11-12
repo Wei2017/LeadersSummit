@@ -32,7 +32,8 @@ Component({
     toCardDetail(){
       let bid = this.data.cardList.id;
       let state = this.data.cardList.state;//是否交换名片 0可交换 1申请中
-      this.triggerEvent('detail', { bid: bid, state: state})
+      let name = this.data.cardList.truename;
+      this.triggerEvent('detail', { bid: bid, state: state,name:name})
     }
   }
 })

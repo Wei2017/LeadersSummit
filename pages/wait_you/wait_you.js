@@ -39,15 +39,11 @@ Page({
   toDetail:function(e){
     let id = e.detail.id;
     let state = e.detail.state;
+    let name = e.detail.name;
     //5等待审核  6用户已拒绝
-    state = state == 1?5:state == 2?6:''
-    // if(state == 1){
-    //   state = 5
-    // }else if(state == 2){
-    //   state = 6
-    // }
+    state = state == 1?5:state == 2?6:'';
     wx.navigateTo({
-      url: `/pages/my_card/my_card?bid=${id}&state=${state}`, //传入名片id  state为4 未审核通过显示同意和拒绝按钮
+      url: `/pages/my_card/my_card?bid=${id}&state=${state}&name=${name}`, //传入名片id  state为4 未审核通过显示同意和拒绝按钮
     })
   },
   /**

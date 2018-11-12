@@ -51,10 +51,8 @@ Page({
   },
   showModel: function (e) {
     let that = this;
-    console.log(e);
     let bid = e.detail.bid;
     bigShotModal.getBshotOrGuestDetails(that.data.user_id, bid, res => {
-      console.log(res);
       that.setData({
         model_hidden: true,
         modelDetails: res.big_shot_detail
@@ -65,10 +63,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // let unionid = wx.getStorageSync('unionid');
-    // bigShotModal.getSignUpState(unionid,res=>{
-    //   console.log(res);
-    // })
+    
   },
 
   /**
@@ -83,23 +78,18 @@ Page({
    */
   onShow: function () {
     var that = this;
-    http.request({
-      url: "Smallwx/meetingDetail",
-      data: {
-        user_id: wx.getStorageSync('user_id')
-      },
-      success: res => {
-        console.log(res)
-        that.setData({
-          small_schedule: res.meeting.small_schedule,
-          small_outline: res.meeting.small_outline,
-          guestList: res.meeting.meeting_guest_list
-        })
-      }
+    let user_id = wx.getStorageSync('user_id');
+    bigShotModal.getHomeBj(user_id,res=>{
+      that.setData({
+        small_schedule: res.meeting.small_schedule,
+        small_outline: res.meeting.small_outline,
+        guestList: res.meeting.meeting_guest_list
+      })
     })
+
+    //获取报名状态 显示 报名或查看门票
     let id = wx.getStorageSync('unionid');
     bigShotModal.getSignUpState(id,res=>{
-      console.log(res);
       let sign = res.data.user_enroll_info[0] ? '1' : '0';
       wx.setStorageSync('sign', sign);
       that.setData({

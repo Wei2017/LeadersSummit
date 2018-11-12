@@ -30,17 +30,27 @@ Page({
     let isWs = options.isWs ? options.isWs : '';
     let pid = options.bid ? options.bid : '';
     let uid = options.uid ? options.uid : wx.getStorageSync('user_id');
+    let name = options.name ? options.name : '';
+    let title = '';
     that.setData({
       cardState: cardState,
       isWs: isWs,
       user_id: uid,
       pid: pid
     })
+    //动态设置页面title信息
+    switch (cardState) {
+      case '1':
+        title = '我的名片';
+        break;
+      default :
+        title = name + '的名片';
+    }
     //设置头部背景颜色和字体颜色
     util.setnavBarBjColor();
     //动态设置当前页面标题
     wx.setNavigationBarTitle({
-      title: '当前页面'
+      title: title
     });
 
     if (cardState != '1') {
@@ -58,7 +68,7 @@ Page({
     }
 
 
-    
+
     //已交换成功 显示推荐列表
     if (cardState == '3') {
       //获取人脉列表
@@ -69,7 +79,7 @@ Page({
     }
   },
   //获取推荐列表
-  _getRecommendList:function(uid,bid){
+  _getRecommendList: function(uid, bid) {
     let that = this;
     cardDetails.getHumanVeinList(uid, res => {
       let data = res.data;
@@ -89,7 +99,7 @@ Page({
   //点击去交换 跳转人脉列表页
   toExchange: function() {
     wx.switchTab({
-      url:'/pages/renmai_list/renmai_list'
+      url: '/pages/renmai_list/renmai_list'
     })
   },
   //申请交换名片
@@ -118,12 +128,12 @@ Page({
     }
   },
   //重新发起交换申请
-  reExchange:function(e){
+  reExchange: function(e) {
     let that = this;
     let user_id = that.data.user_id;
     let pid = that.data.pid;
     cardDetails.exchangeCards(user_id, pid, res => {
-      console.log(res,'126',user_id,pid);
+      console.log(res, '126', user_id, pid);
       that.setData({
         cardState: '5'
       })
@@ -131,11 +141,11 @@ Page({
   },
 
   //拒绝交换
-  refuseExchange:function(){
+  refuseExchange: function() {
     let pid = this.data.pid; //申请人id
     let uid = this.data.user_id; //处理人id
-    cardDetails.dealRenMai(pid, uid,'2',res=>{
-      if(res.status == 1){ //处理成功后返回上一页面
+    cardDetails.dealRenMai(pid, uid, '2', res => {
+      if (res.status == 1) { //处理成功后返回上一页面
         //返回上一页面
         wx.navigateBack({
           delta: 1
@@ -145,17 +155,17 @@ Page({
   },
 
   //同意交换
-  agreeExchange:function(){
+  agreeExchange: function() {
     let that = this,
-        pid = this.data.pid, //申请人id
-        uid = this.data.user_id; //处理人id
+      pid = this.data.pid, //申请人id
+      uid = this.data.user_id; //处理人id
     //调取处理人脉接口
     cardDetails.dealRenMai(pid, uid, '3', res => {
       if (res.status == 1) { //处理成功后显示名片信息并渲染为您推荐列表
         cardDetails.getCardDetails(pid, uid, res => {
           that.setData({
             cardInfo: res.data,
-            cardState:'3'
+            cardState: '3'
           })
           //获取人脉列表
           let data = {
@@ -177,7 +187,7 @@ Page({
 
     let pid = e.detail.pid;
     let state = e.detail.state;
-    console.log(user_id,pid,state);
+    console.log(user_id, pid, state);
     //如果未申请过交换名片请求 则发送交换请求
     if (!state) {
       //发起交换名片请求
@@ -202,9 +212,10 @@ Page({
     console.log(e);
     let that = this;
     let bid = e.detail.bid;
-    let state = e.detail.state == '1' ? '5' : e.detail.state == '2' ? '6' : '2'
+    let state = e.detail.state == '1' ? '5' : e.detail.state == '2' ? '6' : '2';
+    let name = e.detail.name;
     wx.navigateTo({
-      url: `/pages/my_card/my_card?bid=${bid}&uid=${that.data.user_id}&state=${state}&isWs=${that.data.isWs}`
+      url: `/pages/my_card/my_card?bid=${bid}&uid=${that.data.user_id}&state=${state}&isWs=${that.data.isWs}&name=${name}`
     })
   },
   /**

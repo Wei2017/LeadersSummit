@@ -20,7 +20,6 @@ Component({
   methods: {
     toDetails(){
       let make_id = this.data.makeShotList.id;
-      console.log(make_id);
       wx.navigateTo({
         url: '/pages/consult_details/consult_details?make_id='+make_id,
       })

@@ -1,4 +1,5 @@
 <view class='container'>
   <r-zxhead bigShot="{{bigShot}}" />
   <r-consult bigId="{{bid}}" />
+  <r-qrcode />
 </view>

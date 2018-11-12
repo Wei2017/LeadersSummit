@@ -19,9 +19,29 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    //隐藏弹出层
     hideModel(){
       this.setData({
         modelHidden:false
+      })
+    },
+
+    //自定义事件 获取咨询id
+    makeConsult(){
+      let id = this.data.modelDetails.id;
+      //判断用户是否授权
+      wx.getSetting({
+        success: function (res) {
+          if (!res.authSetting['scope.userInfo'] || wx.getStorageSync('user_id') == '') {
+            wx.navigateTo({
+              url: '/pages/author/author',
+            })
+          } else {
+            wx.navigateTo({
+              url: '/pages/consult_index/consult_index?bid=' + id,
+            })
+          }
+        }
       })
     }
   }

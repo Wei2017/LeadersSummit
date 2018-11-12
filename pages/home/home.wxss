@@ -51,7 +51,7 @@
 .namelist{
   display: none;
   font-size: 28rpx;
-  padding-top:74rpx; 
+  /* padding-top:74rpx;  */
   overflow: hidden;
   height: calc(100% - 160rpx);
 }
@@ -98,4 +98,10 @@
   overflow: hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
+}
+.guest_list_content{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }

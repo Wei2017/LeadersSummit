@@ -14,7 +14,7 @@
         简介：
         <text class='introduce_text'>{{modelDetails.introduction}}</text>
       </view>
-      <view class='consultation_btn' wx:if="{{modelDetails.make_state != '1'}}">预约咨询</view>    
+      <view class='consultation_btn' bindtap='makeConsult' wx:if="{{modelDetails.make_state != '1'}}">预约咨询</view>    
     </view>
   </view>
 </view>

@@ -76,9 +76,10 @@ Page({
     console.log(e);
     let that = this;
     let bid = e.detail.bid;
-    let state = e.detail.state == '1' ? '5' : e.detail.state == '2' ? '6' : '2'
+    let state = e.detail.state == '1' ? '5' : e.detail.state == '2' ? '6' : '2';
+    let name = e.detail.name;
     wx.navigateTo({
-      url: `/pages/my_card/my_card?bid=${bid}&uid=${that.data.user_id}&state=${state}&isWs=${that.data.isWanShan}`
+      url: `/pages/my_card/my_card?bid=${bid}&uid=${that.data.user_id}&state=${state}&isWs=${that.data.isWanShan}&name=${name}`
     })
   },
   //跳转我的名片

@@ -1,9 +1,19 @@
 <view class='container'>
-  <view class='li'>
+  <!-- <view class='li'>
     <image src='{{guestObj.avatar}}' class='liimg'></image>
     <button class='libtns' wx:if="{{guestObj.inquiry == 1 && guestObj.make_state==1}}">已约</button>
     <button class='libtn' wx:else="{{guestObj.inquiry == 1 && guestObj.make_state==0}}" bindtap='mess'>咨询</button>
     <view class='liname'>{{guestObj.name}}</view>
     <view class='lijob'>{{guestObj.title}}</view>
+  </view> -->
+
+  <view class='pic'>
+    <image src='{{guestObj.avatar}}'></image>
+    <text class='consult_yes' wx:if="{{guestObj.inquiry == 1 && guestObj.make_state==1}}">已约</text>
+    <text class='consult_not' wx:else="{{guestObj.inquiry == 1 && guestObj.make_state==0}}" bindtap='mess'>咨询</text>
+  </view>
+  <view class='guest_info'>
+    <text class='guest_name'>{{guestObj.name}}</text>
+    <text class='guest_position'>{{guestObj.title}}</text>
   </view>
 </view>

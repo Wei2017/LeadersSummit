@@ -1,6 +1,19 @@
 import {HTTP} from '../utils/http.js';
 
 class BigshotModal extends HTTP{
+  //峰会页获取背景图
+  getHomeBj(user_id,sCallback){
+    this.request({
+      url:'Smallwx/meetingDetail',
+      data:{
+        user_id:user_id
+      },
+      success:res=>{
+        sCallback(res)
+      }
+    })
+  };
+  
   // 获取大咖列表
   getBigShotList(data,sCallback){
     this.request({

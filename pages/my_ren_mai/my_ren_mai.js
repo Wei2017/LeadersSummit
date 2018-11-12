@@ -58,8 +58,9 @@ Page({
   //跳转人脉详情
   toDetail:function(e){
     let id = e.detail.id;
+    let name = e.detail.name;
     wx.navigateTo({
-      url: '/pages/my_card/my_card?bid=' + id +'&state=3', //传入名片id  state为3 已交换显示为您推荐列表
+      url: `/pages/my_card/my_card?bid=${id}&state=3&name=${name}`, //传入名片id  state为3 已交换显示为您推荐列表
     })
   },
 
