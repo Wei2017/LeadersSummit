@@ -86,5 +86,21 @@ Page({
         modelDetails:res.big_shot_detail
       })
     })
+  },
+  toConsult:function(e){
+    //获取用户是否授权
+    wx.getSetting({
+      success: function (res) {
+        if (!res.authSetting['scope.userInfo']) {
+          wx.navigateTo({
+            url: '/pages/author/author',
+          })
+        }else{
+          wx.navigateTo({
+            url: '/pages/consult_platform/consult_platform',
+          })
+        }
+      }
+    })
   }
 })

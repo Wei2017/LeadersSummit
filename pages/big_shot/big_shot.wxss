@@ -4,3 +4,16 @@ page{
 .container{
   padding-top: 20rpx;
 }
+.to_consult{
+  width: 350rpx;
+  height: 68rpx;
+  line-height: 68rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #fff;
+  border-radius: 30rpx;
+  background-color: rgba(0,0,0,.5);
+  position: fixed;
+  right: 24rpx;
+  bottom: 0;
+}

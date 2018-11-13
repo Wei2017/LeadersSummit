@@ -60,9 +60,16 @@ Page({
   //跳转峰会门票页面
   toTicket: function() {
     if (this._authorize()) {
-      wx.navigateTo({
-        url: '/pages/mytickets/mytickets',
-      })
+      //授权完成判断是否报名峰会  1已报名 否则跳转报名页
+      if(wx.getStorageSync('sign') == 1){
+        wx.navigateTo({
+          url: '/pages/mytickets/mytickets',
+        })
+      }else{
+        wx.navigateTo({
+          url: '/pages/signup/signup',
+        })
+      }
     }
   },
   //跳转我的人脉页面
