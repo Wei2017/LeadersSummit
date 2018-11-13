@@ -9,8 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    pic: '',
-    nickName: '',
+    pic: '../../images/logo@3x.png',
+    nickName: '请授权',
     isWs: '',
     rmState:false
   },
@@ -24,32 +24,17 @@ Page({
     //设置头部导航栏背景颜色
     util.setnavBarBjColor();
 
-    userInfoModel.getUserInfo(unionid, res => {
-      let data = res.data.user_info[0];
-      console.log(data);
-      let wsNum = data.business_card; //是否完善名片 1完善 0未完善
-
-      if (wsNum == '0') {
-        //获取用户昵称和头像
-        wx.getUserInfo({
-          success: function(res) {
-            console.log(res);
-            that.setData({
-              pic: res.userInfo.avatarUrl,
-              nickName: res.userInfo.nickName,
-              isWs: wsNum
-            })
-          }
-        })
-      } else {
-        that.setData({
-          pic: data.largeAvatar,
-          nickName: data.truename,
-          isWs: wsNum
-        })
+    wx.getSetting({
+      success: res => {
+        if (!res.authSetting['scope.userInfo']) {
+          wx.navigateTo({
+            url: '/pages/author/author',
+          })
+        }else{
+          that._showUserInfo()
+        }
       }
     })
-
     let uid = wx.getStorageSync('user_id');
     if(uid){
       userInfoModel.getNewRenMai(uid,res=>{
@@ -118,6 +103,33 @@ Page({
       return true;
     }
   },
+  _showUserInfo(){
+    let that = this;
+    let unionid = wx.getStorageSync('unionid');
+    userInfoModel.getUserInfo(unionid, res => {
+      let data = res.data.user_info[0];
+      let wsNum = data.business_card; //是否完善名片 1完善 0未完善
+      if (wsNum == '0') {
+        //获取用户昵称和头像
+        wx.getUserInfo({
+          success: function (res) {
+            console.log(res);
+            that.setData({
+              pic: res.userInfo.avatarUrl,
+              nickName: res.userInfo.nickName,
+              isWs: wsNum
+            })
+          }
+        })
+      } else {
+        that.setData({
+          pic: data.largeAvatar,
+          nickName: data.truename,
+          isWs: wsNum
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -129,7 +141,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    let user_id = wx.getStorageSync('user_id');
+    if (user_id) {
+       this._showUserInfo()
+    }
   },
 
   /**

@@ -5,10 +5,10 @@
   </block>
   <view class='fixed_btn'>
       <view class='wait_my' bindtap='waitMy'>
-        <text>待我审核</text>
+        <text class='{{waitMe?"active":""}}'>待我审核</text>
       </view>
       <view class='wait_you' bindtap='waitYou'>
-        <text class='active'>对方审核</text>
+        <text class='{{waitYou?"active":""}}'>对方审核</text>
       </view>
   </view>
 </view>

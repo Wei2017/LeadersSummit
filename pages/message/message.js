@@ -18,7 +18,7 @@ Page({
     http.request({
        url: "Smallwx/getCommentList", 
        data: {
-         user_id:"119152"
+         user_id:wx.getStorageSync('user_id')
       },
       success: res => {
         console.log(res)

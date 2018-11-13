@@ -12,7 +12,9 @@ Page({
     isWs: '', //完善名片状态
     renmaiList: [],
     user_id: '',
-    searchVal:''
+    searchVal:'',
+    waitMe:false,
+    waitYou:false
   },
 
   /**
@@ -20,9 +22,28 @@ Page({
    */
   onLoad: function(options) {
     let that = this;
+    let user_id = wx.getStorageSync('user_id');
     that.setData({
       isWs: options.isWs,
-      user_id: wx.getStorageSync('user_id')
+      user_id: user_id
+    });
+
+
+    //显示红点状态
+    cardDetails.getExamineRed(user_id,res=>{
+      if(res.status == 1){
+        let data = res.data;
+        if(data.my_info == 1){
+          that.setData({
+            waitMe:true
+          })
+        }
+        if (data.other_info == 1){
+          that.setData({
+            waitYou: true
+          })
+        }
+      }
     })
   },
 
@@ -68,6 +89,25 @@ Page({
       url: `/pages/my_card/my_card?bid=${id}&state=3&name=${name}`, //传入名片id  state为3 已交换显示为您推荐列表
     })
   },
+  searchRenmai:function(e){
+    let that = this;
+    let searchVal = e.detail.val;
+    if (searchVal == '') {
+      util.showTotal('请输入搜索条件!')
+    } else {
+      let data = {
+        uid: that.data.user_id,
+        state:'3',
+        search_content: searchVal
+      }
+      cardDetails.getHumanVeinList(data, res => {
+        that.setData({
+          renmaiList: res.data,
+          searchVal: ''
+        })
+      })
+    }
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -86,6 +126,11 @@ Page({
       state: '3' //我同意的人脉列表
     };
     cardDetails.getHumanVeinList(data, res => {
+      if(res.data.length != 0){
+        wx.setNavigationBarTitle({
+          title: '我的人脉（' + res.data.length + '）'
+        });
+      }
       that.setData({
         renmaiList: res.data
       })

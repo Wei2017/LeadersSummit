@@ -107,8 +107,10 @@ Page({
           //获取报名状态 显示 报名或查看门票
           let id = wx.getStorageSync('unionid');
           userInfoModel.getUserInfo(id, res => {
-            let sign = res.data.user_enroll_info[0] ? '1' : '0';
+            let data = res.data.user_enroll_info[0];
+            let sign = data ? '1' : '0';
             wx.setStorageSync('sign', sign);
+            wx.setStorageSync('signName', data.truename);
             that.setData({
               sign: sign
             })
