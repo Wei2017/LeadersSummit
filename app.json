@@ -38,7 +38,7 @@
       },
       {
         "pagePath": "pages/renmai_list/renmai_list",
-        "text": "人脉",
+        "text": "找人脉",
         "iconPath": "images/mai.png",
         "selectedIconPath": "images/mai_checked.png"
       },
