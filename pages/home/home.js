@@ -45,8 +45,18 @@ Page({
     }
   },
   gomenpiao:function(e){
-    wx.navigateTo({
-      url: "/pages/mytickets/mytickets"
+    wx.getSetting({
+      success: res => {
+        if (!res.authSetting['scope.userInfo']) {
+          wx.navigateTo({
+            url: "/pages/author/author"
+          })
+        }else{
+          wx.navigateTo({
+            url: "/pages/mytickets/mytickets"
+          })
+        }
+      }
     })
   },
   showModel: function (e) {

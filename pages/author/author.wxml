@@ -1,6 +1,6 @@
 <view wx:if="{{canIUse}}">
   <view class='header'>
-    <image src='/images/pic.jpg'></image>
+    <image src='/images/logo@3x.png'></image>
   </view>
 
   <view class='content'>
