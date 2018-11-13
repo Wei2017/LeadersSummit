@@ -1,7 +1,10 @@
-import {
-  CardDetails
-} from '../../models/card.js';
+import {CardDetails } from '../../models/card.js';
 const cardDetails = new CardDetails();
+import {
+  UserInfoModel
+} from '../../models/user-info.js';
+const userInfoModel = new UserInfoModel();
+
 const util = require('../../utils/util.js');
 
 Page({
@@ -60,7 +63,7 @@ Page({
         })
       });
     } else {
-      cardDetails.getCardState(unionid, res => {
+      userInfoModel.getUserInfo(unionid, res => {
         that.setData({
           cardInfo: res.data.user_info[0]
         })

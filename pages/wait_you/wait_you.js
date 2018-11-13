@@ -1,5 +1,5 @@
-import { HumanVein } from '../../models/human_vein.js';
-const humanVein = new HumanVein();
+import { CardDetails } from '../../models/card.js';
+const cardDetails = new CardDetails();
 Page({
 
   /**
@@ -62,7 +62,7 @@ Page({
       uid: wx.getStorageSync('user_id'),//我发出的申请  传uid
       state: '2,1'//状态传2,1  拒绝和等待同意
     };
-    humanVein.getHumanVeinList(data, res => {
+    cardDetails.getHumanVeinList(data, res => {
       that.setData({
         renmaiList: res.data
       })

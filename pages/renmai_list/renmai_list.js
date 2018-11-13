@@ -1,8 +1,8 @@
-import {
-  HumanVein
-} from '../../models/human_vein.js';
-const humanVein = new HumanVein();
-const App = getApp();
+import {CardDetails } from '../../models/card.js';
+const cardDetails = new CardDetails();
+import {UserInfoModel } from '../../models/user-info.js';
+const userInfoModel = new UserInfoModel();
+const util = require('../../utils/util.js');
 
 
 Page({
@@ -31,7 +31,7 @@ Page({
     
 
     //获取完善资料状态
-    humanVein.getCardState(unionid, res => {
+    userInfoModel.getUserInfo(unionid, res => {
       that.setData({
         isWanShan: res.data.user_info[0].business_card
       })
@@ -58,11 +58,11 @@ Page({
       //如果未申请过交换名片请求 则发送交换请求
       if (!state) {
         //发起交换名片请求
-        humanVein.exchangeCards(user_id, pid, res => {
+        cardDetails.exchangeCards(user_id, pid, res => {
           let data = {
             uid: user_id
           }
-          humanVein.getHumanVeinList(data, res => {
+          cardDetails.getHumanVeinList(data, res => {
             that.setData({
               remaiList: res.data
             })
@@ -102,6 +102,19 @@ Page({
       })
     }
   },
+  //搜索人脉
+  searchRenmai:function(e){
+    let searchVal = e.detail.val;
+    if(searchVal == ''){
+      util.showTotal('请输入搜索条件!')
+    }else{
+      console.log(searchVal);
+      this.setData({
+        searchVal:''
+      })
+    }
+    
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -118,7 +131,7 @@ Page({
     let data = {
       uid: wx.getStorageSync('user_id')
     }
-    humanVein.getHumanVeinList(data, res => {
+    cardDetails.getHumanVeinList(data, res => {
       console.log(res.data)
       that.setData({
         remaiList: res.data

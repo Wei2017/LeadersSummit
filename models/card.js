@@ -27,19 +27,6 @@ class CardDetails extends HTTP{
     })
   };
 
-  //获取当前用户是否完善名片信息
-  getCardState(unionid, sCallback) {
-    this.request({
-      url: 'Smallwx/getEnrollInfo',
-      data: {
-        unionid: unionid
-      },
-      success: res => {
-        sCallback(res)
-      }
-    })
-  };
-
   //发送交换名片请求
   exchangeCards(uid, pid, sCallback) {
     this.request({

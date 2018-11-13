@@ -4,7 +4,7 @@
       <view class='search_btn'>
         <image src='images/sousuo@2x.png'></image>
       </view>
-      <input type='text' placeholder='按姓名或公司搜索' />
+      <input type='text' value='{{searchVal}}' placeholder='按姓名或公司搜索' bindinput='getSearchVal' bindconfirm='search' />
     </view>
     <view class='my_name_card' bindtap='toMyCard'>
       <text>我的名片</text>

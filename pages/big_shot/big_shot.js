@@ -1,5 +1,5 @@
-import {BigshotModal} from '../../models/big-shot.js';
-const bigShotModal = new BigshotModal();
+import {BigshotModel} from '../../models/big-shot.js';
+const bigShotModel = new BigshotModel();
 Page({
 
   /**
@@ -9,7 +9,7 @@ Page({
     bigShotList:[],
     modelDetails:null,
     model_hidden:false,
-    user_id: wx.getStorageSync('user_id')
+    user_id: ''
   },
 
   /**
@@ -32,7 +32,7 @@ Page({
   onShow: function () {
     let user_id = wx.getStorageSync('user_id');
     console.log(user_id);
-    bigShotModal.getBigShotList({ user_id:user_id }, res => {
+    bigShotModel.getBigShotList({ user_id:user_id }, res => {
       if (res.code == 1) {
         this.setData({
           bigShotList: res.big_shot_list
@@ -79,7 +79,7 @@ Page({
   showModel:function(e){
     let that = this;
     let bid = e.detail.bid;
-    bigShotModal.getBshotOrGuestDetails(that.data.user_id,bid,res=>{
+    bigShotModel.getBshotOrGuestDetails(that.data.user_id,bid,res=>{
       console.log(res);
       that.setData({
         model_hidden:true,

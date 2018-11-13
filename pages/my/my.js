@@ -1,7 +1,7 @@
 import {
-  UserInfoModal
-} from '../../models/user-info.js'
-const userInfoModal = new UserInfoModal();
+  UserInfoModel
+} from '../../models/user-info.js';
+const userInfoModel = new UserInfoModel();
 const util = require('../../utils/util.js');
 Page({
 
@@ -23,7 +23,7 @@ Page({
     //设置头部导航栏背景颜色
     util.setnavBarBjColor();
 
-    userInfoModal.getUserInfo(unionid, res => {
+    userInfoModel.getUserInfo(unionid, res => {
       let data = res.data.user_info[0];
       console.log(data);
       let wsNum = data.business_card; //是否完善名片 1完善 0未完善

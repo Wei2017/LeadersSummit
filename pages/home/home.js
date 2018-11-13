@@ -1,8 +1,10 @@
 // pages/details/details.js
-import { HTTP } from '../../utils/http.js';
-const http = new HTTP();
-import { BigshotModal } from '../../models/big-shot.js';
-const bigShotModal = new BigshotModal();
+import {BigshotModel } from '../../models/big-shot.js';
+const bigShotModel = new BigshotModel();
+import {
+  UserInfoModel
+} from '../../models/user-info.js';
+const userInfoModel = new UserInfoModel();
 Page({
 
   /**
@@ -62,7 +64,7 @@ Page({
   showModel: function (e) {
     let that = this;
     let bid = e.detail.bid;
-    bigShotModal.getBshotOrGuestDetails(that.data.user_id, bid, res => {
+    bigShotModel.getBshotOrGuestDetails(that.data.user_id, bid, res => {
       that.setData({
         model_hidden: true,
         modelDetails: res.big_shot_detail
@@ -89,7 +91,7 @@ Page({
   onShow: function () {
     var that = this;
     let user_id = wx.getStorageSync('user_id');
-    bigShotModal.getHomeBj(user_id,res=>{
+    bigShotModel.getHomeBj(user_id,res=>{
       that.setData({
         small_schedule: res.meeting.small_schedule,
         small_outline: res.meeting.small_outline,
@@ -97,16 +99,23 @@ Page({
       })
     })
 
-    //获取报名状态 显示 报名或查看门票
-    let id = wx.getStorageSync('unionid');
-    bigShotModal.getSignUpState(id,res=>{
-      let sign = res.data.user_enroll_info[0] ? '1' : '0';
-      wx.setStorageSync('sign', sign);
-      that.setData({
-        sign: sign
-      })
+
+    //获取用户是否授权 如果授权才获取用户报名状态信息
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          //获取报名状态 显示 报名或查看门票
+          let id = wx.getStorageSync('unionid');
+          userInfoModel.getUserInfo(id, res => {
+            let sign = res.data.user_enroll_info[0] ? '1' : '0';
+            wx.setStorageSync('sign', sign);
+            that.setData({
+              sign: sign
+            })
+          })
+        }
+      }
     })
-    
   },
 
   /**

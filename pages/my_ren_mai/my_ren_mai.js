@@ -1,5 +1,5 @@
-import {HumanVein} from '../../models/human_vein.js';
-const humanVein = new HumanVein();
+import { CardDetails } from '../../models/card.js';
+const cardDetails = new CardDetails();
 Page({
 
   /**
@@ -22,6 +22,8 @@ Page({
       user_id: wx.getStorageSync('user_id')
     })
   },
+
+  //我的名片
   toCard:function(e){
     let that = this;
     let wsState = that.data.isWs; //0,1
@@ -80,7 +82,7 @@ Page({
       uid: wx.getStorageSync('user_id'),
       state: '3'  //我同意的人脉列表
     };
-    humanVein.getHumanVeinList(data, res => {
+    cardDetails.getHumanVeinList(data, res => {
       that.setData({
         renmaiList: res.data
       })

@@ -1,6 +1,6 @@
 import {HTTP} from '../utils/http.js';
 
-class BigshotModal extends HTTP{
+class BigshotModel extends HTTP{
   //峰会页获取背景图
   getHomeBj(user_id,sCallback){
     this.request({
@@ -38,22 +38,8 @@ class BigshotModal extends HTTP{
       }
     })
   };
-
-  //获取报名状态
-  getSignUpState(unionid, sCallback) {
-    this.request({
-      url: 'Smallwx/getEnrollInfo',
-      data: {
-        unionid: unionid
-      },
-      success: res => {
-        sCallback(res)
-      }
-    })
-  };
-  
 }
 
 export{
-  BigshotModal
+  BigshotModel
 }

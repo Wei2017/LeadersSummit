@@ -1,6 +1,6 @@
 import {HTTP} from '../utils/http.js';
 
-class UserInfoModal extends HTTP{
+class UserInfoModel extends HTTP{
   getUserInfo(unionid,sCallback){
     this.request({
       url: 'Smallwx/getEnrollInfo',
@@ -26,5 +26,5 @@ class UserInfoModal extends HTTP{
 
 
 export{
-  UserInfoModal
+  UserInfoModel
 }

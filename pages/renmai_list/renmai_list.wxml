@@ -1,5 +1,5 @@
 <view class='container'>
-  <r-search bindtoCard="toCard" />
+  <r-search bindtoCard="toCard" bindsearch="searchRenmai" searchVal="{{searchVal}}" />
   <block wx:for="{{remaiList}}" wx:key="key">
   <!-- 不显示已交换成功的名片信息 -->
     <block wx:if="{{item.state !='3'}}">

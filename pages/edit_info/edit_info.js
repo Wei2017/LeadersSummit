@@ -1,5 +1,5 @@
-import {UserInfoModal} from '../../models/user-info.js'
-const userInfoModal = new UserInfoModal();
+import {UserInfoModel} from '../../models/user-info.js';
+const userInfoModel = new UserInfoModel();
 const util = require('../../utils/util.js');
 Page({
 
@@ -42,7 +42,7 @@ Page({
     //获取用户unionid
     let unionid = wx.getStorageSync('unionid');
     //获取用户信息
-    userInfoModal.getUserInfo(unionid,res=>{
+    userInfoModel.getUserInfo(unionid,res=>{
       let data = res.data.user_info[0];
       console.log(data);
       let region = data.city;
@@ -182,7 +182,7 @@ Page({
       }
       console.log(data)
       //调取接口
-      userInfoModal.saveUserInfo(data,res=>{
+      userInfoModel.saveUserInfo(data,res=>{
         console.log(res);
         if(res.code == '1'){
           wx.navigateBack({

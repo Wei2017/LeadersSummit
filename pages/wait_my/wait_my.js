@@ -1,7 +1,5 @@
-import {
-  HumanVein
-} from '../../models/human_vein.js';
-const humanVein = new HumanVein();
+import { CardDetails } from '../../models/card.js';
+const cardDetails = new CardDetails();
 Page({
 
   /**
@@ -40,9 +38,9 @@ Page({
       pid: user_id, //我接收到的申请 传pid
       state: '1' //状态传1
     };
-    humanVein.dealRenMai(pid, user_id, '3', res => { //同意交换传3
+    cardDetails.dealRenMai(pid, user_id, '3', res => { //同意交换传3
       if (res.status == 1){
-        humanVein.getHumanVeinList(data, res => {
+        cardDetails.getHumanVeinList(data, res => {
           that.setData({
             renmaiList: res.data
           })
@@ -68,7 +66,7 @@ Page({
       state: '1' //状态传1
     };
 
-    humanVein.getHumanVeinList(data, res => {
+    cardDetails.getHumanVeinList(data, res => {
       that.setData({
         renmaiList: res.data
       })
