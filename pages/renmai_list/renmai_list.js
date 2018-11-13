@@ -14,7 +14,8 @@ Page({
     remaiList: [],
     isWanShan: '', //0未完善 跳转编辑资料页面 1已完善触发交换事件
     user_id: '',
-    unionid: ''
+    unionid: '',
+    searchVal:''
   },
 
   /**
@@ -42,6 +43,7 @@ Page({
   judgeJump: function(e) {
     let that = this;
     let wsState = that.data.isWanShan; //0,1
+    console.log(wsState);
     let user_id = wx.getStorageSync('user_id')
     // 如果用户未授权则跳转授权页面
     if (!user_id) {
@@ -104,16 +106,21 @@ Page({
   },
   //搜索人脉
   searchRenmai:function(e){
+    let that = this;
     let searchVal = e.detail.val;
     if(searchVal == ''){
       util.showTotal('请输入搜索条件!')
     }else{
-      console.log(searchVal);
-      this.setData({
-        searchVal:''
+      let data = {
+        search_content: searchVal
+      }
+      cardDetails.getHumanVeinList(data, res => {
+        that.setData({
+          remaiList: res.data,
+          searchVal: ''
+        })
       })
     }
-    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -16,7 +16,7 @@ class CardDetails extends HTTP{
     })
   };
 
-  //获取为您推荐人脉列表
+  //人脉列表
   getHumanVeinList(data, sCallback) {
     this.request({
       url: 'ApiUser/getRenMaiList',

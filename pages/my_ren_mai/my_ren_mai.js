@@ -1,4 +1,6 @@
-import { CardDetails } from '../../models/card.js';
+import {
+  CardDetails
+} from '../../models/card.js';
 const cardDetails = new CardDetails();
 Page({
 
@@ -7,15 +9,16 @@ Page({
    */
   data: {
     state: '1', //1我的人脉 2待我审核 3对方审核
-    isWs:'',//完善名片状态
-    renmaiList:[],
-    user_id: ''
+    isWs: '', //完善名片状态
+    renmaiList: [],
+    user_id: '',
+    searchVal:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     let that = this;
     that.setData({
       isWs: options.isWs,
@@ -24,7 +27,7 @@ Page({
   },
 
   //我的名片
-  toCard:function(e){
+  toCard: function(e) {
     let that = this;
     let wsState = that.data.isWs; //0,1
     let user_id = wx.getStorageSync('user_id')
@@ -44,21 +47,21 @@ Page({
     }
   },
   //点击待我审核
-  waitMy:function(e){
+  waitMy: function(e) {
     let that = this;
     wx.navigateTo({
-      url: '/pages/wait_my/wait_my?user_id='+that.data.user_id,
+      url: '/pages/wait_my/wait_my?user_id=' + that.data.user_id,
     })
   },
   //点击对方审核
-  waitYou:function(e){
+  waitYou: function(e) {
     let that = this;
     wx.navigateTo({
       url: '/pages/wait_you/wait_you?user_id=' + that.data.user_id,
     })
   },
   //跳转人脉详情
-  toDetail:function(e){
+  toDetail: function(e) {
     let id = e.detail.id;
     let name = e.detail.name;
     wx.navigateTo({
@@ -69,18 +72,18 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     let that = this;
     let data = {
       uid: wx.getStorageSync('user_id'),
-      state: '3'  //我同意的人脉列表
+      state: '3' //我同意的人脉列表
     };
     cardDetails.getHumanVeinList(data, res => {
       that.setData({
@@ -92,35 +95,35 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

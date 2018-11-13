@@ -21,6 +21,18 @@ class UserInfoModel extends HTTP{
         sCallback(res);
       }
     })
+  };
+
+  getNewRenMai(uid,sCallback){
+    this.request({
+      url:'ApiUser/myInfoMsg',
+      data:{
+        uid:uid
+      },
+      success:res=>{
+        sCallback(res);
+      }
+    })
   }
 }
 

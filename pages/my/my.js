@@ -11,7 +11,8 @@ Page({
   data: {
     pic: '',
     nickName: '',
-    isWs: ''
+    isWs: '',
+    rmState:false
   },
 
   /**
@@ -49,6 +50,16 @@ Page({
       }
     })
 
+    let uid = wx.getStorageSync('user_id');
+    if(uid){
+      userInfoModel.getNewRenMai(uid,res=>{
+        if (res.status == 1){
+          that.setData({
+            rmState:true
+          })
+        }
+      })
+    }
   },
   editInfo: function() {
     if (this._authorize()) {

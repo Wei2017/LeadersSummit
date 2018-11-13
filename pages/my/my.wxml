@@ -18,7 +18,7 @@
     <view class='list_item' bindtap='toRenmai'>
       <view class='item_text'>
         <image class='renmai' src='/images/my/renmai.png'></image>
-        <text>我的人脉</text>
+        <text class="{{rmState?'active':''}}">我的人脉</text>
       </view>
       <image class='right_icon' src='/images/my/right.png'></image>
     </view>

@@ -1,6 +1,7 @@
 // pages/signup/signup.js
-import { HTTP } from '../../utils/http.js';
+import {HTTP} from '../../utils/http.js';
 const http = new HTTP();
+const util = require('../../utils/util.js');
 const app = getApp();
 const phonegi = /^1[0-9]{10}$/;
 const isemail = /^[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?$/g;
@@ -10,7 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    position: ['请选择', 'HRM', 'CEO', 'COO', 'CTO', 'CFO'],
+    position: ['请选择', 'CEO/创始人级别', 'VP/CHO/HRVP级别', 'HRD级别', 'HRM级别', 'HR/HRBP','其它'],
     positionIndex: 0,
     positionChecked: '', //用户选中的职位的值
     title: "",//标题
@@ -62,53 +63,21 @@ Page({
     datas.unionid = wx.getStorageSync('unionid');
     console.log(datas);
     if (e.detail.value.truename == "") {
-      wx.showToast({
-        title: '姓名不能为空',
-        icon: 'loading',
-        duration: 1500
-      })
+      util.showTotal('姓名不能为空');
     } else if (e.detail.value.company == "") {
-      wx.showToast({
-        title: '公司不能为空',
-        icon: 'loading',
-        duration: 1500
-      })
+      util.showTotal('公司不能为空');
     } else if (e.detail.value.job == "" || e.detail.value.job == "请选择") {
-      wx.showToast({
-        title: '职位不能为空',
-        icon: 'loading',
-        duration: 1500
-      })
+      util.showTotal('职位不能为空');
     } else if (e.detail.value.company_mobile == "") {
-      wx.showToast({
-        title: '电话不能为空',
-        icon: 'loading',
-        duration: 1500
-      })
+      util.showTotal('电话不能为空');
     } else if (e.detail.value.mobile == "") {
-      wx.showToast({
-        title: '手机不能为空',
-        icon: 'loading',
-        duration: 1500
-      })
+      util.showTotal('手机不能为空');
     } else if (!phonegi.test(e.detail.value.mobile)) {
-      wx.showToast({
-        title: '手机格式有误',
-        icon: 'loading',
-        duration: 1500
-      })
+      util.showTotal('手机格式有误');
     } else if (e.detail.value.email == "") {
-      wx.showToast({
-        title: '邮箱不能为空',
-        icon: 'loading',
-        duration: 1500
-      })
+      util.showTotal('邮箱不能为空');
     } else if (!isemail.test(e.detail.value.email)) {
-      wx.showToast({
-        title: '邮箱格式有误',
-        icon: 'loading',
-        duration: 1500
-      })
+      util.showTotal('邮箱格式有误');
     } else {
       var that = this;
       http.request({
@@ -164,34 +133,19 @@ Page({
         success: res => {
           console.log(res)
           if (res.data.valid == 0 || res.data.valid == 2) {
-            wx.showToast({
-              title: '优惠卷不可用',
-              icon: 'loading',
-              duration: 1500
-            })
+            util.showTotal('优惠卷不可用');
           } if (res.data.valid == 1) {
-            wx.showToast({
-              title: '兑换成功',
-              duration: 1500
-            })
+            util.showTotal('兑换成功');
             that.setData({
               price: res.data.use_coupon_price
             })
           } if (res.data.valid == 3) {
-            wx.showToast({
-              title: '优惠卷已用完',
-              icon: 'loading',
-              duration: 1500
-            })
+            util.showTotal('优惠卷已用完');
           }
         }
       })
     } else {
-      wx.showToast({
-        title: '兑换码不得为空!',
-        icon: 'loading',
-        duration: 1500
-      })
+        util.showTotal('兑换码不得为空');
     }
 
   },

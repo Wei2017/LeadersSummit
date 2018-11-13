@@ -73,6 +73,17 @@
   font-size: 28rpx;
   color: #2e2e2e;
   margin-left: 40rpx;
+  position: relative;
+}
+.item_text text.active::after{
+  content: '';
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 50%;
+  background-color: #fe3c30;
+  position: absolute;
+  right:-5rpx;
+  top: 0;
 }
 .right_icon{
   width: 14rpx;

@@ -13,7 +13,7 @@ Page({
     sex: ['请选择','男', '女','保密'], //性别选择
     sexIndex: 0,
     sexChecked: '', //用户选中的性别的值
-    position: ['请选择','HRM', 'CEO', 'COO', 'CTO', 'CFO'], //职位
+    position: ['请选择', 'CEO/创始人级别', 'VP/CHO/HRVP级别', 'HRD级别', 'HRM级别', 'HR/HRBP', '其它'], //职位
     positionIndex: 0,
     positionChecked: '', //用户选中的职位的值
     industry: ['请选择','互联网IT', '金融', '房地产/建筑', '教育培训', '传媒广告', '生活服务', '专业咨询', '贸易/零售/物流', '生产制造'], //行业选择数组
@@ -46,13 +46,28 @@ Page({
       let data = res.data.user_info[0];
       console.log(data);
       let region = data.city;
-      if (region != '--'){
-        region = region.split(',');
-      }else {
+      if(region == ''){
         region = that.data.region
+      }else if(region.indexOf('-')!= -1){
+        region = region.split('-');
+      }else if(region.indexOf(',')!= -1){
+        region = region.split(',');
+      }else{
+        region = region.split(' ');
       }
-      
-      
+
+      //循环判断绑定职位 数据展示信息
+      let positionLength = that.data.position;
+      for (let i = 0; i < positionLength.length; i++) {
+        if (positionLength[i] == data.job) {
+          that.setData({
+            positionIndex: i,
+            positionChecked: positionLength[i]
+          });
+          break;
+        }
+      }
+
 
       //循环判断绑定公司人数 数据展示信息
       let companyNumL = that.data.companyNum;
@@ -162,7 +177,7 @@ Page({
       util.showTotal('邮箱不能为空!')
     } else {
       let strRegion = that.data.region;
-          strRegion = strRegion.join(',');
+          strRegion = strRegion.join('-');
 
       let data = {
         uid:that.data.uid,
@@ -274,7 +289,7 @@ Page({
     })
   },
   _checkPhone:function(phone){
-    var ruler = /^(1([34578][0-9]))\d{8}$/;
+    var ruler = /^(1([345789][0-9]))\d{8}$/;
     return ruler.test(phone);
   }
 })
