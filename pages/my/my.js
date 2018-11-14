@@ -27,8 +27,19 @@ Page({
     util.setnavBarBjColor();
 
     userInfoModel.getUserInfo(unionid,res=>{
+      //获取用户是否完善资料 1已完善 0未完善
       let data = res.data.user_info[0];
       let isWs = data.business_card;
+      wx.setStorageSync('isWs', isWs);
+
+      //报名状态 1已报名 0未报名 
+      let signState = res.data.user_enroll_info[0];
+      let sign = signState ? '1' : '0';
+      wx.setStorageSync('sign', sign);
+      if (sign == '1') {
+        wx.setStorageSync('signName', data.truename);
+      }
+
       if (isWs == '1'){ //是否完善了名片信息
         that.setData({
           newPic: data.largeAvatar,
@@ -130,10 +141,11 @@ Page({
   onShow: function() {
     let that = this;
     let userInfo = wx.getStorageSync('user_info');
+    let isWs = wx.getStorageSync('isWs');
     wx.getSetting({
       success: function (res) {
         //如果用户授权成功并 名片已完善则显示名片的头像与昵称
-        if (res.authSetting['scope.userInfo'] && that.data.isWs == '1') {
+        if (res.authSetting['scope.userInfo'] && isWs == '1') {
           that.setData({
             pic: that.data.newPic,
             nickName: that.data.newName
