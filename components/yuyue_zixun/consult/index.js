@@ -74,15 +74,20 @@ Component({
               duration: 3000,
               success: res => {
                 if (data.big_id) {
-                  wx.reLaunch({
-                    url: '/pages/big_shot/big_shot'
+                  wx.navigateBack({
+                    delta: 1
                   })
+                  // wx.navigateTo({
+                  //   url: '/pages/big_shot/big_shot',
+                  // })
                 } else {
-                  wx.reLaunch({
-                    url: '/pages/my_yue_list/my_yue_list'
+                  wx.navigateBack({
+                    delta: 1
                   })
+                  // wx.navigateTo({
+                  //   url: '/pages/my_yue_list/my_yue_list',
+                  // })
                 }
-
               }
             })
           }

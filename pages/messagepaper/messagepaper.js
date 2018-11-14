@@ -48,9 +48,12 @@ Page({
           success: res => {
             console.log(res)
             if (res.code == 1) {
-              wx.redirectTo({
-                url: "/pages/message/message"
+              wx.navigateBack({
+                delta: 1
               })
+              // wx.redirectTo({
+              //   url: "/pages/message/message"
+              // })
             }
 
           }

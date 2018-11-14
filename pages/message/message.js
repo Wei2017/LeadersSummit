@@ -14,19 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    http.request({
-       url: "Smallwx/getCommentList", 
-       data: {
-         user_id:wx.getStorageSync('user_id')
-      },
-      success: res => {
-        console.log(res)
-        that.setData({
-          list: res.comment_list
-        })
-      }
-    })
+    
   },
   bindViewTab: function () {
     wx.navigateTo({
@@ -44,7 +32,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this;
+    http.request({
+      url: "Smallwx/getCommentList",
+      data: {
+        user_id: wx.getStorageSync('user_id')
+      },
+      success: res => {
+        console.log(res)
+        that.setData({
+          list: res.comment_list
+        })
+      }
+    })
   },
 
   /**
