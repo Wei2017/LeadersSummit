@@ -70,16 +70,21 @@ Page({
   //点击待我审核
   waitMy: function(e) {
     let that = this;
-    wx.navigateTo({
-      url: '/pages/wait_my/wait_my?user_id=' + that.data.user_id,
+    cardDetails.readInfoMsg(that.data.user_id,'',res=>{
+      wx.navigateTo({
+        url: '/pages/wait_my/wait_my?user_id=' + that.data.user_id,
+      })
     })
   },
   //点击对方审核
   waitYou: function(e) {
     let that = this;
-    wx.navigateTo({
-      url: '/pages/wait_you/wait_you?user_id=' + that.data.user_id,
+    cardDetails.readInfoMsg(that.data.user_id, '', res => {
+      wx.navigateTo({
+        url: '/pages/wait_you/wait_you?user_id=' + that.data.user_id,
+      })
     })
+    
   },
   //跳转人脉详情
   toDetail: function(e) {

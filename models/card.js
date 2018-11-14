@@ -66,7 +66,21 @@ class CardDetails extends HTTP{
         sCallback(res);
       }
     })
+  };
+
+  readInfoMsg(uid,pid,sCallback){
+    this.request({
+      url:'ApiUser/readInfoMsg',
+      data:{
+        uid:uid,
+        pid:pid
+      },
+      success:res=>{
+        sCallback(res)
+      }
+    })
   }
+  
 }
 
 export{

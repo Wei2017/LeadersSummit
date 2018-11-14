@@ -61,6 +61,7 @@ Page({
       if (!state) {
         //发起交换名片请求
         cardDetails.exchangeCards(user_id, pid, res => {
+          util.showTotal('交换名片请求已发送,等待对方同意')
           let data = {
             uid: user_id
           }
