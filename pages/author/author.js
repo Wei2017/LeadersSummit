@@ -26,6 +26,7 @@ Page({
   },
   bindGetUserInfo: function (e) {
     if (e.detail.userInfo) {
+      wx.setStorageSync('user_info', e.detail.userInfo)
       let iv = e.detail.iv,
           encryptedData = e.detail.encryptedData;
       //用户按了允许授权按钮

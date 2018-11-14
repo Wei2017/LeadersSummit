@@ -187,6 +187,7 @@ Page({
         company: that.data.userCompany,
         company_mobile: that.data.userTel,
         email_renmai:that.data.userEmail,
+        email:that.data.userEmail,
         department:'',
         job: that.data.positionChecked,
         city: strRegion,

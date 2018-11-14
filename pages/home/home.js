@@ -110,7 +110,9 @@ Page({
             let data = res.data.user_enroll_info[0];
             let sign = data ? '1' : '0';
             wx.setStorageSync('sign', sign);
-            wx.setStorageSync('signName', data.truename);
+            if(sign == '1'){
+              wx.setStorageSync('signName', data.truename);
+            }
             that.setData({
               sign: sign
             })
