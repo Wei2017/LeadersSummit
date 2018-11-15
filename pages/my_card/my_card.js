@@ -13,7 +13,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    cardState: '3', //1-6
+    cardState: '', //1-6
     cardInfo: null,
     remaiList: [], //为您推荐列表
     user_id: '',
@@ -58,17 +58,31 @@ Page({
     });
 
     if (cardState != '1') {
+      //查看人脉中某人的信息
       cardDetails.getCardDetails(pid, uid, res => {
         that.setData({
           cardInfo: res.data
         })
       });
     } else {
+      //查看自己的信息
       userInfoModel.getUserInfo(unionid, res => {
-        that.setData({
-          cardInfo: res.data.user_enroll_info[0],
-          pic: res.data.user_info[0].largeAvatar
-        })
+        let wsInfo = res.data.user_info[0];
+        let signInfo = res.data.user_enroll_info[0];
+        console.log(wsInfo,signInfo);
+        //如果用户已完善名片信息
+        if (wsInfo.business_card == '1'){
+          that.setData({
+            cardInfo: res.data.user_info[0]
+          })
+        }else{
+          if (signInfo){ //如果用户已报名 但未完善名片信息
+            that.setData({
+              cardInfo: res.data.user_enroll_info[0],
+              pic: wsInfo.largeAvatar
+            })
+          }
+        }
       })
     }
 
