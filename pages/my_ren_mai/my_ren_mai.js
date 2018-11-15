@@ -70,7 +70,7 @@ Page({
   //点击待我审核
   waitMy: function(e) {
     let that = this;
-    cardDetails.readInfoMsg(that.data.user_id,'',res=>{
+    cardDetails.readInfoMsg(that.data.user_id,'other',res=>{
       wx.navigateTo({
         url: '/pages/wait_my/wait_my?user_id=' + that.data.user_id,
       })
@@ -79,7 +79,7 @@ Page({
   //点击对方审核
   waitYou: function(e) {
     let that = this;
-    cardDetails.readInfoMsg(that.data.user_id, '', res => {
+    cardDetails.readInfoMsg(that.data.user_id, 'mine', res => {
       wx.navigateTo({
         url: '/pages/wait_you/wait_you?user_id=' + that.data.user_id,
       })
@@ -94,6 +94,7 @@ Page({
       url: `/pages/my_card/my_card?bid=${id}&state=3&name=${name}`, //传入名片id  state为3 已交换显示为您推荐列表
     })
   },
+  //人脉搜索
   searchRenmai:function(e){
     let that = this;
     let searchVal = e.detail.val;
@@ -108,7 +109,6 @@ Page({
       cardDetails.getHumanVeinList(data, res => {
         that.setData({
           renmaiList: res.data,
-          searchVal: ''
         })
       })
     }

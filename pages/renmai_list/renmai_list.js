@@ -131,7 +131,6 @@ Page({
         }
         that.setData({
           remaiList: newRmArr,
-          searchVal: ''
         })
       })
     }

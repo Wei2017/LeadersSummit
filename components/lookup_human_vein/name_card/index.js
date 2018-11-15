@@ -21,6 +21,7 @@ Component({
    */
   methods: {
     editInfo(){
+      wx.setStorageSync('edit', '1')
       wx.navigateTo({
         url: '/pages/edit_info/edit_info',
       })

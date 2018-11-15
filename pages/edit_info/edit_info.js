@@ -100,7 +100,7 @@ Page({
         that.setData({
           uid: wx.getStorageSync('user_id'),
           userName: data.truename,
-          userPhone: data.mobile_renmai ? data.mobile_renmai : data.mobile,
+          userPhone: data.mobile ? data.mobile : data.mobile_renmai,
           userCompany: data.company,
           userTel: data.company_mobile,
           userEmail: data.email_renmai ? data.email_renmai : data.email,

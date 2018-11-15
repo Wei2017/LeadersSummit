@@ -22,7 +22,7 @@
   <view class='basic_info'>
     <view class='user_phone'>
       <text class='title'>手机</text>
-      <text class='phone_num'>{{userInfo.mobile_renmai?userInfo.mobile_renmai:userInfo.mobile}}</text>
+      <text class='phone_num'>{{userInfo.mobile?userInfo.mobile:userInfo.mobile_renmai}}</text>
     </view>
     <view class='company'>
       <text class='title'>公司</text>

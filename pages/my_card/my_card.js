@@ -1,4 +1,6 @@
-import {CardDetails } from '../../models/card.js';
+import {
+  CardDetails
+} from '../../models/card.js';
 const cardDetails = new CardDetails();
 import {
   UserInfoModel
@@ -19,7 +21,7 @@ Page({
     user_id: '',
     pid: '',
     isWs: '',
-    pic:''
+    pic: ''
   },
 
   /**
@@ -43,13 +45,12 @@ Page({
       pid: pid
     })
     //动态设置页面title信息
-    switch (cardState) {
-      case '1':
-        title = '我的名片';
-        break;
-      default :
-        title = name + '的名片';
+    if (cardState == '1') {
+      title = '我的名片';
+    } else {
+      title = name + '的名片';
     }
+
     //设置头部背景颜色和字体颜色
     util.setnavBarBjColor();
     //动态设置当前页面标题
@@ -65,25 +66,7 @@ Page({
         })
       });
     } else {
-      //查看自己的信息
-      userInfoModel.getUserInfo(unionid, res => {
-        let wsInfo = res.data.user_info[0];
-        let signInfo = res.data.user_enroll_info[0];
-        console.log(wsInfo,signInfo);
-        //如果用户已完善名片信息
-        if (wsInfo.business_card == '1'){
-          that.setData({
-            cardInfo: res.data.user_info[0]
-          })
-        }else{
-          if (signInfo){ //如果用户已报名 但未完善名片信息
-            that.setData({
-              cardInfo: res.data.user_enroll_info[0],
-              pic: wsInfo.largeAvatar
-            })
-          }
-        }
-      })
+      that._getMyInfo();
     }
 
 
@@ -96,6 +79,30 @@ Page({
       }
       that._getRecommendList(data, pid)
     }
+  },
+  //获取当前用户自己的信息
+  _getMyInfo() {
+    let that = this;
+    let unionid = wx.getStorageSync('unionid');
+    //查看自己的信息
+    userInfoModel.getUserInfo(unionid, res => {
+      let wsInfo = res.data.user_info[0];
+      let signInfo = res.data.user_enroll_info[0];
+      console.log(wsInfo, signInfo);
+      //如果用户已完善名片信息
+      if (wsInfo.business_card == '1') {
+        that.setData({
+          cardInfo: res.data.user_info[0]
+        })
+      } else {
+        if (signInfo) { //如果用户已报名 但未完善名片信息
+          that.setData({
+            cardInfo: res.data.user_enroll_info[0],
+            pic: wsInfo.largeAvatar
+          })
+        }
+      }
+    })
   },
   //获取推荐列表
   _getRecommendList: function(uid, bid) {
@@ -248,7 +255,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    let edit = wx.getStorageSync('edit');
+    if (this.data.cardState == '1' && edit == '1') {
+      this._getMyInfo();
+      wx.removeStorageSync('edit');
+    }
   },
 
   /**
@@ -284,18 +295,5 @@ Page({
    */
   onShareAppMessage: function() {
 
-  },
-
-  jumpSq: function() {
-    let state = false;
-    wx.getSetting({
-      success: function(res) {
-        if (!res.authSetting['scope.userInfo']) {
-          wx.navigateTo({
-            url: '/pages/author/author',
-          })
-        }
-      }
-    })
   }
 })
