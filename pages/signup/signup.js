@@ -80,6 +80,7 @@ Page({
       util.showTotal('邮箱格式有误');
     } else {
       var that = this;
+      wx.setStorageSync('signName', e.detail.value.truename);
       http.request({
         url: "Smallwx/enrollMeeting",
         data: datas,

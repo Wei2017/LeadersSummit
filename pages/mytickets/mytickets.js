@@ -30,7 +30,7 @@ Page({
         console.log(res);
         that._getImageInfo(res.userInfo.avatarUrl); //  调取图片处理方法
         that.setData({
-          nickName: wx.getStorageSync('signName')
+          nickName: wx.getStorageSync('signName') ? wx.getStorageSync('signName') : res.userInfo.nickName
         });
       }
     });
