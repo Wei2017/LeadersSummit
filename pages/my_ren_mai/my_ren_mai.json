@@ -1,4 +1,6 @@
 {
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh": true,
   "navigationBarTitleText": "我的人脉",
   "usingComponents":{
     "r-search": "/components/lookup_human_vein/search/index",

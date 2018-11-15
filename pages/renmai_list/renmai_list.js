@@ -142,11 +142,7 @@ Page({
   onReady: function() {
 
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
+  _getRenMaiList(state){
     let that = this;
     //获取人脉列表
     let data = {
@@ -155,8 +151,19 @@ Page({
     cardDetails.getHumanVeinList(data, res => {
       that.setData({
         remaiList: res.data
-      })
+      });
+
+      if(state){
+        // 停止下拉动作
+        wx.stopPullDownRefresh();
+      }
     })
+  },
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function() {
+    this._getRenMaiList(false)
   },
 
   /**
@@ -177,18 +184,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-    let that = this;
-    //获取人脉列表
-    let data = {
-      uid: wx.getStorageSync('user_id')
-    }
-    cardDetails.getHumanVeinList(data, res => {
-      that.setData({
-        remaiList: res.data
-      });
-      // 停止下拉动作
-      wx.stopPullDownRefresh();
-    })
+    this._getRenMaiList(true)
   },
 
   /**

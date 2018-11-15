@@ -120,18 +120,14 @@ Page({
   onReady: function() {
 
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
+  _getRenMaiList(state){
     let that = this;
     let data = {
       uid: wx.getStorageSync('user_id'),
       state: '3' //我同意的人脉列表
     };
     cardDetails.getHumanVeinList(data, res => {
-      if(res.data.length != 0){
+      if (res.data.length != 0) {
         wx.setNavigationBarTitle({
           title: '我的人脉（' + res.data.length + '）'
         });
@@ -139,7 +135,17 @@ Page({
       that.setData({
         renmaiList: res.data
       })
+      if (state){
+        // 停止下拉动作
+        wx.stopPullDownRefresh();
+      }
     })
+  },
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function() {
+    this._getRenMaiList(false);
   },
 
   /**
@@ -160,7 +166,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    this._getRenMaiList(true);
+      
   },
 
   /**
