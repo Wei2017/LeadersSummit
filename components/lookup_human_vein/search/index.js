@@ -33,6 +33,13 @@ Component({
     search(){
       let searchVal = this.data.searchVal;
       this.triggerEvent('search', { val: searchVal})
+    },
+
+    clearVal(){
+      this.setData({
+        searchVal:''
+      })
+      this.triggerEvent('clear',{})
     }
   }
 })

@@ -111,6 +111,7 @@ Page({
   },
   //搜索人脉
   searchRenmai: function(e) {
+    wx.setStorageSync('search', '1'); //点击软键盘搜索||回车键存search状态 证明已搜索
     let that = this;
     let searchVal = e.detail.val;
     if (searchVal == '') {
@@ -133,6 +134,13 @@ Page({
           remaiList: newRmArr,
         })
       })
+    }
+  },
+  // 清除搜索信息 重新渲染数据
+  clearSearchInfo:function(e){
+    let search = wx.getStorageSync('search');//如果用户已搜索 1
+    if (search == '1'){
+      this._getRenMaiList(false)
     }
   },
   /**
