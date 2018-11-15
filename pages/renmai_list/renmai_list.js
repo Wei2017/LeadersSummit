@@ -116,8 +116,17 @@ Page({
         search_content: searchVal
       }
       cardDetails.getHumanVeinList(data, res => {
+        let data = res.data;
+        let uid = that.data.user_id;
+        let newRmArr = [];
+        //搜索列表不展示当前搜索用户信息
+        for(let i = 0;i<data.length;i++){
+          if (uid != data[i].uid){
+            newRmArr.push(data[i])
+          }
+        }
         that.setData({
-          remaiList: res.data,
+          remaiList: newRmArr,
           searchVal: ''
         })
       })

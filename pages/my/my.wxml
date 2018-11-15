@@ -3,9 +3,9 @@
     <image class='bj' src='/images/my/bj.png'></image>
     <image class='pic' src='{{pic}}'></image>
   </view>
-  <view class='name'>
+  <view class='name' bindtap='editInfo'>
     <text>{{nickName}}</text>
-    <image class='edit' src='/images/my/edit.png' bindtap='editInfo'></image>
+    <image class='edit' src='/images/my/edit.png'></image>
   </view>
   <view class='section'>
     <view class='list_item' bindtap='toTicket'>
@@ -33,6 +33,13 @@
       <view class='item_text'>
         <image class='lyb' src='/images/my/liuyanban@2x.png'></image>
         <text>留言板</text>
+      </view>
+      <image class='right_icon' src='/images/my/right.png'></image>
+    </view>
+    <view class='list_item' bindtap='toWap'>
+      <view class='item_text'>
+        <image class='lyb' src='/images/my/liuyanban@2x.png'></image>
+        <text>跳转wap</text>
       </view>
       <image class='right_icon' src='/images/my/right.png'></image>
     </view>

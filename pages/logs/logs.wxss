@@ -3,9 +3,17 @@
   flex-direction: column;
   padding: 40rpx;
 }
+
 .log-item {
   margin: 10rpx;
 }
-page{
+
+page {
   background-color: #fff;
+}
+
+.toRuthout {
+  font-size: 36rpx;
+  color: #fe3c30;
+  text-align: center;
 }

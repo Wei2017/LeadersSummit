@@ -5,7 +5,8 @@ Component({
    */
   properties: {
     userInfo:Object,
-    state:String
+    state:String,
+    pic:String
   },
 
   /**

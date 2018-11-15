@@ -11,10 +11,10 @@ Page({
   data: {
     pic: '../../images/logo@3x.png',
     nickName: '请授权',
-    isWs: '',
+    isWs: '0',
     rmState: false,
-    newName:'',
-    newPic:''
+    newName: '',
+    newPic: ''
   },
 
   /**
@@ -22,53 +22,21 @@ Page({
    */
   onLoad: function(options) {
     let that = this;
-    let unionid = wx.getStorageSync('unionid');
     //设置头部导航栏背景颜色
     util.setnavBarBjColor();
 
-    userInfoModel.getUserInfo(unionid,res=>{
-      //获取用户是否完善资料 1已完善 0未完善
-      let data = res.data.user_info[0];
-      let isWs = data.business_card;
-      wx.setStorageSync('isWs', isWs);
-
-      //报名状态 1已报名 0未报名 
-      let signState = res.data.user_enroll_info[0];
-      let sign = signState ? '1' : '0';
-      wx.setStorageSync('sign', sign);
-      if (sign == '1') {
-        wx.setStorageSync('signName', data.truename);
-      }
-
-      if (isWs == '1'){ //是否完善了名片信息
-        that.setData({
-          newPic: data.largeAvatar,
-          newName: data.truename,
-          isWs: isWs
-        })
-      }else{//未完善名片信息
-        that.setData({
-          isWs: isWs
-        })
-        let userInfo = wx.getStorageSync('user_info');
-        if (userInfo) {
-          that.setData({
-            pic: userInfo.avatarUrl,
-            nickName: userInfo.nickName
-          })
-        }
-      }
-    })
-
     let uid = wx.getStorageSync('user_id');
     if (uid) {
+      //显示我的人脉最新消息红点状态
       userInfoModel.getNewRenMai(uid, res => {
         if (res.status == 1) {
           that.setData({
             rmState: true
           })
         }
-      })
+      });
+
+      that._showUserInfo()
     }
   },
   editInfo: function() {
@@ -117,6 +85,14 @@ Page({
       })
     }
   },
+  //跳转wap端
+  toWap: function() {
+    if (this._authorize()) {
+      wx.navigateTo({
+        url: '/pages/logs/logs',
+      })
+    }
+  },
   //私有方法 判断是否授权
   _authorize: function() {
     let user_id = wx.getStorageSync('user_id');
@@ -126,6 +102,37 @@ Page({
       })
     } else {
       return true;
+    }
+  },
+  //显示用户头像和昵称信息
+  _showUserInfo() {
+    let that = this;
+    let unionid = wx.getStorageSync('unionid');
+    let userInfo = wx.getStorageSync('user_info'); //微信头像 昵称
+    console.log(that.data.pic,that.data.newPic)
+    if (that.data.pic != that.data.newPic) {
+      //显示用户头像
+      userInfoModel.getUserInfo(unionid, res => {
+        let signInfo = res.data.user_enroll_info[0]; //报名信息
+        let cardInfo = res.data.user_info[0]; //名片信息
+        if (cardInfo.business_card == '1') { //如果用户已完善名片信息
+          let pic = cardInfo.largeAvatar.split('?'); //去除后台返回头像时间戳后缀
+          that.setData({
+            pic: pic[0],
+            nickName: cardInfo.truename,
+            isWs: cardInfo.business_card,
+            newName: cardInfo.truename,
+            newPic: pic[0]
+          })
+        } else {
+          that.setData({
+            pic: userInfo.avatarUrl,
+            nickName: userInfo.nickName,
+            newName: userInfo.nickName,
+            newPic: userInfo.avatarUrl
+          })
+        }
+      })
     }
   },
   /**
@@ -140,21 +147,10 @@ Page({
    */
   onShow: function() {
     let that = this;
-    let userInfo = wx.getStorageSync('user_info');
-    let isWs = wx.getStorageSync('isWs');
     wx.getSetting({
-      success: function (res) {
-        //如果用户授权成功并 名片已完善则显示名片的头像与昵称
-        if (res.authSetting['scope.userInfo'] && isWs == '1') {
-          that.setData({
-            pic: that.data.newPic,
-            nickName: that.data.newName
-          })
-        } else if (userInfo) { //否则 显示微信的头像和昵称
-          that.setData({
-            pic: userInfo.avatarUrl,
-            nickName: userInfo.nickName,
-          })
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          that._showUserInfo();
         }
       }
     })

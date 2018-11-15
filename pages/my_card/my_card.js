@@ -18,7 +18,8 @@ Page({
     remaiList: [], //为您推荐列表
     user_id: '',
     pid: '',
-    isWs: ''
+    isWs: '',
+    pic:''
   },
 
   /**
@@ -65,7 +66,8 @@ Page({
     } else {
       userInfoModel.getUserInfo(unionid, res => {
         that.setData({
-          cardInfo: res.data.user_info[0]
+          cardInfo: res.data.user_enroll_info[0],
+          pic: res.data.user_info[0].largeAvatar
         })
       })
     }

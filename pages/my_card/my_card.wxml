@@ -1,5 +1,5 @@
 <view class='container'>
-  <r-ncard userInfo="{{cardInfo}}" state="{{cardState}}" />
+  <r-ncard userInfo="{{cardInfo}}" state="{{cardState}}" pic="{{pic}}" />
 
   <block wx:if="{{cardState != '3'}}">
     <view class='btn_view'>

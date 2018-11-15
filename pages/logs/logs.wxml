@@ -1,5 +1,5 @@
-<r-zxhead />
-<r-consult />
+<!-- <r-zxhead />
+<r-consult /> -->
 <!--<r-qrcode /> -->
  <!-- <r-search /> -->
 <!--<r-cover picSrc userName company position exchangeState /> -->
@@ -8,3 +8,4 @@
 <!-- <r-bigshot /> -->
 <!-- <r-myyuyue /> -->
 <!-- <r-zxhead /> -->
+ <web-view src="https://wap.ruthout.com" class='toRuthout'></web-view>

@@ -116,6 +116,13 @@ Page({
             that.setData({
               sign: sign
             })
+
+            let wsInfo = res.data.user_info[0];
+            let isWs = wsInfo.business_card;
+            if(isWs == '1'){
+              wx.setStorageSync('pic', wsInfo.largeAvatar);
+              wx.setStorageSync('name', wsInfo.truename);
+            }
           })
         }
       }
