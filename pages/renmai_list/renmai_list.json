@@ -1,5 +1,7 @@
 {
+  "backgroundTextStyle":"dark",
   "navigationBarTitleText": "HR人脉",
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "r-search": "/components/lookup_human_vein/search/index",
     "r-cover": "/components/lookup_human_vein/card_cover/index",

@@ -1,4 +1,6 @@
 {
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh": true,
   "navigationBarTitleText":"约大咖",
   "usingComponents":{
     "r-bigshot": "/components/bigshot/index",

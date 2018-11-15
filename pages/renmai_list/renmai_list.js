@@ -1,6 +1,10 @@
-import {CardDetails } from '../../models/card.js';
+import {
+  CardDetails
+} from '../../models/card.js';
 const cardDetails = new CardDetails();
-import {UserInfoModel } from '../../models/user-info.js';
+import {
+  UserInfoModel
+} from '../../models/user-info.js';
 const userInfoModel = new UserInfoModel();
 const util = require('../../utils/util.js');
 
@@ -15,7 +19,7 @@ Page({
     isWanShan: '', //0未完善 跳转编辑资料页面 1已完善触发交换事件
     user_id: '',
     unionid: '',
-    searchVal:''
+    searchVal: ''
   },
 
   /**
@@ -29,7 +33,7 @@ Page({
       user_id: user_id,
       unionid: unionid
     })
-    
+
 
     //获取完善资料状态
     userInfoModel.getUserInfo(unionid, res => {
@@ -106,12 +110,12 @@ Page({
     }
   },
   //搜索人脉
-  searchRenmai:function(e){
+  searchRenmai: function(e) {
     let that = this;
     let searchVal = e.detail.val;
-    if(searchVal == ''){
+    if (searchVal == '') {
       util.showTotal('请输入搜索条件!')
-    }else{
+    } else {
       let data = {
         search_content: searchVal
       }
@@ -120,8 +124,8 @@ Page({
         let uid = that.data.user_id;
         let newRmArr = [];
         //搜索列表不展示当前搜索用户信息
-        for(let i = 0;i<data.length;i++){
-          if (uid != data[i].uid){
+        for (let i = 0; i < data.length; i++) {
+          if (uid != data[i].uid) {
             newRmArr.push(data[i])
           }
         }
@@ -149,7 +153,6 @@ Page({
       uid: wx.getStorageSync('user_id')
     }
     cardDetails.getHumanVeinList(data, res => {
-      console.log(res.data)
       that.setData({
         remaiList: res.data
       })
@@ -174,7 +177,18 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    let that = this;
+    //获取人脉列表
+    let data = {
+      uid: wx.getStorageSync('user_id')
+    }
+    cardDetails.getHumanVeinList(data, res => {
+      that.setData({
+        remaiList: res.data
+      });
+      // 停止下拉动作
+      wx.stopPullDownRefresh();
+    })
   },
 
   /**

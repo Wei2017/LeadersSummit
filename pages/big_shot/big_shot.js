@@ -59,7 +59,17 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    let user_id = wx.getStorageSync('user_id');
+    console.log(user_id);
+    bigShotModel.getBigShotList({ user_id: user_id }, res => {
+      if (res.code == 1) {
+        this.setData({
+          bigShotList: res.big_shot_list
+        });
+        // 停止下拉动作
+        wx.stopPullDownRefresh();
+      }
+    })
   },
 
   /**
