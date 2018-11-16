@@ -1,5 +1,5 @@
 page{
-  background-color: #eaeaea;
+  background-color: #fff;
 }
 .btn_view{
   width: 100%;
@@ -47,7 +47,7 @@ page{
 .recommend{
   padding: 38rpx 24rpx;
   background-color: #fff;
-  margin-top: 20rpx;
+  border-top:20rpx solid #eaeaea;
 }
 .recommend .title{
   font-size: 30rpx;

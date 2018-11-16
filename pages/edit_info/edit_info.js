@@ -46,7 +46,8 @@ Page({
     //获取用户信息
     userInfoModel.getUserInfo(unionid, res => {
       //用户信息
-      let data = res.data.user_info[0];
+      let data = res.data.user_info[0];      
+
       //用户报名信息
       let signInfo = res.data.user_enroll_info[0];
       //如果用户完善了名片信息 展示完善的信息
@@ -122,6 +123,13 @@ Page({
             userTel: signInfo.company_mobile,
             userEmail: signInfo.email,
             user_pic: data.largeAvatar,
+          })
+        }else{
+         //未报名和未完善名片
+         let userInfo = wx.getStorageSync('user_info');
+          that.setData({
+            uid: wx.getStorageSync('user_id'),
+            user_pic: userInfo.avatarUrl
           })
         }
       }

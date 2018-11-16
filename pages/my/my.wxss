@@ -25,8 +25,8 @@
 .name{
   display: flex;
   flex-direction: row;
-  align-items: baseline;
-  margin-top: 14rpx;
+  align-items: center;
+  margin: 14rpx 0 0 24rpx;
 }
 .name text{
   font-size: 38rpx;
@@ -68,6 +68,11 @@
 }
 .lyb{
   height: 36rpx;
+}
+.item_text{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 .item_text text{
   font-size: 28rpx;

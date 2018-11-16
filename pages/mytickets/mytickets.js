@@ -150,7 +150,7 @@ Page({
       maskHidden: false
     });
     wx.showToast({
-      title: '图片生成中...',
+      title: '门票生成中...',
       icon: 'loading',
       duration: 1000
     });

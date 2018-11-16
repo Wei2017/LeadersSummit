@@ -53,13 +53,14 @@ Page({
   },
   // 报名提交
   formSubmit: function (e) {
+    let userInfo = wx.getStorageSync('user_info');
     console.log(e.detail)
     const datas = e.detail.value;
     datas.form_id = e.detail.formId;
     datas.coupon = this.data.coupon;
-    datas.nickname = app.globalData.userInfo.nickName; //昵称
-    datas.user_pic = app.globalData.userInfo.avatarUrl; //头像
-    datas.openid = app.globalData.data.openid;
+    datas.nickname = userInfo.nickName; //昵称
+    datas.user_pic = userInfo.avatarUrl; //头像
+    datas.openid = userInfo.openid;
     datas.unionid = wx.getStorageSync('unionid');
     console.log(datas);
     if (e.detail.value.truename == "") {
@@ -90,7 +91,7 @@ Page({
             http.request({
               url: "Smallwx/unifiedOrder3",
               data: {
-                openid: app.globalData.data.openid,
+                openid: userInfo.openid,
                 out_trade_no: that.data.trade_no,
                 coupon: that.data.coupon,
                 meeting_id: that.data.meeting_id

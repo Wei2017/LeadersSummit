@@ -22,6 +22,7 @@ App({
           success:res=>{
             this.globalData.data = res.data;
             wx.setStorageSync('unionid', res.data.unionid);
+            wx.setStorageSync('openid', res.data.openid);
           }
         })
         

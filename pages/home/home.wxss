@@ -26,17 +26,29 @@
   right: 0;
   padding:0 94rpx;
 }
-.tits{
+.tabBox{
+  position: fixed;
+  top: 0;
+  height: 80rpx;
+  line-height: 80rpx;
   width: 100%;
+  background-color:rgba(0,0,0,.5);
+  z-index: 99;
+}
+.tits{
   display: flex;
   justify-content: space-between;
-  margin-top: 20rpx;
+}
+.tits text:first-child{
+  margin-left: 94rpx;
+}
+.tits text:last-child{
+  margin-right: 94rpx;
 }
 .tit{
   font-size: 30rpx;
   padding: 0 10rpx;
   color: #ffffff;
-  line-height: 48rpx;
 }
 .active{
  color: #ecb700;
@@ -44,6 +56,9 @@
 }
 .view .actives,.back .actives{
   display: block;
+}
+.back,.view{
+  margin-top: 80rpx;
 }
 .img{
   display: none;
