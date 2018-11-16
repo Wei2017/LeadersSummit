@@ -20,7 +20,8 @@ Page({
     small_schedule:"",
     modelDetails: null,
     model_hidden: false,
-    sign:0
+    sign:0,
+    guestBjHeight:''
 
   },
   tab: function (e) {
@@ -63,19 +64,54 @@ Page({
   },
   showModel: function (e) {
     let that = this;
-    let bid = e.detail.bid;
-    bigShotModel.getBshotOrGuestDetails(that.data.user_id, bid, res => {
+    let guest_id = e.detail.guest_id;
+    let user_id = wx.getStorageSync('user_id');
+    user_id = user_id ? user_id:''
+    bigShotModel.getGuestInfo(guest_id, user_id, res => {
+      console.log(res);
       that.setData({
         model_hidden: true,
-        modelDetails: res.big_shot_detail
+        modelDetails: res.guest_detail
       })
     })
+  },
+  //跳转咨询详情
+  toConsult:function(e){
+    console.log(e);
+    let big_id = e.detail.big_id;
+    //判断用户是否授权
+    wx.getSetting({
+      success: function (res) {
+        if (!res.authSetting['scope.userInfo'] || wx.getStorageSync('user_id') == '') {
+          wx.navigateTo({
+            url: '/pages/author/author',
+          })
+        } else {
+          wx.navigateTo({
+            url: '/pages/consult_index/consult_index?bid=&guest_id=' + big_id,
+          })
+        }
+      }
+    })
+    
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   
+    let that = this;
+    wx.getSystemInfo({
+      //获取系统信息成功，将系统窗口的宽高赋给页面的宽高  
+      success: function (res) {
+        let width = res.windowWidth
+        let height = res.windowHeight
+        let radius = 105 / 602 * height
+        console.log(res,width,height,radius);
+        that.setData({
+          guestBjHeight: height
+        })
+      }
+    })
   },
 
   /**

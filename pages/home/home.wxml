@@ -4,7 +4,7 @@
 <view class='back'>
   <image src='{{small_outline}}' mode='widthFix' class='img {{tabArr.curBdIndex=="0"? "actives" : ""}}'></image>
   <image src='{{small_schedule}}' mode='widthFix' class='img {{tabArr.curBdIndex=="1"? "actives" : ""}}'></image>
-  <image src='../../images/guest_bj.png' mode='widthFix'  class='img {{tabArr.curBdIndex=="2"? "actives" : ""}}'></image>
+  <image src='../../images/guest_bj.png' style='height:{{guestBjHeight}}px;'  class='img {{tabArr.curBdIndex=="2"? "actives" : ""}}'></image>
 </view>
 <view class='tabBox'>
 <view class='tits'>
@@ -26,4 +26,4 @@
 
 </view>
 
-<r-guest modelDetails="{{modelDetails}}" modelHidden="{{model_hidden}}" />
+<r-guest modelDetails="{{modelDetails}}" modelHidden="{{model_hidden}}" bindtoConsult="toConsult" />

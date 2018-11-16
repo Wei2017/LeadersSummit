@@ -8,7 +8,8 @@ Page({
    */
   data: {
     bid:'',
-    bigShot:null
+    bigShot:null,
+    guest_id:''
   },
 
   /**
@@ -18,11 +19,12 @@ Page({
     let that = this;
     util.setnavBarBjColor();
     this.setData({
-      bid: options.bid
+      bid: options.bid,
+      guest_id: options.guest_id
     })
 
     //获取大咖信息
-    consultModal.getBigShotInfo(options.bid,res=>{
+    consultModal.getBigShotInfo(options.bid ? options.bid : options.guest_id,res=>{
       that.setData({
         bigShot: res.big_shot_detail
       })

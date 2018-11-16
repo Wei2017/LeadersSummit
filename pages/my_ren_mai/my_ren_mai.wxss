@@ -4,6 +4,16 @@ page{
 .container{
   padding-bottom: 100rpx;
 }
+.header_fixed{
+  position: fixed;
+  top: 0;
+  height: 104rpx;
+  width: 100%;
+  z-index: 3;
+}
+.renmai_list{
+  margin-top: 124rpx;
+}
 .fixed_btn{
   position: fixed;
   bottom: 0;

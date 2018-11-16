@@ -38,6 +38,19 @@ class BigshotModel extends HTTP{
       }
     })
   };
+
+  getGuestInfo(guestId,uid,sCallback){
+    this.request({
+      url: 'Smallwx/guestDetail',
+      data: {
+        user_id: uid,
+        guest_id: guestId
+      },
+      success: res => {
+        sCallback(res)
+      }
+    })
+  }
 }
 
 export{

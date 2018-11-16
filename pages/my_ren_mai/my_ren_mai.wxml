@@ -1,14 +1,19 @@
 <view class='container'>
-  <r-search bindtoCard="toCard" bindsearch="searchRenmai" searchVal="{{searchVal}}" />
-  <block wx:for="{{renmaiList}}" wx:key="">
-    <r-myhvein binddetail="toDetail" renmaiList="{{item}}" state="1" />
-  </block>
+  <view class='header_fixed'>
+    <r-search bindtoCard="toCard" bindsearch="searchRenmai" searchVal="{{searchVal}}" />
+  </view>
+  <view class='renmai_list'>
+    <block wx:for="{{renmaiList}}" wx:key="">
+      <r-myhvein binddetail="toDetail" renmaiList="{{item}}" state="1" />
+    </block>
+  </view>
+
   <view class='fixed_btn'>
-      <view class='wait_my' bindtap='waitMy'>
-        <text class='{{waitMe?"active":""}}'>待我审核</text>
-      </view>
-      <view class='wait_you' bindtap='waitYou'>
-        <text class='{{waitYou?"active":""}}'>对方审核</text>
-      </view>
+    <view class='wait_my' bindtap='waitMy'>
+      <text class='{{waitMe?"active":""}}'>待我审核</text>
+    </view>
+    <view class='wait_you' bindtap='waitYou'>
+      <text class='{{waitYou?"active":""}}'>对方审核</text>
+    </view>
   </view>
 </view>

@@ -68,12 +68,12 @@ Page({
   createNewImg: function() {
     var that = this;
     var context = wx.createCanvasContext('mycanvas');
-    context.setFillStyle("#000")
-    context.fillRect(0, 0, 375, 1000)
+    // context.setFillStyle("#000")
+    // context.fillRect(0, 0, 375, 1000)
     var path = that.data.bjImgSrc;
     //将模板图片绘制到canvas,在开发工具中drawImage()函数有问题，不显示图片
     //不知道是什么原因，手机环境能正常显示
-    context.drawImage(path, 0, 0, 375, 580);
+    context.drawImage(path, 0, 0, 375, 586);
     var path1 = that.data.pic;
     console.log(path1, "path1")
     //将模板图片绘制到canvas,在开发工具中drawImage()函数有问题，不显示图片

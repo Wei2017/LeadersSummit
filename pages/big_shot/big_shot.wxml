@@ -5,5 +5,5 @@
   <view class='to_consult' bindtap='toConsult'>
     帮我找大咖，请点击此处
   </view>
-  <r-guest modelDetails="{{modelDetails}}" modelHidden="{{model_hidden}}" />
+  <r-guest modelDetails="{{modelDetails}}" modelHidden="{{model_hidden}}" bindtoConsult="gotoConsult" />
 </view>

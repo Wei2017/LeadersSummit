@@ -21,8 +21,8 @@ Component({
     mess(){
       console.log(this.data.guestObj);
       if (wx.getStorageSync('user_id') && wx.getStorageSync('user_id') != "") {
-        let big_id = this.data.guestObj.big_id;
-        this.triggerEvent('showModel', { bid: big_id });
+        let id = this.data.guestObj.id;
+        this.triggerEvent('showModel', { guest_id: id });
       }else{
         wx.navigateTo({
           url: "/pages/author/author"

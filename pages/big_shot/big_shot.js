@@ -109,5 +109,23 @@ Page({
         }
       }
     })
+  },
+  gotoConsult:function(e){
+
+    let big_id = e.detail.guest_id;
+    //判断用户是否授权
+    wx.getSetting({
+      success: function (res) {
+        if (!res.authSetting['scope.userInfo'] || wx.getStorageSync('user_id') == '') {
+          wx.navigateTo({
+            url: '/pages/author/author',
+          })
+        } else {
+          wx.navigateTo({
+            url: '/pages/consult_index/consult_index?guest_id=&bid=' + big_id,
+          })
+        }
+      }
+    })
   }
 })

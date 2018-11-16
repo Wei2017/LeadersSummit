@@ -7,10 +7,11 @@
     <view class='lijob'>{{guestObj.title}}</view>
   </view> -->
 
-  <view class='pic'>
+  <view class='pic' bindtap='mess'>
     <image class='{{guestObj.inquiry == 1 && guestObj.make_state==1?"gray":"yellow"}}' src='{{guestObj.avatar}}'></image>
     <text class='consult_yes' wx:if="{{guestObj.inquiry == 1 && guestObj.make_state==1}}">已约</text>
-    <text class='consult_not' wx:else="{{guestObj.inquiry == 1 && guestObj.make_state==0}}" bindtap='mess'>咨询</text>
+    <text class='consult_not' wx:elif="{{guestObj.inquiry == 1 && guestObj.make_state==0}}">咨询</text>
+    <text class='' wx:else=""></text>
   </view>
   <view class='guest_info'>
     <text class='guest_name'>{{guestObj.name}}</text>

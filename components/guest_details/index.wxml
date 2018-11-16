@@ -12,9 +12,9 @@
       </view>
       <view class='introduce'>
         简介：
-        <text class='introduce_text'>{{modelDetails.introduction}}</text>
+        <text class='introduce_text'>{{modelDetails.introduction?modelDetails.introduction:modelDetails.about}}</text>
       </view>
-      <view class='consultation_btn' bindtap='makeConsult' wx:if="{{modelDetails.make_state != '1'}}">预约咨询</view>    
+      <view class='consultation_btn' bindtap='makeConsult' wx:if="{{modelDetails.make_state != '1' && modelDetails.inquiry == '1'}}">预约咨询</view>    
     </view>
   </view>
 </view>

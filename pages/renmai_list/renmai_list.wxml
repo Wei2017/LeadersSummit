@@ -1,9 +1,14 @@
 <view class='container'>
-  <r-search bindtoCard="toCard" bindsearch="searchRenmai" bindclear="clearSearchInfo" searchVal="{{searchVal}}" />
-  <block wx:for="{{remaiList}}" wx:key="key">
-  <!-- 不显示已交换成功的名片信息 -->
-    <block wx:if="{{item.state !='3'}}">
-      <r-cover binddetail="toDetails" bindperfect="judgeJump" cardList="{{item}}" isWsCard="{{isWanShan}}" />
+  <view class='header_fixed'>
+    <r-search bindtoCard="toCard" bindsearch="searchRenmai" bindclear="clearSearchInfo" searchVal="{{searchVal}}" />
+  </view>
+  <view class='renmai_list'>
+    <block wx:for="{{remaiList}}" wx:key="key">
+      <!-- 不显示已交换成功的名片信息 -->
+      <block wx:if="{{item.state !='3'}}">
+        <r-cover binddetail="toDetails" bindperfect="judgeJump" cardList="{{item}}" isWsCard="{{isWanShan}}" />
+      </block>
     </block>
-  </block>
+  </view>
+
 </view>

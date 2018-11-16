@@ -8,7 +8,7 @@
     </view>
    <view hidden="{{maskHidden == false}}" class="mask"></view> 
   <view class="canvas-box">
-      <canvas  style="width:375px;height:1150rpx;position:fixed;top:9999px" canvas-id="mycanvas" id='mycanvas'/>
+      <canvas mode="widthFix" style="width:375px;height:1150rpx;position:fixed;top:9999px;" canvas-id="mycanvas" id='mycanvas'/>
   </view>  
 </view>
 <view class='tips'>您的名片已生成，可去“我的人脉”右上角查看</view>
