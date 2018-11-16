@@ -47,7 +47,8 @@ page{
 .recommend{
   padding: 38rpx 24rpx;
   background-color: #fff;
-  border-top:20rpx solid #eaeaea;
+  /* border-top:20rpx solid #eaeaea; */
+  margin-top: 565rpx;
 }
 .recommend .title{
   font-size: 30rpx;

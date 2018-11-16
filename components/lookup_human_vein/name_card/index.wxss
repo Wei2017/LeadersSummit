@@ -1,6 +1,12 @@
 .container{
   font-size: 0;
   background-color: #fff;
+  position: fixed;
+  top: 0;
+  height: 541rpx;
+  width: 100%;
+  z-index: 9;
+  padding-bottom: 20rpx;
 }
 .user_name_pic{
   display: flex;

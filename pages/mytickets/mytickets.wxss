@@ -23,7 +23,7 @@
   padding-top: 20rpx;
 }
 .shengcheng{
-  width: 702rpx;
+  width: 578rpx;
   /* height: 6vh; */
   z-index: 10;
   border-radius: 20rpx;
