@@ -42,9 +42,10 @@
 
 .my_name_card text{
   font-size: 28rpx;
-  color: #2819a8;
+  color: #203dee;
   position: relative;
   padding-right: 20rpx;
+  font-weight: 600;
 }
 
 .my_name_card text::after {
@@ -54,8 +55,8 @@
   right: 0;
   width: 0;
   height: 0;
-  margin-top: -5rpx;
-  border-left: 10rpx solid #2819a8;
+  margin-top: -8rpx;
+  border-left: 10rpx solid #203dee;
   border-bottom: 10rpx solid transparent;
   border-top: 10rpx solid transparent;
 }

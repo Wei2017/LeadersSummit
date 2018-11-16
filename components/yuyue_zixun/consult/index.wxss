@@ -54,7 +54,6 @@
   margin-top: 40rpx;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 .problem_text{
   width: 679rpx;
