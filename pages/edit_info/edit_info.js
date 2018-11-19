@@ -211,6 +211,8 @@ Page({
       util.showTotal('请选择职位!')
     } else if (that.data.userTel == '' || that.data.userTel == null) {
       util.showTotal('电话不能为空!')
+    } else if (!that.__checkEmail(that.data.userEmail)){
+      util.showTotal('请输入正确的邮箱格式!')
     } else if (that.data.userEmail == '' || that.data.userEmail == null) {
       util.showTotal('邮箱不能为空!')
     } else {
@@ -330,5 +332,9 @@ Page({
   _checkPhone: function(phone) {
     var ruler = /^(1([345789][0-9]))\d{8}$/;
     return ruler.test(phone);
+  },
+  _checkEmail:function(email){
+    let emailReg = /^([0-9A-Za-z\-_\.]+)@([0-9a-z]+\.[a-z]{2,3}(\.[a-z]{2})?)$/g;
+    return emailReg.test(email)
   }
 })

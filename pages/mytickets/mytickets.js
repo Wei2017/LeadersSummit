@@ -6,7 +6,7 @@ Page({
    */
   data: {
     maskHidden: false,
-    bjImgSrc: '../../images/menpiao.png',
+    bjImgSrc: '',
     pic: '',
     nickName: '',
     imageWidth: '',
@@ -19,7 +19,8 @@ Page({
    */
   onLoad: function(options) {
     let that = this;
-
+    let summit = wx.getStorageSync('summit_bj');
+    that._getBackImg(summit)
     this.setData({
       imageWidth: wx.getSystemInfoSync().windowWidth,
       imageHeight: wx.getSystemInfoSync().windowHeight
@@ -32,8 +33,26 @@ Page({
         that.setData({
           nickName: wx.getStorageSync('signName') ? wx.getStorageSync('signName') : res.userInfo.nickName
         });
+        that.formSubmit();
       }
     });
+  },
+  _getBackImg(url){
+    let that = this;
+    if (typeof url === 'string') {
+      wx.getImageInfo({ //  小程序获取图片信息API
+        src: url,
+        success: function (res) {
+          console.log(res);
+          that.setData({
+            bjImgSrc: res.path
+          })
+        },
+        fail(err) {
+          console.log(err)
+        }
+      })
+    }
   },
   _getImageInfo(url) { //  图片缓存本地的方法
     let that = this;
@@ -51,8 +70,6 @@ Page({
         }
       })
     }
-
-    that.formSubmit();
   },
   previewImage: function(e) {
     let that = this;

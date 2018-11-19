@@ -1,4 +1,6 @@
 {
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh": true,
   "navigationBarTitleText": "我的",
   "usingComponents":{
     "r-menu":"/components/bottom/bottomnav"

@@ -33,14 +33,6 @@ Page({
       user_id: user_id,
       unionid: unionid
     })
-
-
-    //获取完善资料状态
-    userInfoModel.getUserInfo(unionid, res => {
-      that.setData({
-        isWanShan: res.data.user_info[0].business_card
-      })
-    })
   },
 
   //判断跳转
@@ -170,7 +162,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    this._getRenMaiList(false)
+    this._getRenMaiList(false);
+
+    let unionid = wx.getStorageSync('unionid');
+    //获取完善资料状态
+    userInfoModel.getUserInfo(unionid, res => {
+      that.setData({
+        isWanShan: res.data.user_info[0].business_card
+      })
+    })
   },
 
   /**

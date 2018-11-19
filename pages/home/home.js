@@ -108,10 +108,10 @@ Page({
     wx.getSystemInfo({
       //获取系统信息成功，将系统窗口的宽高赋给页面的宽高  
       success: function (res) {
-        let width = res.windowWidth
+        // let width = res.windowWidth
         let height = res.windowHeight
-        let radius = 105 / 602 * height
-        console.log(res,width,height,radius);
+        // let radius = 105 / 602 * height
+        // console.log(res,width,height,radius);
         that.setData({
           guestBjHeight: height
         })
@@ -132,12 +132,20 @@ Page({
   onShow: function () {
     var that = this;
     let user_id = wx.getStorageSync('user_id');
+    wx.showLoading({
+      title: '加载中',
+    })
     bigShotModel.getHomeBj(user_id,res=>{
-      that.setData({
-        small_schedule: res.meeting.small_schedule,
-        small_outline: res.meeting.small_outline,
-        guestList: res.meeting.meeting_guest_list
-      })
+      if(res.code == 1){
+        that.setData({
+          small_schedule: res.meeting.small_schedule,
+          small_outline: res.meeting.small_outline,
+          guestList: res.meeting.meeting_guest_list
+        })
+        if (that.data.small_schedule != ''){
+          wx.hideLoading()
+        }
+      }
     })
 
 
@@ -148,22 +156,12 @@ Page({
           //获取报名状态 显示 报名或查看门票
           let id = wx.getStorageSync('unionid');
           userInfoModel.getUserInfo(id, res => {
+            console.log(res);
             let data = res.data.user_enroll_info[0];
             let sign = data ? '1' : '0';
-            wx.setStorageSync('sign', sign);
-            if(sign == '1'){
-              wx.setStorageSync('signName', data.truename);
-            }
             that.setData({
               sign: sign
             })
-
-            let wsInfo = res.data.user_info[0];
-            let isWs = wsInfo.business_card;
-            if(isWs == '1'){
-              wx.setStorageSync('pic', wsInfo.largeAvatar);
-              wx.setStorageSync('name', wsInfo.truename);
-            }
           })
         }
       }

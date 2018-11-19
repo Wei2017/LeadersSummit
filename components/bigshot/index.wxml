@@ -1,8 +1,8 @@
 <view class='container'>
   <view class='info'>
-    <view class='pic'>
+    <view class='pic' bindtap='appBigShot'>
       <image class='{{bigShot.make =="1"?"ingImg":""}}' src='{{bigShot.avatar}}'></image>
-      <text bindtap='appBigShot' class='appointment_state {{bigShot.make =="1"?"ing":"not"}}'>{{bigShot.make=="1"?'预约中':'预约'}}</text>
+      <text class='appointment_state {{bigShot.make =="1"?"ing":"not"}}'>{{bigShot.make=="1"?'预约中':'预约'}}</text>
     </view>
     <view class='introduce' bindtap='showDetails'>
       <text class='name'>{{bigShot.name}}</text>

@@ -86,13 +86,13 @@ Page({
     }
   },
   //跳转wap端
-  toWap: function() {
-    if (this._authorize()) {
-      wx.navigateTo({
-        url: '/pages/logs/logs',
-      })
-    }
-  },
+  // toWap: function() {
+  //   if (this._authorize()) {
+  //     wx.navigateTo({
+  //       url: '/pages/logs/logs',
+  //     })
+  //   }
+  // },
   //私有方法 判断是否授权
   _authorize: function() {
     let user_id = wx.getStorageSync('user_id');
@@ -174,7 +174,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    this._showUserInfo();
   },
 
   /**
