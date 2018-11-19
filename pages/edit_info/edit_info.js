@@ -11,7 +11,7 @@ Page({
   data: {
     uid: '', //用户id
     user_pic: '',
-    region: ['广东省', '广州市', '海珠区'], //省市区三级联动初始地区
+    region: ['北京市', '北京市', '朝阳区'], //省市区三级联动初始地区
     sex: ['请选择', '男', '女', '保密'], //性别选择
     sexIndex: 0,
     sexChecked: '', //用户选中的性别的值
@@ -125,11 +125,22 @@ Page({
             user_pic: data.largeAvatar,
           })
         }else{
+          let region = data.city;
+          if (region == '') {
+            region = that.data.region
+          } else if (region.indexOf('-') != -1) {
+            region = region.split('-');
+          } else if (region.indexOf(',') != -1) {
+            region = region.split(',');
+          } else {
+            region = region.split(' ');
+          }
          //未报名和未完善名片
          let userInfo = wx.getStorageSync('user_info');
           that.setData({
             uid: wx.getStorageSync('user_id'),
-            user_pic: userInfo.avatarUrl
+            user_pic: userInfo.avatarUrl,
+            region: region
           })
         }
       }

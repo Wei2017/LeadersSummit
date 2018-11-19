@@ -54,9 +54,6 @@
 .input_view input{
   font-size: 28rpx;
   text-align: right;
-  outline:none;
-border:none;
-list-style: none;
 }
 .inputPlaceholder{
   font-size: 28rpx;
