@@ -12,6 +12,7 @@
   font-size: 34rpx;
   color: #ffffff;
   padding: 0 20rpx 0 31rpx;
+  z-index: 9;
 }
 
 .img{
@@ -67,7 +68,7 @@
   font-size: 28rpx;
   /* padding-top:74rpx;  */
   overflow: hidden;
-  height: calc(100% - 160rpx);
+  /* height: calc(100% - 160rpx); */
 }
 ::-webkit-scrollbar {
   width: 0;
@@ -118,4 +119,5 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  padding-bottom: 100rpx;
 }

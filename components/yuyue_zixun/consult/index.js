@@ -49,6 +49,7 @@ Component({
 
     //提交预约信息
     submitMakeInfo: function(e) {
+      console.log(this.data);
       if (this.data.consultPhone == '') {
         util.showTotal('请输入手机号码!');
       } else if (!this._checkPhone(this.data.consultPhone)) {

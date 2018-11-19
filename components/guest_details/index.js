@@ -28,6 +28,8 @@ Component({
 
     //自定义事件 获取咨询id
     makeConsult(){
+      //隐藏弹框
+      this.hideModel();
       let id = this.data.modelDetails.id;
       let big_id = this.data.modelDetails.big_id;
       this.triggerEvent('toConsult',{guest_id:id,big_id:big_id})

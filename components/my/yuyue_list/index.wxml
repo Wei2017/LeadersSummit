@@ -2,7 +2,7 @@
   <view class='my_yuyue_item' bindtap='toDetails'>
     <view class='pic'>
       <image src='{{makeShotList.avatar}}'></image>
-      <text bindtap='myYuyueState' class='appointment_state {{makeShotList.make_state =="1"?"ing":"not"}}'>{{makeShotList.make_state=="1"?'预约中':'已结束'}}</text>
+      <text bindtap='myYuyueState' class='appointment_state {{makeShotList.make_state !="1"?"ing":"not"}}'>{{makeShotList.make_state!="1"?'已结束':'预约中'}}</text>
     </view>
     <view class='yuyue_info'>
       <text class='name'>{{makeShotList.big_name}}</text>

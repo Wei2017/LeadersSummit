@@ -86,7 +86,9 @@ Page({
   showModel:function(e){
     let that = this;
     let bid = e.detail.bid;
-    bigShotModel.getBshotOrGuestDetails(that.data.user_id,bid,res=>{
+    let user_id = wx.getStorageSync('user_id');
+    console.log(user_id);
+    bigShotModel.getBshotOrGuestDetails(user_id,bid,res=>{
       console.log(res);
       that.setData({
         model_hidden:true,

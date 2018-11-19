@@ -15,7 +15,7 @@
 </view>
 
 <view class='view'>
-  <scroll-view scroll-y="true" class='namelist {{tabArr.curBdIndex=="2"? "actives" : ""}}'>
+  <scroll-view scroll-y="true" style='height:{{guestBjHeight}}px;' class='namelist {{tabArr.curBdIndex=="2"? "actives" : ""}}'>
     <view class='guest_list_content'>
       <block wx:for="{{guestList}}" wx:key="key">
         <r-guests guestObj="{{item}}" bindshowModel="showModel" />

@@ -20,7 +20,7 @@ Page({
     util.setnavBarBjColor();
     this.setData({
       bid: options.bid,
-      guest_id: options.guest_id
+      guest_id: options.guest_id ? options.guest_id:''
     })
 
     //获取大咖信息
