@@ -77,6 +77,7 @@ Page({
   },
   //跳转咨询详情
   toConsult:function(e){
+    let that = this;
     console.log(e);
     let big_id = e.detail.big_id;
     //判断用户是否授权
@@ -91,6 +92,10 @@ Page({
             url: '/pages/consult_index/consult_index?bid=&guest_id=' + big_id,
           })
         }
+        //隐藏弹框
+        that.setData({
+          model_hidden: false
+        })
       }
     })
     

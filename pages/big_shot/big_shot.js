@@ -113,7 +113,7 @@ Page({
     })
   },
   gotoConsult:function(e){
-
+    let that = this;
     let big_id = e.detail.guest_id;
     //判断用户是否授权
     wx.getSetting({
@@ -127,6 +127,10 @@ Page({
             url: '/pages/consult_index/consult_index?guest_id=&bid=' + big_id,
           })
         }
+        //隐藏弹框
+        that.setData({
+          model_hidden: false
+        })
       }
     })
   }
