@@ -211,7 +211,7 @@ Page({
       util.showTotal('请选择职位!')
     } else if (that.data.userTel == '' || that.data.userTel == null) {
       util.showTotal('电话不能为空!')
-    } else if (!that.__checkEmail(that.data.userEmail)){
+    } else if (!that._checkEmail(that.data.userEmail)){
       util.showTotal('请输入正确的邮箱格式!')
     } else if (that.data.userEmail == '' || that.data.userEmail == null) {
       util.showTotal('邮箱不能为空!')

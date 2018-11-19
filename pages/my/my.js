@@ -110,7 +110,7 @@ Page({
     let unionid = wx.getStorageSync('unionid');
     let userInfo = wx.getStorageSync('user_info'); //微信头像 昵称
     console.log(that.data.pic,that.data.newPic)
-    if (that.data.pic != that.data.newPic) {
+    // if (that.data.pic != that.data.newPic) {
       //显示用户头像
       userInfoModel.getUserInfo(unionid, res => {
         let signInfo = res.data.user_enroll_info[0]; //报名信息
@@ -133,7 +133,7 @@ Page({
           })
         }
       })
-    }
+    // }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
