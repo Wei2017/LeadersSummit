@@ -13,7 +13,6 @@
           <image src='images/edit_data.png'></image>
           <text>编辑资料</text>
         </view>
-
       </view>
     </block>
     <!-- 背景颜色占位 别无它用 -->

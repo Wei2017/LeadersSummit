@@ -117,13 +117,13 @@ Page({
     }, 200);
   },
   //点击保存到相册
-  baocun: function() {
+  saveImg: function() {
     var that = this
     wx.saveImageToPhotosAlbum({
       filePath: that.data.imagePath,
       success(res) {
         wx.showModal({
-          content: '图片已保存到相册，赶紧晒一下吧~',
+          content: '图片已保存到相册~',
           showCancel: false,
           confirmText: '好的',
           confirmColor: '#333',

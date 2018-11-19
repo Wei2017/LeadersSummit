@@ -10,9 +10,9 @@
       </view>
     </view>
     <view class='info_item'>
-      <view class='info_title'>联系方式</view>
+      <view class='info_title'>联系电话</view>
       <view class='input_view'>
-        <input type='text' bindinput='getPhone' placeholder='请输入您的联系方式' placeholder-class='inputPlaceholder' />
+        <input type='text' bindinput='getPhone' placeholder='请输入手机号或电话' placeholder-class='inputPlaceholder' />
       </view>
     </view>
     <view class='problem_desc'>
