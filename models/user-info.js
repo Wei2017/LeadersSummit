@@ -1,7 +1,9 @@
-import {HTTP} from '../utils/http.js';
+import {
+  HTTP
+} from '../utils/http.js';
 
-class UserInfoModel extends HTTP{
-  getUserInfo(unionid,sCallback){
+class UserInfoModel extends HTTP {
+  getUserInfo(unionid, sCallback) {
     this.request({
       url: 'Smallwx/getEnrollInfo',
       data: {
@@ -12,24 +14,28 @@ class UserInfoModel extends HTTP{
         let summit = res.data.info[0].enroll_success; //峰会背景图
         let tmpBj = wx.getStorageSync('summit_bj'); //转换成本地图片路径后的地址
         //如果不存在则存
-        if(!tmpBj){
+        if (!tmpBj) {
           this._getBackImg(summit);
-        } 
-        //用户是否报名 data为true则已报名
+        }
+        
         let data = res.data.user_enroll_info[0];
-        let sign = data ? '1' : '0';
-        wx.setStorageSync('sign', sign);
-        if (sign == '1') {
-          wx.setStorageSync('signName', data.truename);
+        //是否填写过报名信息
+        if (data) {
+          let examine = data.examine; //2为报名成功
+          let sign = examine == '2' ? '1' : '0';
+          wx.setStorageSync('sign', sign);
+          if (sign == '1') {
+            wx.setStorageSync('signName', data.truename);
+          }
         }
 
         let wsInfo = res.data.user_info[0];
         //用户是否完善名片信息
         let isWs = wsInfo.business_card;
         if (isWs == '1') {
-          let tmpPic = wx.getStorageSync('pic');//峰会报名的用户头像 本地路径
+          let tmpPic = wx.getStorageSync('pic'); //峰会报名的用户头像 本地路径
           //如果本地路径不存在 则存
-          if(!tmpPic){
+          if (!tmpPic) {
             this._getImageInfo(wsInfo.largeAvatar);
           }
           // wx.setStorageSync('pic', wsInfo.largeAvatar);
@@ -43,7 +49,7 @@ class UserInfoModel extends HTTP{
     if (typeof url === 'string') {
       wx.getImageInfo({ //  小程序获取图片信息API
         src: url,
-        success: function (res) {
+        success: function(res) {
           console.log(res);
           wx.setStorageSync('summit_bj', res.path);
         },
@@ -58,7 +64,7 @@ class UserInfoModel extends HTTP{
     if (typeof url === 'string') {
       wx.getImageInfo({ //  小程序获取图片信息API
         src: url,
-        success: function (res) {
+        success: function(res) {
           console.log(res);
           wx.setStorageSync('pic', res.path);
         },
@@ -69,30 +75,30 @@ class UserInfoModel extends HTTP{
     }
   };
   //保存用户信息
-  saveUserInfo(data,sCallback){
+  saveUserInfo(data, sCallback) {
     this.request({
-      url:'ApiUser/editBusinessCard',
-      data:data,
-      success:res=>{
+      url: 'ApiUser/editBusinessCard',
+      data: data,
+      success: res => {
         sCallback(res);
       }
     })
   };
 
-  getNewRenMai(uid,sCallback){
+  getNewRenMai(uid, sCallback) {
     this.request({
-      url:'ApiUser/myInfoMsg',
-      data:{
-        uid:uid
+      url: 'ApiUser/myInfoMsg',
+      data: {
+        uid: uid
       },
-      success:res=>{
+      success: res => {
         sCallback(res);
       }
     })
-  }
+  };
 }
 
 
-export{
+export {
   UserInfoModel
 }

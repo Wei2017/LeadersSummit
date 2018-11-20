@@ -34,13 +34,20 @@ Page({
       },
       success: res => {
         console.log(res);
-        //如果报名成功 则跳转电子门票页
-        if (res.data.user_enroll_info[0]){
-          wx.redirectTo({
-            url: '/pages/mytickets/mytickets'
-          });
-          return;
+        let data = res.data.user_enroll_info[0];
+        //是否填写过报名信息
+        if (data) {
+          let examine = data.examine; //2为报名成功
+          let sign = examine == '2' ? '1' : '0';
+           //如果报名成功 则跳转电子门票页
+          if (sign == '1') {
+            wx.redirectTo({
+              url: '/pages/mytickets/mytickets'
+            });
+            return;
+          }
         }
+
         if (res.status == 1) {
           that.setData({
             title: res.data.info[0].meeting_name,

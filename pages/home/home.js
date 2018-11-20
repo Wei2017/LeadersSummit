@@ -162,17 +162,19 @@ Page({
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
-          console.log(App);
           //获取报名状态 显示 报名或查看门票
           let id = wx.getStorageSync('unionid');
-          let unionid = id ? id :'';
-          userInfoModel.getUserInfo(unionid, res => {
+          userInfoModel.getUserInfo(id, res => {
             console.log(res);
+            //是否填写过报名信息
             let data = res.data.user_enroll_info[0];
-            let sign = data ? '1' : '0';
-            that.setData({
-              sign: sign
-            })
+            if(data){
+              let examine = data.examine; //2为报名成功
+              let sign = examine == '2' ? '1' : '0';
+              that.setData({
+                sign: sign
+              })
+            }
           })
         }
       }
