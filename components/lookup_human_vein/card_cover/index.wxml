@@ -1,6 +1,6 @@
 <view class='container'>
   <view class='card_cover_info' bindtap='toCardDetail'>
-    <image class='user_pic' src='{{cardList.largeAvatar}}'></image>
+    <image lazy-load="true" class='user_pic' src='{{cardList.largeAvatar}}'></image>
     <view class='basic_info'>
       <text class='user_name'>{{cardList.truename}}</text>
       <text class='company'>{{cardList.company}}</text>

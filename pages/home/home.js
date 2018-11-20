@@ -5,7 +5,6 @@ import {
   UserInfoModel
 } from '../../models/user-info.js';
 const userInfoModel = new UserInfoModel();
-let App = getApp();
 Page({
 
   /**
@@ -22,8 +21,8 @@ Page({
     modelDetails: null,
     model_hidden: false,
     sign:0,
-    guestBjHeight:''
-
+    guestBjHeight:'',
+    unionid:''
   },
   tab: function (e) {
     var dataId = e.currentTarget.id;
@@ -114,7 +113,8 @@ Page({
         // let radius = 105 / 602 * height
         // console.log(res,width,height,radius);
         that.setData({
-          guestBjHeight: height
+          guestBjHeight: height,
+          unionid: wx.getStorageSync('unionid')
         })
       }
     });
@@ -147,7 +147,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var that = this;
+    let that = this;
     let user_id = wx.getStorageSync('user_id');
     bigShotModel.getHomeBj(user_id, res => {
       if (res.code == 1) {
@@ -162,9 +162,11 @@ Page({
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
+          let unionid = that.data.unionid;
+          console.log(that.data);
           //获取报名状态 显示 报名或查看门票
-          let id = wx.getStorageSync('unionid');
-          userInfoModel.getUserInfo(id, res => {
+          unionid = unionid ? unionid : wx.getStorageSync('unionid');
+          userInfoModel.getUserInfo(unionid, res => {
             console.log(res);
             //是否填写过报名信息
             let data = res.data.user_enroll_info[0];

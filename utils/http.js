@@ -18,6 +18,11 @@ class HTTP {
       },
       fail:error=>{
         console.log(error)
+        wx.showToast({
+          title: '网络请求失败,请稍后重试',
+          mask: true,
+          icon: 'none'
+        })
       }
     })
   }
