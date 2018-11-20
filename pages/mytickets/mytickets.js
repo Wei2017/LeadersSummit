@@ -19,58 +19,28 @@ Page({
    */
   onLoad: function(options) {
     let that = this;
-    let summit = wx.getStorageSync('summit_bj');
-    that._getBackImg(summit)
+
     this.setData({
       imageWidth: wx.getSystemInfoSync().windowWidth,
-      imageHeight: wx.getSystemInfoSync().windowHeight
+      imageHeight: wx.getSystemInfoSync().windowHeight,
+      bjImgSrc:wx.getStorageSync('summit_bj')
     })
 
     wx.getUserInfo({ //获取微信用户信息
       success: function(res) {
         console.log(res);
-        that._getImageInfo(res.userInfo.avatarUrl); //  调取图片处理方法
         that.setData({
+          pic: wx.getStorageSync('pic') ? wx.getStorageSync('pic') : res.userInfo.avatarUrl,
           nickName: wx.getStorageSync('signName') ? wx.getStorageSync('signName') : res.userInfo.nickName
         });
-        that.formSubmit();
+        console.log(that.data);
       }
     });
   },
-  _getBackImg(url){
-    let that = this;
-    if (typeof url === 'string') {
-      wx.getImageInfo({ //  小程序获取图片信息API
-        src: url,
-        success: function (res) {
-          console.log(res);
-          that.setData({
-            bjImgSrc: res.path
-          })
-        },
-        fail(err) {
-          console.log(err)
-        }
-      })
-    }
+  onShow:function(){
+    this.formSubmit();
   },
-  _getImageInfo(url) { //  图片缓存本地的方法
-    let that = this;
-    if (typeof url === 'string') {
-      wx.getImageInfo({ //  小程序获取图片信息API
-        src: url,
-        success: function(res) {
-          console.log(res);
-          that.setData({
-            pic: res.path
-          })
-        },
-        fail(err) {
-          console.log(err)
-        }
-      })
-    }
-  },
+  
   previewImage: function(e) {
     let that = this;
     console.log(e);
@@ -101,10 +71,10 @@ Page({
 
     var name = that.data.nickName;
     //绘制名字
-    context.setFontSize(12);
+    context.setFontSize(18);
     context.setFillStyle('#333333');
     context.setTextAlign('center');
-    context.fillText(name, 185, 350);
+    context.fillText(name, 185, 360);
     context.stroke();
 
 

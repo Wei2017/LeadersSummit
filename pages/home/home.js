@@ -5,6 +5,7 @@ import {
   UserInfoModel
 } from '../../models/user-info.js';
 const userInfoModel = new UserInfoModel();
+let App = getApp();
 Page({
 
   /**
@@ -116,6 +117,22 @@ Page({
           guestBjHeight: height
         })
       }
+    });
+
+    let user_id = wx.getStorageSync('user_id');
+    wx.showLoading({
+      title: '加载中',
+    })
+    bigShotModel.getHomeBj(user_id, res => {
+      if (res.code == 1) {
+        that.setData({
+          small_schedule: res.meeting.small_schedule,
+          small_outline: res.meeting.small_outline,
+        })
+        if (that.data.small_schedule != '') {
+          wx.hideLoading()
+        }
+      }
     })
   },
 
@@ -132,19 +149,11 @@ Page({
   onShow: function () {
     var that = this;
     let user_id = wx.getStorageSync('user_id');
-    wx.showLoading({
-      title: '加载中',
-    })
-    bigShotModel.getHomeBj(user_id,res=>{
-      if(res.code == 1){
+    bigShotModel.getHomeBj(user_id, res => {
+      if (res.code == 1) {
         that.setData({
-          small_schedule: res.meeting.small_schedule,
-          small_outline: res.meeting.small_outline,
           guestList: res.meeting.meeting_guest_list
         })
-        if (that.data.small_schedule != ''){
-          wx.hideLoading()
-        }
       }
     })
 
@@ -153,9 +162,11 @@ Page({
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
+          console.log(App);
           //获取报名状态 显示 报名或查看门票
           let id = wx.getStorageSync('unionid');
-          userInfoModel.getUserInfo(id, res => {
+          let unionid = id ? id :'';
+          userInfoModel.getUserInfo(unionid, res => {
             console.log(res);
             let data = res.data.user_enroll_info[0];
             let sign = data ? '1' : '0';

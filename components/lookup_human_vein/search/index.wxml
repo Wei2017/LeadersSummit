@@ -4,7 +4,7 @@
       <view class='search_btn'>
         <image src='images/sousuo@2x.png'></image>
       </view>
-      <input type='text' value='{{searchVal}}' placeholder='按姓名或公司搜索' bindinput='getSearchVal' bindconfirm='search' />
+      <input type='text' value='{{searchVal}}' placeholder='按姓名或公司搜索' bindinput='getSearchVal' bindconfirm='search' confirm-type="search" />
       <view class='search_btn' wx:if="{{searchVal != ''}}" bindtap='clearVal'>
         <image src='images/close.png'></image>
       </view>

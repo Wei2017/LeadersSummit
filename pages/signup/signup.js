@@ -19,6 +19,7 @@ Page({
     meeting_id: "",
     trade_no: "",//流水号
     coupon: "",//优惠码
+    hiddenBtn:false
   },
 
   /**
@@ -32,7 +33,14 @@ Page({
         unionid: wx.getStorageSync('unionid')
       },
       success: res => {
-        console.log(res)
+        console.log(res);
+        //如果报名成功 则跳转电子门票页
+        if (res.data.user_enroll_info[0]){
+          wx.redirectTo({
+            url: '/pages/mytickets/mytickets'
+          });
+          return;
+        }
         if (res.status == 1) {
           that.setData({
             title: res.data.info[0].meeting_name,
@@ -60,7 +68,7 @@ Page({
     datas.coupon = this.data.coupon;
     datas.nickname = userInfo.nickName; //昵称
     datas.user_pic = userInfo.avatarUrl; //头像
-    datas.openid = userInfo.openid;
+    datas.openid = wx.getStorageSync('openid');
     datas.unionid = wx.getStorageSync('unionid');
     console.log(datas);
     if (e.detail.value.truename == "") {
@@ -81,6 +89,9 @@ Page({
       util.showTotal('邮箱格式有误');
     } else {
       var that = this;
+      that.setData({
+        hiddenBtn:true
+      });
       wx.setStorageSync('signName', e.detail.value.truename);
       http.request({
         url: "Smallwx/enrollMeeting",
@@ -91,11 +102,10 @@ Page({
             http.request({
               url: "Smallwx/unifiedOrder3",
               data: {
-                openid: userInfo.openid,
+                openid: datas.openid,
                 out_trade_no: that.data.trade_no,
                 coupon: that.data.coupon,
                 meeting_id: that.data.meeting_id
-
               },
               success: res => {
                 console.log(res)
@@ -109,6 +119,11 @@ Page({
                     console.log(res1)
                     wx.redirectTo({
                       url: '/pages/mytickets/mytickets'
+                    });
+                  },
+                  fail:res=>{
+                    that.setData({
+                      hiddenBtn: false
                     });
                   }
                 })

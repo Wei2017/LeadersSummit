@@ -163,7 +163,7 @@ Page({
    */
   onShow: function() {
     this._getRenMaiList(false);
-
+    let that = this;
     let unionid = wx.getStorageSync('unionid');
     //获取完善资料状态
     userInfoModel.getUserInfo(unionid, res => {

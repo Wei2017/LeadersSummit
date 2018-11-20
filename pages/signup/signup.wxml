@@ -2,69 +2,74 @@
 
 <view class='tit'>{{title}}</view>
 <view class='ipt'>
-<view class='ipts'>
-  <view class='ipttit'>兑换码</view>
-  <input class='dhipt' placeholder='请输入(选填）' bindinput='watchPlace' name='coupon' placeholder-class='iptplace'></input>
-</view>
-<button class='dhbtn' bindtap='changepaper'>兑换</button>
+  <view class='ipts'>
+    <view class='ipttit'>兑换码</view>
+    <input class='dhipt' placeholder='请输入(选填）' bindinput='watchPlace' name='coupon' placeholder-class='iptplace'></input>
+  </view>
+  <button class='dhbtn' bindtap='changepaper'>兑换</button>
 </view>
 <form bindsubmit="formSubmit" report-submit='true'>
-<view class='ipt'>
-  <view class='formlist'>
-    <view class='formname'>
-      姓名
+  <view class='ipt'>
+    <view class='formlist'>
+      <view class='formname'>
+        姓名
+      </view>
+      <input class='formipt' name='truename' placeholder='真实姓名' placeholder-class='iptplace'></input>
     </view>
-    <input class='formipt' name='truename' placeholder='真实姓名' placeholder-class='iptplace'></input>
   </view>
-</view>
-<view class='ipt'>
-  <view class='formlist'>
-    <view class='formname'>
-      公司
+  <view class='ipt'>
+    <view class='formlist'>
+      <view class='formname'>
+        公司
+      </view>
+      <input class='formipt' name='company' placeholder='公司名称' placeholder-class='iptplace'></input>
     </view>
-    <input class='formipt' name='company' placeholder='公司名称' placeholder-class='iptplace'></input>
   </view>
-</view>
-<view class='ipt'>
-  <view class='formlist'>
-    <view class='formname'>
-      职位
+  <view class='ipt'>
+    <view class='formlist'>
+      <view class='formname'>
+        职位
+      </view>
+      <view class='picker'>
+        <picker bindchange="bindPositionChange" name="job" value="{{position[positionIndex]}}" range="{{position}}">
+          <view class="pickers">{{position[positionIndex]}}</view>
+        </picker>
+      </view>
+
     </view>
-    <view class='picker'>
-      <picker bindchange="bindPositionChange" name="job" value="{{position[positionIndex]}}" range="{{position}}">
-        <view class="pickers">{{position[positionIndex]}}</view>
-      </picker>
-    </view>
-    
   </view>
-</view>
-<view class='ipt'>
-  <view class='formlist'>
-    <view class='formname'>
-      电话
+  <view class='ipt'>
+    <view class='formlist'>
+      <view class='formname'>
+        电话
+      </view>
+      <input class='formipt' name='company_mobile' placeholder='公司座机电话' placeholder-class='iptplace'></input>
     </view>
-    <input class='formipt' name='company_mobile' placeholder='公司座机电话' placeholder-class='iptplace'></input>
   </view>
-</view>
-<view class='ipt'>
-  <view class='formlist'>
-    <view class='formname'>
-      手机
+  <view class='ipt'>
+    <view class='formlist'>
+      <view class='formname'>
+        手机
+      </view>
+      <input class='formipt' placeholder='真实手机号' name='mobile' placeholder-class='iptplace'></input>
     </view>
-    <input class='formipt' placeholder='真实手机号' name='mobile' placeholder-class='iptplace'></input>
   </view>
-</view>
-<view class='ipt'>
-  <view class='formlist'>
-    <view class='formname'>
-      邮箱
+  <view class='ipt'>
+    <view class='formlist'>
+      <view class='formname'>
+        邮箱
+      </view>
+      <input class='formipt' name='email' placeholder='真实邮箱' placeholder-class='iptplace'></input>
     </view>
-    <input class='formipt' name='email' placeholder='真实邮箱' placeholder-class='iptplace'></input>
   </view>
-</view>
-<input type='type' name='meeting_id' class='hidden' value='{{meeting_id}}'></input>
-<input type='type' name='trade_no' class='hidden' value='{{trade_no}}'></input>
-<input type='type' name='price' class='hidden' value='{{price}}'></input>
-<view class='tips'>温馨提示：信息填写后会自动同步到儒思账户</view>
-<button class='btn' formType="submit">立即报名：¥{{price}}</button>
+  <input type='type' name='meeting_id' class='hidden' value='{{meeting_id}}'></input>
+  <input type='type' name='trade_no' class='hidden' value='{{trade_no}}'></input>
+  <input type='type' name='price' class='hidden' value='{{price}}'></input>
+  <view class='tips'>温馨提示：信息填写后会自动同步到儒思账户</view>
+  <block wx:if="{{!hiddenBtn}}">
+    <button class='btn' formType="submit">立即报名：¥{{price}}</button>
+  </block>
+  <block wx:else>
+    <button class='btn'>报名中...</button>
+  </block>
 </form>

@@ -36,7 +36,7 @@ Page({
         }
       });
 
-      that._showUserInfo()
+      that._showUserInfo(false)
     }
   },
   editInfo: function() {
@@ -86,13 +86,24 @@ Page({
     }
   },
   //跳转wap端
-  // toWap: function() {
-  //   if (this._authorize()) {
-  //     wx.navigateTo({
-  //       url: '/pages/logs/logs',
-  //     })
-  //   }
-  // },
+  toWap: function() {
+    wx.clearStorage({
+      success:res=>{
+        wx.showLoading({
+          title: '清理成功',
+          mask:true,
+          success:res=>{
+            wx.hideLoading();
+          }
+        })
+      }
+    })
+    // if (this._authorize()) {
+    //   wx.navigateTo({
+    //     url: '/pages/logs/logs',
+    //   })
+    // }
+  },
   //私有方法 判断是否授权
   _authorize: function() {
     let user_id = wx.getStorageSync('user_id');
@@ -105,7 +116,7 @@ Page({
     }
   },
   //显示用户头像和昵称信息
-  _showUserInfo() {
+  _showUserInfo(state) {
     let that = this;
     let unionid = wx.getStorageSync('unionid');
     let userInfo = wx.getStorageSync('user_info'); //微信头像 昵称
@@ -132,6 +143,10 @@ Page({
             newPic: userInfo.avatarUrl
           })
         }
+        if (state) {
+          // 停止下拉动作
+          wx.stopPullDownRefresh();
+        }
       })
     // }
   },
@@ -150,7 +165,7 @@ Page({
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
-          that._showUserInfo();
+          that._showUserInfo(false);
         }
       }
     })
@@ -174,7 +189,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-    this._showUserInfo();
+    this._showUserInfo(true);
   },
 
   /**
