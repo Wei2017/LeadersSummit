@@ -36,12 +36,12 @@
       </view>
       <image class='right_icon' src='/images/my/right.png'></image>
     </view>
-    <view class='list_item' bindtap='toWap'>
+    <!-- <view class='list_item' bindtap='toWap'>
       <view class='item_text'>
         <image class='lyb' src='/images/my/liuyanban@2x.png'></image>
         <text>清理缓存</text>
       </view>
       <image class='right_icon' src='/images/my/right.png'></image>
-    </view>
+    </view> -->
   </view>
 </view>
